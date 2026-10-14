@@ -534,7 +534,7 @@ for row in range(5, 5 + LIST_ROWS):
             c.font, c.fill = f_in, INPUT_FILL
     cu.cell(row=row, column=7, value=f'=IF(A{row}="","",COUNTIF({L}!$C${FIRST}:$C${LAST},A{row}))')
     cu.cell(row=row, column=8,
-            value=f'=IF(A{row}="","",SUMPRODUCT(COUNTIFS({L}!$C${FIRST}:$C${LAST},A{row},{L}!$R${FIRST}:$R${LAST},{WON})))')
+            value=f'=IF(A{row}="","",' + "+".join(f'COUNTIFS({L}!$C${FIRST}:$C${LAST},A{row},{L}!$R${FIRST}:$R${LAST},"{st}")' for st in ("Won","Ordered","Shipped","Paid")) + ')')
     cu.cell(row=row, column=9, value=f'=IF(OR(A{row}="",G{row}=0),"",H{row}/G{row})')
     cu.cell(row=row, column=10,
             value=f'=IF(A{row}="","",SUMIFS({L}!$O${FIRST}:$O${LAST},{L}!$C${FIRST}:$C${LAST},A{row},{L}!$R${FIRST}:$R${LAST},"Paid"))')
@@ -569,13 +569,14 @@ P_ = f"{L}!$P${FIRST}:$P${LAST}"
 B_ = f"{L}!$B${FIRST}:$B${LAST}"
 S_ = f"{L}!$S${FIRST}:$S${LAST}"
 U_ = f"{L}!$U${FIRST}:$U${LAST}"
+WONC = "+".join(f'COUNTIF({R_},"{st}")' for st in ("Won","Ordered","Shipped","Paid"))
 
 kpis = [
     ("MONEY", None, None),
     ("Profit collected (Paid)", f'=SUMIFS({P_},{R_},"Paid")', USD),
     ("Revenue collected (Paid)", f'=SUMIFS({O_},{R_},"Paid")', USD),
     ("Average margin on paid deals", "=IF(B5=0,0,B4/B5)", PCT),
-    ("Profit in play (Won/Ordered/Shipped)", f'=SUMPRODUCT(SUMIFS({P_},{R_},{{"Won","Ordered","Shipped"}}))', USD),
+    ("Profit in play (Won/Ordered/Shipped)", f'=SUMIFS({P_},{R_},"Won")+SUMIFS({P_},{R_},"Ordered")+SUMIFS({P_},{R_},"Shipped")', USD),
     ("Profit on the table (Quoted)", f'=SUMIFS({P_},{R_},"Quoted")', USD),
     ("Profit this month (by Date Paid)",
      f'=SUMIFS({P_},{R_},"Paid",{U_},">="&DATE(YEAR(TODAY()),MONTH(TODAY()),1),{U_},"<"&EDATE(DATE(YEAR(TODAY()),MONTH(TODAY()),1),1))', USD),
@@ -583,10 +584,10 @@ kpis = [
     ("ACTIVITY", None, None),
     ("Total requests logged", f'=COUNT({B_})', "0"),
     ("Win rate (won ÷ decided)",
-     f'=IFERROR(SUMPRODUCT(COUNTIF({R_},{WON}))/(SUMPRODUCT(COUNTIF({R_},{WON}))+COUNTIF({R_},"Lost")),0)', PCT),
-    ("Open requests (New/Sourcing/Quoted)", f'=SUMPRODUCT(COUNTIF({R_},{{"New","Sourcing","Quoted"}}))', "0"),
+     f'=IFERROR(({WONC})/(({WONC})+COUNTIF({R_},"Lost")),0)', PCT),
+    ("Open requests (New/Sourcing/Quoted)", f'=COUNTIF({R_},"New")+COUNTIF({R_},"Sourcing")+COUNTIF({R_},"Quoted")', "0"),
     ("FOLLOW-UPS DUE NOW",
-     f'=SUMPRODUCT(({S_}<>"")*({S_}<=TODAY())*(({R_}="New")+({R_}="Sourcing")+({R_}="Quoted")))', "0"),
+     f'=COUNTIFS({S_},"<="&TODAY(),{R_},"New")+COUNTIFS({S_},"<="&TODAY(),{R_},"Sourcing")+COUNTIFS({S_},"<="&TODAY(),{R_},"Quoted")', "0"),
     ("Shipped, waiting on payment", f'=COUNTIF({R_},"Shipped")', "0"),
 ]
 for i, (lbl, formula, fmt) in enumerate(kpis):

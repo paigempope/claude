@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SunSystems Parts Desk</title>
+<style>
+:root{
+  --bg:#f5f7fa;--panel:#fff;--ink:#1c2733;--muted:#5d6b7a;--line:#d9e0e8;
+  --brand:#1f3a5f;--brand-ink:#fff;--accent:#e8a33d;--good:#2e7d4f;--bad:#b3261e;--warn:#a35c00;
+  --chip-new:#e3f2fd;--chip-sourcing:#fff3e0;--chip-quoted:#fff9c4;--chip-won:#c8e6c9;
+  --chip-ordered:#b2dfdb;--chip-shipped:#b3e5fc;--chip-paid:#a5d6a7;--chip-lost:#e0e0e0;--chip-ink:#1c2733;
+  --input:#fffdf0;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#12171d;--panel:#1b222b;--ink:#e6edf3;--muted:#9aa7b4;--line:#2d3742;
+  --brand:#7fb0e8;--brand-ink:#0d1620;--accent:#f0b45a;--good:#6cc98f;--bad:#ff8a80;--warn:#f0b45a;
+  --chip-new:#1e3a55;--chip-sourcing:#4a3416;--chip-quoted:#4a4416;--chip-won:#1f4a2c;
+  --chip-ordered:#174641;--chip-shipped:#16405a;--chip-paid:#245a33;--chip-lost:#3a3f45;--chip-ink:#e6edf3;
+  --input:#202a35;
+}}
+:root[data-theme="dark"]{
+  --bg:#12171d;--panel:#1b222b;--ink:#e6edf3;--muted:#9aa7b4;--line:#2d3742;
+  --brand:#7fb0e8;--brand-ink:#0d1620;--accent:#f0b45a;--good:#6cc98f;--bad:#ff8a80;--warn:#f0b45a;
+  --chip-new:#1e3a55;--chip-sourcing:#4a3416;--chip-quoted:#4a4416;--chip-won:#1f4a2c;
+  --chip-ordered:#174641;--chip-shipped:#16405a;--chip-paid:#245a33;--chip-lost:#3a3f45;--chip-ink:#e6edf3;
+  --input:#202a35;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+header{background:var(--brand);color:var(--brand-ink);padding:12px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+header h1{font-size:18px;margin:0;margin-right:auto}
+nav{display:flex;gap:4px;flex-wrap:wrap;padding:8px 16px;background:var(--panel);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+nav button{background:none;border:0;padding:8px 12px;border-radius:6px;color:var(--muted);font:inherit;font-weight:600;cursor:pointer}
+nav button.on{background:var(--brand);color:var(--brand-ink)}
+main{padding:16px;max-width:1400px;margin:0 auto}
+section{display:none}section.on{display:block}
+h2{font-size:17px;margin:0 0 4px}
+.sub{color:var(--muted);margin:0 0 14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px;margin-bottom:14px}
+.grid{display:grid;gap:12px}
+.kpis{grid-template-columns:repeat(4,minmax(0,1fr))}
+.kpis.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.kpis .card{margin:0}
+.mini .kpi{padding:10px 12px}.mini .kpi .v{font-size:18px}
+.kpi .v{font-size:24px;font-weight:700}
+.kpi .l{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+.kpi.hot{border-color:var(--accent);box-shadow:inset 4px 0 0 var(--accent)}
+.two{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+table{border-collapse:collapse;width:100%}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle;white-space:nowrap}
+td.wrap{white-space:normal;min-width:140px;max-width:240px}
+tr:last-child td{border-bottom:0}
+th{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.03em;position:sticky;top:0;background:var(--panel)}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.scroll{overflow:auto;max-height:65vh}
+tr.click{cursor:pointer}tr.click:hover td{background:color-mix(in srgb,var(--brand) 8%,transparent)}
+.chip{display:inline-block;padding:2px 8px;border-radius:99px;font-size:12px;font-weight:600;color:var(--chip-ink)}
+.s-New{background:var(--chip-new)}.s-Sourcing{background:var(--chip-sourcing)}.s-Quoted{background:var(--chip-quoted)}
+.s-Won{background:var(--chip-won)}.s-Ordered{background:var(--chip-ordered)}.s-Shipped{background:var(--chip-shipped)}
+.s-Paid{background:var(--chip-paid)}.s-Lost{background:var(--chip-lost)}
+.bad{color:var(--bad);font-weight:700}.good{color:var(--good)}.warn{color:var(--warn);font-weight:700}
+button.btn,label.btn{background:var(--brand);color:var(--brand-ink);border:0;border-radius:6px;padding:8px 14px;font:inherit;font-weight:600;cursor:pointer;display:inline-block}
+button.ghost,label.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+button.danger{background:var(--bad);color:#fff}
+header button.ghost,header label.ghost{color:var(--brand-ink);border-color:color-mix(in srgb,var(--brand-ink) 40%,transparent)}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--input);border:1px solid var(--line);border-radius:6px;padding:6px 8px;width:100%}
+textarea{min-height:60px}
+.form{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.form label{font-size:12px;color:var(--muted);font-weight:600;display:block}
+.form .wide{grid-column:1/-1}
+.out{background:color-mix(in srgb,var(--brand) 6%,var(--panel));border:1px solid var(--line);border-radius:6px;padding:6px 8px;font-variant-numeric:tabular-nums;min-height:33px}
+dialog{border:1px solid var(--line);border-radius:12px;padding:0;background:var(--panel);color:var(--ink);width:min(900px,calc(100vw - 32px))}
+dialog::backdrop{background:rgba(0,0,0,.45)}
+dialog .hd{padding:12px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center}
+dialog .hd h3{margin:0;font-size:16px;margin-right:auto}
+dialog .bd{padding:16px;max-height:70vh;overflow:auto}
+dialog .ft{padding:12px 16px;border-top:1px solid var(--line);display:flex;gap:8px;justify-content:flex-end}
+.bars{display:grid;grid-template-columns:repeat(12,1fr);gap:6px;align-items:end;height:160px;border-bottom:1px solid var(--line);padding-top:8px}
+.bar{background:var(--brand);border-radius:4px 4px 0 0;min-height:1px;position:relative}
+.bar span{position:absolute;top:-18px;left:50%;transform:translateX(-50%);font-size:11px;color:var(--muted);white-space:nowrap}
+.blabels{display:grid;grid-template-columns:repeat(12,1fr);gap:6px;font-size:11px;color:var(--muted);text-align:center;margin-top:4px}
+.big{font-size:22px;font-weight:700}
+.note{color:var(--muted);font-size:12px}
+.qtab td input{min-width:70px}
+.qtab .c-part{width:170px}.qtab .c-qty{width:80px}.qtab .c-cost{width:140px}.qtab .c-x{width:52px}
+pre.quote{white-space:pre-wrap;background:var(--input);border:1px solid var(--line);border-radius:6px;padding:10px;font:13px/1.4 ui-monospace,Consolas,monospace}
+.toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:8px;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.on{opacity:1}
+ol.steps li{margin-bottom:6px}
+@media (max-width:900px){.kpis,.kpis.three{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){main{padding:12px}header h1{font-size:16px;width:100%}.kpi .v{font-size:20px}}
+</style>
+</head>
+<body>
+<header>
+  <h1>SunSystems Parts Desk</h1>
+  <button class="btn ghost" id="bkp">Back up data</button>
+  <label class="btn ghost">Restore backup<input type="file" id="restore" accept=".json" hidden></label>
+  <button class="btn ghost" id="theme">Dark mode</button>
+</header>
+<nav id="nav">
+  <button data-t="dash" class="on">Dashboard</button>
+  <button data-t="log">RFQ Log</button>
+  <button data-t="quote">Quote Calc</button>
+  <button data-t="sup">Suppliers</button>
+  <button data-t="cus">Customers</button>
+  <button data-t="set">Settings</button>
+  <button data-t="help">How it works</button>
+</nav>
+<main>
+
+<section id="dash" class="on">
+  <h2>Dashboard</h2><p class="sub" id="asof"></p>
+  <div class="grid kpis" id="kpis" style="margin-bottom:14px"></div>
+  <div class="grid two">
+    <div class="card"><h2>Follow-ups due</h2><p class="sub">Requests still New, Sourcing or Quoted past their follow-up date.</p><div id="fups"></div></div>
+    <div class="card"><h2>Pipeline by status</h2><div id="pipe"></div></div>
+  </div>
+  <div class="card"><h2>Profit by month (<span id="yr"></span>, by date paid)</h2><div class="bars" id="bars"></div><div class="blabels" id="blabels"></div></div>
+</section>
+
+<section id="log">
+  <h2>RFQ Log</h2><p class="sub">One row per request. Click a row to edit. Prices follow your Settings; * means you typed your own price.</p>
+  <div class="row">
+    <button class="btn" id="addRfq">+ New request</button>
+    <select id="fStatus" style="width:auto"><option value="">All statuses</option></select>
+    <input id="fText" placeholder="Search customer, part, supplier…" style="max-width:280px">
+    <button class="btn ghost" id="csv">Export CSV</button>
+  </div>
+  <div class="card scroll" style="padding:0"><table id="rfqTable"></table></div>
+</section>
+
+<section id="quote">
+  <h2>Quote Calculator</h2><p class="sub">Enter what the supplier charges you. It tells you what to charge and writes the quote message.</p>
+  <div class="card">
+    <div class="form">
+      <div><label>Customer</label><input id="qCust" list="custList"></div>
+      <div><label>Quote #</label><input id="qNo"></div>
+      <div><label>Date</label><input id="qDate" type="date"></div>
+      <div><label>Lead time (business days)</label><input id="qLead" type="number" min="0"></div>
+    </div>
+  </div>
+  <div class="card scroll" style="padding:0"><table class="qtab" id="qLines"></table></div>
+  <div class="row"><button class="btn ghost" id="qAdd">+ Add line</button><button class="btn ghost" id="qClear">Clear quote</button></div>
+  <div class="grid two">
+    <div class="card"><div class="form">
+      <div><label>Inbound shipping ($)</label><input id="qIn" type="number" step="0.01"></div>
+      <div><label>Outbound shipping ($)</label><input id="qOut" type="number" step="0.01"></div>
+      <div><label>Other costs ($)</label><input id="qOther" type="number" step="0.01"></div>
+      <div><label>Landed cost</label><div class="out" id="qLanded"></div></div>
+      <div><label>Tier markup</label><div class="out" id="qTier"></div></div>
+      <div><label>Suggested quote</label><div class="out" id="qSug"></div></div>
+      <div><label>Price to use</label><select id="qPick"><option value="sug">Suggested (pricing rules)</option><option value="m">Hit a target margin</option><option value="own">My own price</option></select></div>
+      <div id="wMargin"><label>Target margin %</label><input id="qMargin" type="number" step="1"></div>
+      <div id="wAtM"><label>Price at target margin</label><div class="out" id="qAtM"></div></div>
+      <div id="wOwn"><label>My own price ($)</label><input id="qOwn" type="number" step="0.01"></div>
+    </div></div>
+    <div class="card">
+      <div class="grid kpis three mini" id="qRes"></div>
+      <p class="note">The price is split across lines by cost, and line totals add up exactly to it. A unit price that can&#39;t divide evenly shows a third decimal.</p>
+      <div class="row"><button class="btn" id="qCopy">Copy quote message</button><button class="btn ghost" id="qSave">Save to RFQ Log</button></div>
+      <pre class="quote" id="qText"></pre>
+    </div>
+  </div>
+</section>
+
+<section id="sup">
+  <h2>Suppliers</h2><p class="sub">Your black book. Deals and profit fill in from the RFQ Log.</p>
+  <div class="row"><button class="btn" id="addSup">+ Add supplier</button></div>
+  <div class="card scroll" style="padding:0"><table id="supTable"></table></div>
+</section>
+
+<section id="cus">
+  <h2>Customers</h2><p class="sub">Who asks for parts. Requests, win rate and profit fill in from the RFQ Log.</p>
+  <div class="row"><button class="btn" id="addCus">+ Add customer</button></div>
+  <div class="card scroll" style="padding:0"><table id="cusTable"></table></div>
+</section>
+
+<section id="set">
+  <h2>Settings</h2><p class="sub">Your pricing rules. Every price in the app follows these. Starting values are assumptions — tune them to your market.</p>
+  <div class="card"><div class="form" id="setForm"></div></div>
+  <div class="card">
+    <h2>Markup tiers</h2><p class="sub">Bigger orders get a smaller %. “From” is landed cost in dollars.</p>
+    <table id="tierTable"></table>
+    <div class="row" style="margin-top:10px"><button class="btn ghost" id="addTier">+ Add tier</button></div>
+  </div>
+  <div class="card">
+    <h2>Data</h2>
+    <p class="sub">Everything is saved automatically in this browser on this computer. Nothing is sent anywhere. Use <b>Back up data</b> (top right) weekly and keep the file somewhere safe — clearing browser data erases it.</p>
+    <div class="row"><button class="btn ghost" id="loadEx">Load example data</button><button class="btn danger" id="wipe">Erase all data</button></div>
+  </div>
+</section>
+
+<section id="help">
+  <div class="card">
+    <h2>How it works</h2>
+    <p>Someone needs a part. You know where to get it. Every request runs the same loop:</p>
+    <ol class="steps">
+      <li><b>New</b> — get exact part #, revision, qty, needed-by date, ship-to. Log it the same day.</li>
+      <li><b>Sourcing</b> — call 1–3 suppliers; enter unit cost and shipping.</li>
+      <li><b>Quoted</b> — use the suggested price (or override). Send a written quote valid for the days in Settings.</li>
+      <li><b>Won</b> — customer says yes in writing. Collect payment or a deposit covering your full cost.</li>
+      <li><b>Ordered</b> — buy from the supplier; drop-ship direct to the customer.</li>
+      <li><b>Shipped</b> — send tracking; confirm it's the right part.</li>
+      <li><b>Paid</b> — collect the balance and enter Date Paid. Profit lands on the Dashboard.</li>
+    </ol>
+    <h2>The math</h2>
+    <p><code>landed = qty × unit cost + shipping/fees</code><br>
+       <code>quote = roundUp( max(landed × (1 + tier%), landed + minProfit) ÷ (1 − card fee%) )</code><br>
+       <code>profit = price × (1 − card fee%) − landed</code>, &nbsp; <code>margin = profit ÷ price</code></p>
+    <p>Markup is profit ÷ cost; margin is profit ÷ price. 25% markup = 20% margin.</p>
+    <h2>Rules</h2>
+    <ul>
+      <li><b>Money first.</b> Never pay a supplier before the customer has paid at least your landed cost.</li>
+      <li><b>In writing.</b> Every quote and every yes, by text or email.</li>
+      <li><b>Exact match.</b> Confirm part #, revision and spec before ordering.</li>
+      <li><b>Mirror the supplier's returns policy</b> on your quote.</li>
+      <li><b>Protect your sources.</b> Drop-ship with a blind packing slip.</li>
+    </ul>
+    <p class="note">Margins under 10% show in red. Requests past their follow-up date show in orange on the Dashboard.</p>
+  </div>
+</section>
+</main>
+
+<datalist id="custList"></datalist><datalist id="supList"></datalist>
+
+<dialog id="dlg"><form method="dialog" id="dlgForm">
+  <div class="hd"><h3 id="dlgTitle"></h3><button class="btn ghost" value="cancel" type="submit">✕</button></div>
+  <div class="bd"><div class="form" id="dlgBody"></div><div id="dlgCalc" class="grid kpis mini" style="margin-top:14px"></div></div>
+  <div class="ft"><button class="btn danger" id="dlgDel" type="button">Delete</button><span style="flex:1"></span><button class="btn ghost" value="cancel" type="submit">Cancel</button><button class="btn" id="dlgSave" type="button">Save</button></div>
+</form></dialog>
+<div class="toast" id="toast"></div>
+
+<script>
+"use strict";
+const KEY = "partsdesk.v1";
+const STATUSES = ["New","Sourcing","Quoted","Won","Ordered","Shipped","Paid","Lost"];
+const OPEN = ["New","Sourcing","Quoted"], WON = ["Won","Ordered","Shipped","Paid"];
+const DEFAULTS = {fee:3, minProfit:50, round:5, validDays:7, followDays:3, deposit:50,
+  tiers:[[0,35],[500,25],[2000,18],[10000,12],[50000,8]]};
+
+const $ = s => document.querySelector(s);
+const esc = v => String(v ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const num = v => { const n = parseFloat(v); return isFinite(n) ? n : 0; };
+const usd = n => (n < 0 ? "-" : "") + "$" + Math.abs(n).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
+const usd0 = n => (n < 0 ? "-" : "") + "$" + Math.abs(Math.round(n)).toLocaleString();
+const pct = n => (n*100).toFixed(1) + "%";
+const today = () => new Date().toISOString().slice(0,10);
+const addDays = (d,n) => { const t = new Date(d+"T00:00:00"); t.setDate(t.getDate()+n); return t.toISOString().slice(0,10); };
+const daysBetween = (a,b) => Math.round((new Date(b+"T00:00:00") - new Date(a+"T00:00:00"))/864e5);
+const fmtDate = d => d ? new Date(d+"T00:00:00").toLocaleDateString(undefined,{month:"short",day:"numeric",year:"numeric"}) : "";
+const uid = () => Math.random().toString(36).slice(2,10);
+
+function toast(msg){ const t=$("#toast"); t.textContent=msg; t.classList.add("on"); setTimeout(()=>t.classList.remove("on"),1800); }
+
+// ---------- storage ----------
+let db;
+function blank(){ return {settings:structuredClone(DEFAULTS), rfqs:[], suppliers:[], customers:[], quote:null, seq:0}; }
+function load(){
+  try { const raw = localStorage.getItem(KEY); if (raw) { db = JSON.parse(raw); db.settings = Object.assign(structuredClone(DEFAULTS), db.settings); return; } } catch(e){}
+  db = blank(); seedExamples();
+}
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(db)); } catch(e){ toast("Could not save — back up your data!"); } }
+
+function seedExamples(){
+  const d = n => addDays(today(), n);
+  db.suppliers.push(
+    {id:uid(),name:"Midwest Bearing Supply (example)",contact:"Dana",phone:"555-0100",email:"sales@example.com",carries:"Bearings, seals, belts",lead:2,terms:"Net 30",dropship:"Yes",rating:5,notes:"Ask for counter price"},
+    {id:uid(),name:"Great Lakes Industrial (example)",contact:"Sam",phone:"555-0144",email:"quotes@example.com",carries:"Drives, motors, controls",lead:5,terms:"Prepay",dropship:"Yes",rating:4,notes:"Call, don't email"});
+  db.customers.push(
+    {id:uid(),name:"Acme Fabrication (example)",contact:"Jordan",phone:"555-0199",email:"buyer@example.com",source:"Referral",terms:"50% deposit",notes:"Orders bearings monthly"},
+    {id:uid(),name:"Lakeside Machine Shop (example)",contact:"Chris",phone:"555-0123",email:"office@example.com",source:"Word of mouth",terms:"Prepay",notes:"Pays for speed"});
+  const r = (o) => db.rfqs.push(Object.assign({id:uid(),no:++db.seq,override:"",notes:"",datePaid:""}, o));
+  r({dateIn:d(-40),customer:"Acme Fabrication (example)",part:"6205-2RS",desc:"Sealed ball bearing",qty:8,neededBy:d(-30),supplier:"Midwest Bearing Supply (example)",unitCost:6.40,shipping:18,status:"Paid",datePaid:d(-28),notes:"Repeat buyer"});
+  r({dateIn:d(-12),customer:"Lakeside Machine Shop (example)",part:"VFD-7.5HP-480V",desc:"Variable frequency drive",qty:1,neededBy:d(5),supplier:"Great Lakes Industrial (example)",unitCost:1180,shipping:45,override:1650,status:"Shipped",notes:"They were quoted $1,900 elsewhere"});
+  r({dateIn:d(-4),customer:"Acme Fabrication (example)",part:"SC-25-150",desc:"Pneumatic cylinder",qty:2,neededBy:d(14),supplier:"Midwest Bearing Supply (example)",unitCost:74,shipping:15,status:"Quoted",notes:"Waiting on PO"});
+}
+
+// ---------- pricing engine ----------
+function tierFor(L){ const t=[...db.settings.tiers].sort((a,b)=>a[0]-b[0]); let m=t.length?t[0][1]:0; for(const [from,mk] of t){ if(L>=from) m=mk; } return m/100; }
+function suggest(L){
+  if (L<=0) return 0; const s=db.settings, fee=s.fee/100, step=Math.max(num(s.round),0.01);
+  const raw = Math.max(L*(1+tierFor(L)), L+num(s.minProfit)) / (1-fee);
+  return Math.ceil(raw/step - 1e-9)*step;
+}
+function atMargin(L,m){ const fee=db.settings.fee/100, step=Math.max(num(db.settings.round),0.01); const d=1-fee-m; if(L<=0||d<=0) return 0; return Math.ceil(L/d/step - 1e-9)*step; }
+function calc(r){
+  const L = num(r.qty)*num(r.unitCost) + num(r.shipping);
+  const has = num(r.unitCost)>0 && num(r.qty)>0;
+  const sug = has ? suggest(L) : 0;
+  const price = has ? (r.override!==""&&r.override!=null ? num(r.override) : sug) : 0;
+  const profit = has ? price*(1-db.settings.fee/100) - L : 0;
+  const follow = r.dateIn ? addDays(r.dateIn, num(db.settings.followDays)) : "";
+  return {L, tier:has?tierFor(L):0, sug, price, profit, margin: price? profit/price : 0, has,
+          follow, due: OPEN.includes(r.status) && follow && follow<=today(),
+          daysOpen: r.dateIn && !["Paid","Lost"].includes(r.status) ? daysBetween(r.dateIn,today()) : ""};
+}
+
+// ---------- nav ----------
+$("#nav").addEventListener("click", e => {
+  const b = e.target.closest("button"); if(!b) return;
+  document.querySelectorAll("#nav button").forEach(x=>x.classList.toggle("on",x===b));
+  document.querySelectorAll("main section").forEach(s=>s.classList.toggle("on", s.id===b.dataset.t));
+  try{ localStorage.setItem(KEY+".tab", b.dataset.t); }catch(e){}
+  render();
+});
+
+// ---------- dashboard ----------
+function renderDash(){
+  $("#asof").textContent = "As of " + fmtDate(today());
+  const rows = db.rfqs.map(r=>({r,c:calc(r)}));
+  const sum = (f,pred) => rows.filter(pred).reduce((a,x)=>a+f(x),0);
+  const paid = x=>x.r.status==="Paid";
+  const pr = sum(x=>x.c.profit,paid), rev = sum(x=>x.c.price,paid);
+  const ym = today().slice(0,7);
+  const won = rows.filter(x=>WON.includes(x.r.status)).length, lost = rows.filter(x=>x.r.status==="Lost").length;
+  const due = rows.filter(x=>x.c.due);
+  const k = [
+    ["Profit collected", usd(pr), "good"],
+    ["Revenue collected", usd(rev)],
+    ["Avg margin (paid)", rev? pct(pr/rev):"—"],
+    ["Profit this month", usd(sum(x=>x.c.profit, x=>paid(x)&&(x.r.datePaid||"").startsWith(ym)))],
+    ["Profit in play", usd(sum(x=>x.c.profit, x=>["Won","Ordered","Shipped"].includes(x.r.status)))],
+    ["Quoted, not won yet", usd(sum(x=>x.c.profit, x=>x.r.status==="Quoted"))],
+    ["Win rate", won+lost? pct(won/(won+lost)):"—"],
+    ["Follow-ups due", due.length, due.length?"hot":""],
+  ];
+  $("#kpis").innerHTML = k.map(([l,v,c])=>`<div class="card kpi ${c==="hot"?"hot":""}"><div class="l">${l}</div><div class="v ${c==="good"?"good":""}">${v}</div></div>`).join("");
+  $("#fups").innerHTML = due.length ? `<table><tr><th>ID</th><th>Customer</th><th>Part</th><th>Status</th><th>Due</th></tr>${
+    due.sort((a,b)=>a.c.follow.localeCompare(b.c.follow)).map(x=>`<tr class="click" data-id="${x.r.id}"><td>${qid(x.r)}</td><td>${esc(x.r.customer)}</td><td>${esc(x.r.part)}</td><td>${chip(x.r.status)}</td><td class="warn">${fmtDate(x.c.follow)}</td></tr>`).join("")}</table>` : `<p class="note">Nothing due. Nice.</p>`;
+  $("#fups").querySelectorAll("tr.click").forEach(tr=>tr.onclick=()=>editRfq(tr.dataset.id));
+  $("#pipe").innerHTML = `<table><tr><th>Status</th><th class="num">Count</th><th class="num">Price sent</th><th class="num">Profit</th></tr>${
+    STATUSES.map(s=>{const xs=rows.filter(x=>x.r.status===s);return `<tr><td>${chip(s)}</td><td class="num">${xs.length}</td><td class="num">${usd0(xs.reduce((a,x)=>a+x.c.price,0))}</td><td class="num">${usd0(xs.reduce((a,x)=>a+x.c.profit,0))}</td></tr>`}).join("")}</table>`;
+  const y = today().slice(0,4); $("#yr").textContent = y;
+  const months = Array.from({length:12},(_,i)=>sum(x=>x.c.profit, x=>paid(x)&&(x.r.datePaid||"").startsWith(`${y}-${String(i+1).padStart(2,"0")}`)));
+  const max = Math.max(1,...months);
+  $("#bars").innerHTML = months.map(v=>`<div class="bar" style="height:${Math.max(0,v)/max*100}%" title="${usd(v)}">${v?`<span>${usd0(v)}</span>`:""}</div>`).join("");
+  $("#blabels").innerHTML = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"].map(m=>`<div>${m}</div>`).join("");
+}
+const chip = s => `<span class="chip s-${esc(s)}">${esc(s)}</span>`;
+const qid = r => "Q-" + String(r.no).padStart(3,"0");
+
+// ---------- RFQ log ----------
+$("#fStatus").innerHTML += STATUSES.map(s=>`<option>${s}</option>`).join("");
+$("#fStatus").onchange = renderLog; $("#fText").oninput = renderLog;
+function renderLog(){
+  const fs=$("#fStatus").value, ft=$("#fText").value.toLowerCase();
+  const rows = db.rfqs.filter(r=>(!fs||r.status===fs) && (!ft || [r.customer,r.part,r.desc,r.supplier,r.notes].join(" ").toLowerCase().includes(ft)))
+    .sort((a,b)=>(b.dateIn||"").localeCompare(a.dateIn||"") || b.no-a.no);
+  $("#rfqTable").innerHTML = `<tr><th>ID</th><th>Date in</th><th>Customer</th><th>Part #</th><th>Qty</th><th>Supplier</th><th class="num">Landed</th><th class="num">Price</th><th class="num">Profit</th><th class="num">Margin</th><th>Status</th><th>Follow up</th></tr>` +
+    (rows.length ? rows.map(r=>{const c=calc(r);return `<tr class="click" data-id="${r.id}"><td>${qid(r)}</td><td>${fmtDate(r.dateIn)}</td><td class="wrap">${esc(r.customer)}</td><td>${esc(r.part)}</td><td class="num">${esc(r.qty)}</td><td class="wrap">${esc(r.supplier)}</td>
+      <td class="num">${c.has?usd(c.L):""}</td><td class="num">${c.has?usd(c.price):""}${r.override!==""&&r.override!=null?" *":""}</td><td class="num">${c.has?usd(c.profit):""}</td>
+      <td class="num ${c.has&&c.margin<0.1?"bad":""}">${c.has?pct(c.margin):""}</td><td>${chip(r.status)}</td><td class="${c.due?"warn":""}">${OPEN.includes(r.status)?fmtDate(c.follow):""}</td></tr>`}).join("")
+      : `<tr><td colspan="12" class="note" style="padding:20px">No requests yet. Click “+ New request”.</td></tr>`);
+  $("#rfqTable").querySelectorAll("tr.click").forEach(tr=>tr.onclick=()=>editRfq(tr.dataset.id));
+}
+$("#addRfq").onclick = ()=>editRfq(null);
+
+// generic dialog
+let dlgSave=null, dlgDel=null, dlgLive=null;
+function openDlg(title, fields, obj, onSave, onDel, live){
+  $("#dlgTitle").textContent = title;
+  $("#dlgBody").innerHTML = fields.map(f=>{
+    const v = obj[f.k] ?? "";
+    let input;
+    if (f.type==="select") input = `<select name="${f.k}">${f.opts.map(o=>`<option ${o==v?"selected":""}>${esc(o)}</option>`).join("")}</select>`;
+    else if (f.type==="textarea") input = `<textarea name="${f.k}">${esc(v)}</textarea>`;
+    else input = `<input name="${f.k}" type="${f.type||"text"}" ${f.step?`step="${f.step}"`:""} ${f.list?`list="${f.list}"`:""} value="${esc(v)}" ${f.ph?`placeholder="${esc(f.ph)}"`:""}>`;
+    return `<div class="${f.wide?"wide":""}"><label>${f.label}</label>${input}</div>`;
+  }).join("");
+  dlgSave=onSave; dlgDel=onDel; dlgLive=live;
+  $("#dlgDel").style.display = onDel ? "" : "none";
+  $("#dlgCalc").innerHTML="";
+  if (live) { $("#dlgBody").oninput = ()=>live(readDlg()); live(readDlg()); } else $("#dlgBody").oninput=null;
+  $("#dlg").showModal();
+}
+function readDlg(){ const o={}; $("#dlgBody").querySelectorAll("[name]").forEach(el=>o[el.name]=el.value); return o; }
+$("#dlgSave").onclick = ()=>{ if(dlgSave(readDlg())!==false){ $("#dlg").close(); save(); render(); } };
+$("#dlgDel").onclick = ()=>{ if(confirm("Delete this record?")){ dlgDel(); $("#dlg").close(); save(); render(); } };
+
+const RFQ_FIELDS = [
+  {k:"dateIn",label:"Date in",type:"date"},{k:"status",label:"Status",type:"select",opts:STATUSES},
+  {k:"customer",label:"Customer",list:"custList"},{k:"neededBy",label:"Needed by",type:"date"},
+  {k:"part",label:"Part # / spec"},{k:"desc",label:"Description"},
+  {k:"qty",label:"Qty",type:"number",step:"1"},{k:"supplier",label:"Supplier",list:"supList"},
+  {k:"unitCost",label:"Supplier unit cost ($)",type:"number",step:"0.01"},{k:"shipping",label:"Shipping + fees ($)",type:"number",step:"0.01"},
+  {k:"override",label:"Your quote ($) — blank = suggested",type:"number",step:"0.01"},{k:"datePaid",label:"Date paid",type:"date"},
+  {k:"notes",label:"Notes",type:"textarea",wide:true}];
+function editRfq(id){
+  const r = id ? db.rfqs.find(x=>x.id===id) : {dateIn:today(),status:"New",qty:1,override:""};
+  openDlg(id?`Request ${qid(r)}`:"New request", RFQ_FIELDS, r, o=>{
+    if (o.status==="Paid" && !o.datePaid) o.datePaid = today();
+    if (id) Object.assign(r,o); else db.rfqs.push(Object.assign({id:uid(),no:++db.seq},o));
+    addContactIfNew(o.customer,"customers"); addContactIfNew(o.supplier,"suppliers");
+  }, id ? ()=>{ db.rfqs = db.rfqs.filter(x=>x.id!==id); } : null,
+  o=>{ const c=calc(o); $("#dlgCalc").innerHTML = c.has ? [
+      ["Landed cost",usd(c.L)],["Tier markup",pct(c.tier)],["Suggested quote",usd(c.sug)],["Price sent",usd(c.price)],
+      ["Est. profit",usd(c.profit)],["Margin",`<span class="${c.margin<0.1?"bad":""}">${pct(c.margin)}</span>`],
+      ["Deposit to collect",usd(Math.max(c.L, Math.ceil(c.price*db.settings.deposit/100)))]]
+      .map(([l,v])=>`<div class="card kpi"><div class="l">${l}</div><div class="v">${v}</div></div>`).join("") : `<p class="note">Enter qty and unit cost to see pricing.</p>`; });
+}
+function addContactIfNew(name, list){ name=(name||"").trim(); if(name && !db[list].some(x=>x.name===name)) db[list].push({id:uid(),name}); }
+
+$("#csv").onclick = ()=>{
+  const head = ["ID","Date In","Customer","Part","Description","Qty","Needed By","Supplier","Unit Cost","Shipping+Fees","Landed","Suggested","Price Sent","Profit","Margin","Status","Date Paid","Notes"];
+  const lines = [head].concat(db.rfqs.map(r=>{const c=calc(r);return [qid(r),r.dateIn,r.customer,r.part,r.desc,r.qty,r.neededBy,r.supplier,r.unitCost,r.shipping,c.L.toFixed(2),c.sug.toFixed(2),c.price.toFixed(2),c.profit.toFixed(2),(c.margin*100).toFixed(1)+"%",r.status,r.datePaid,r.notes]}));
+  download("rfq-log-"+today()+".csv", lines.map(l=>l.map(v=>`"${String(v??"").replace(/"/g,'""')}"`).join(",")).join("\r\n"), "text/csv");
+};
+
+// ---------- suppliers / customers ----------
+const SUP_FIELDS=[{k:"name",label:"Supplier"},{k:"contact",label:"Contact person"},{k:"phone",label:"Phone"},{k:"email",label:"Email"},
+  {k:"carries",label:"What they carry",wide:true},{k:"lead",label:"Lead time (days)",type:"number"},{k:"terms",label:"Payment terms"},
+  {k:"dropship",label:"Drop-ship?",type:"select",opts:["","Yes","No","Ask"]},{k:"rating",label:"Rating (1–5)",type:"select",opts:["","1","2","3","4","5"]},
+  {k:"notes",label:"Notes",type:"textarea",wide:true}];
+const CUS_FIELDS=[{k:"name",label:"Customer / company"},{k:"contact",label:"Contact person"},{k:"phone",label:"Phone"},{k:"email",label:"Email"},
+  {k:"source",label:"How they found you",type:"select",opts:["","Referral","Word of mouth","Repeat","Online","Cold call","Trade show","Other"]},
+  {k:"terms",label:"Payment terms you give"},{k:"notes",label:"Notes",type:"textarea",wide:true}];
+function editContact(list, fields, label, id){
+  const o = id ? db[list].find(x=>x.id===id) : {};
+  const oldName = o.name;
+  openDlg(id?o.name:`New ${label}`, fields, o, v=>{
+    if(!v.name.trim()){ alert("Name is required."); return false; }
+    if(id){ Object.assign(o,v); if(oldName!==v.name){ const k=list==="customers"?"customer":"supplier"; db.rfqs.forEach(r=>{ if(r[k]===oldName) r[k]=v.name; }); } }
+    else db[list].push(Object.assign({id:uid()},v));
+  }, id?()=>{ db[list]=db[list].filter(x=>x.id!==id); }:null);
+}
+$("#addSup").onclick=()=>editContact("suppliers",SUP_FIELDS,"supplier");
+$("#addCus").onclick=()=>editContact("customers",CUS_FIELDS,"customer");
+function renderSup(){
+  $("#supTable").innerHTML = `<tr><th>Supplier</th><th>Contact</th><th>Phone</th><th>Carries</th><th class="num">Lead (d)</th><th>Terms</th><th>Drop-ship</th><th>Rating</th><th class="num">Deals</th><th class="num">Profit (paid)</th></tr>` +
+    db.suppliers.map(s=>{const rs=db.rfqs.filter(r=>r.supplier===s.name);return `<tr class="click" data-id="${s.id}"><td class="wrap">${esc(s.name)}</td><td>${esc(s.contact)}</td><td>${esc(s.phone)}</td><td class="wrap">${esc(s.carries)}</td><td class="num">${esc(s.lead)}</td><td>${esc(s.terms)}</td><td>${esc(s.dropship)}</td><td>${s.rating?"★".repeat(num(s.rating)):""}</td><td class="num">${rs.length}</td><td class="num">${usd(rs.filter(r=>r.status==="Paid").reduce((a,r)=>a+calc(r).profit,0))}</td></tr>`}).join("");
+  $("#supTable").querySelectorAll("tr.click").forEach(tr=>tr.onclick=()=>editContact("suppliers",SUP_FIELDS,"supplier",tr.dataset.id));
+}
+function renderCus(){
+  $("#cusTable").innerHTML = `<tr><th>Customer</th><th>Contact</th><th>Phone</th><th>Found you via</th><th>Terms</th><th class="num">Requests</th><th class="num">Won</th><th class="num">Win rate</th><th class="num">Revenue (paid)</th><th class="num">Profit (paid)</th></tr>` +
+    db.customers.map(c=>{const rs=db.rfqs.filter(r=>r.customer===c.name), w=rs.filter(r=>WON.includes(r.status)).length, p=rs.filter(r=>r.status==="Paid");
+      return `<tr class="click" data-id="${c.id}"><td class="wrap">${esc(c.name)}</td><td>${esc(c.contact)}</td><td>${esc(c.phone)}</td><td>${esc(c.source)}</td><td>${esc(c.terms)}</td><td class="num">${rs.length}</td><td class="num">${w}</td><td class="num">${rs.length?pct(w/rs.length):""}</td><td class="num">${usd(p.reduce((a,r)=>a+calc(r).price,0))}</td><td class="num">${usd(p.reduce((a,r)=>a+calc(r).profit,0))}</td></tr>`}).join("");
+  $("#cusTable").querySelectorAll("tr.click").forEach(tr=>tr.onclick=()=>editContact("customers",CUS_FIELDS,"customer",tr.dataset.id));
+}
+
+// ---------- settings ----------
+const SET_FIELDS=[["fee","Card / payment fee (%)","Taken from the price. 0 for check/ACH/cash."],["minProfit","Minimum profit per deal ($)","Floor so small orders are worth your time."],
+  ["round","Round quotes up to nearest ($)","1 = no rounding."],["validDays","Quote valid for (days)","Goes on every quote."],
+  ["followDays","Follow up after (days)","After the request comes in."],["deposit","Deposit before ordering (%)","Never less than your landed cost."]];
+function renderSet(){
+  const s=db.settings;
+  $("#setForm").innerHTML = SET_FIELDS.map(([k,l,n])=>`<div><label>${l}</label><input type="number" step="any" data-k="${k}" value="${esc(s[k])}"><div class="note">${n}</div></div>`).join("");
+  $("#setForm").querySelectorAll("input").forEach(i=>i.onchange=()=>{ s[i.dataset.k]=num(i.value); save(); toast("Saved"); });
+  $("#tierTable").innerHTML = `<tr><th>Landed cost from ($)</th><th>Markup (%)</th><th></th></tr>` + s.tiers.map((t,i)=>
+    `<tr><td><input type="number" data-i="${i}" data-j="0" value="${t[0]}"></td><td><input type="number" step="any" data-i="${i}" data-j="1" value="${t[1]}"></td><td><button class="btn ghost" data-del="${i}">Remove</button></td></tr>`).join("");
+  $("#tierTable").querySelectorAll("input").forEach(i=>i.onchange=()=>{ s.tiers[i.dataset.i][i.dataset.j]=num(i.value); save(); toast("Saved"); });
+  $("#tierTable").querySelectorAll("[data-del]").forEach(b=>b.onclick=()=>{ s.tiers.splice(b.dataset.del,1); save(); renderSet(); });
+}
+$("#addTier").onclick=()=>{ db.settings.tiers.push([0,20]); save(); renderSet(); };
+$("#loadEx").onclick=()=>{ seedExamples(); save(); render(); toast("Examples added"); };
+$("#wipe").onclick=()=>{ if(confirm("Erase ALL requests, suppliers, customers and settings? Back up first if unsure.")){ db=blank(); save(); render(); toast("Erased"); } };
+
+// ---------- quote calculator ----------
+function q(){ if(!db.quote) db.quote={cust:"",no:"",date:today(),lead:"",lines:[{part:"",desc:"",qty:1,cost:""}],inb:0,outb:0,other:0,margin:25,pick:"sug",own:""}; return db.quote; }
+function bindQ(){
+  const Q=q();
+  [["#qCust","cust"],["#qNo","no"],["#qDate","date"],["#qLead","lead"],["#qIn","inb"],["#qOut","outb"],["#qOther","other"],["#qMargin","margin"],["#qPick","pick"],["#qOwn","own"]]
+    .forEach(([sel,k])=>{ const el=$(sel); el.value=Q[k]??""; el.oninput=()=>{ Q[k]=el.value; save(); calcQ(); }; });
+}
+function renderQ(){
+  const Q=q(); if(!Q.no) Q.no = "Q-" + String(db.seq+1).padStart(3,"0");
+  bindQ();
+  $("#qLines").innerHTML = `<tr><th class="c-part">Part # / spec</th><th>Description</th><th class="num c-qty">Qty</th><th class="num c-cost">Your unit cost ($)</th><th class="num">Line cost</th><th class="num">Customer unit price</th><th class="num">Customer line total</th><th class="c-x"></th></tr>` +
+    Q.lines.map((l,i)=>`<tr><td><input data-i="${i}" data-k="part" value="${esc(l.part)}"></td><td><input data-i="${i}" data-k="desc" value="${esc(l.desc)}"></td>
+      <td><input data-i="${i}" data-k="qty" type="number" value="${esc(l.qty)}"></td><td><input data-i="${i}" data-k="cost" type="number" step="0.01" value="${esc(l.cost)}"></td>
+      <td class="num" id="lc${i}"></td><td class="num good" id="lu${i}"></td><td class="num good" id="lt${i}"></td><td><button class="btn ghost" data-rm="${i}">✕</button></td></tr>`).join("");
+  $("#qLines").querySelectorAll("input").forEach(el=>el.oninput=()=>{ Q.lines[el.dataset.i][el.dataset.k]=el.value; save(); calcQ(); });
+  $("#qLines").querySelectorAll("[data-rm]").forEach(b=>b.onclick=()=>{ Q.lines.splice(b.dataset.rm,1); if(!Q.lines.length) Q.lines.push({part:"",desc:"",qty:1,cost:""}); save(); renderQ(); });
+  calcQ();
+}
+// split a price across lines by cost; leftover cents go to the last priced line so totals match exactly
+function splitPrice(qlines, sub, target){
+  const out = qlines.map(l=>({...l, lc:num(l.qty)*num(l.cost), total:0, unit:0}));
+  const priced = out.filter(l=>l.lc>0 && num(l.qty)>0); if(!sub || !priced.length) return out;
+  const cents = Math.round(target*100); let used = 0;
+  priced.forEach((l,i)=>{ const c = i===priced.length-1 ? cents-used : Math.round(l.lc/sub*cents); used += c; l.total = c/100; l.unit = l.total/num(l.qty); });
+  return out;
+}
+const unitUsd = n => Math.abs(n*100 - Math.round(n*100)) < 1e-6 ? usd(n) : "$" + n.toLocaleString(undefined,{minimumFractionDigits:3,maximumFractionDigits:3});
+function calcQ(){
+  const Q=q(), s=db.settings, fee=s.fee/100;
+  const sub = Q.lines.reduce((a,l)=>a+num(l.qty)*num(l.cost),0);
+  const L = sub + num(Q.inb)+num(Q.outb)+num(Q.other);
+  const sug = suggest(L), am = atMargin(L, num(Q.margin)/100);
+  const target = Q.pick==="m" ? am : Q.pick==="own" ? num(Q.own) : sug;
+  $("#wMargin").style.display = $("#wAtM").style.display = Q.pick==="m" ? "" : "none";
+  $("#wOwn").style.display = Q.pick==="own" ? "" : "none";
+  const lines = splitPrice(Q.lines, sub, target);
+  const price = target;
+  const feeAmt = price*fee, profit = price-feeAmt-L;
+  $("#qLanded").textContent=usd(L); $("#qTier").textContent=L?pct(tierFor(L)):"—"; $("#qSug").textContent=usd(sug); $("#qAtM").textContent=usd(am);
+  lines.forEach((l,i)=>{ $("#lc"+i).textContent = l.lc?usd(l.lc):""; $("#lu"+i).textContent = l.total?unitUsd(l.unit):""; $("#lt"+i).textContent = l.total?usd(l.total):""; });
+  const dep = Math.max(L, Math.ceil(price*s.deposit/100));
+  $("#qRes").innerHTML = [["Price to customer",usd(price)],["Card fee",usd(feeAmt)],["Your profit",`<span class="${profit<num(s.minProfit)?"bad":"good"}">${usd(profit)}</span>`],
+    ["Margin",price?pct(profit/price):"—"],["Markup on landed",L?pct(profit/L):"—"],["Deposit before ordering",usd(dep)]]
+    .map(([l,v])=>`<div class="card kpi"><div class="l">${l}</div><div class="v">${v}</div></div>`).join("");
+  const valid = Q.date ? fmtDate(addDays(Q.date, num(s.validDays))) : "";
+  const ship = num(Q.outb) ? "Shipping: included" : "Shipping: [included / extra]";
+  $("#qText").textContent =
+`Quote ${Q.no||""} for ${Q.cust||"[Customer]"} — valid until ${valid}
+
+${lines.filter(l=>l.total).map(l=>`${l.qty} x ${l.part}${l.desc?" "+l.desc:""} — ${unitUsd(l.unit)} each — ${usd(l.total)}`).join("\n")}
+Total: ${usd(price)}
+${ship}
+Lead time: ${Q.lead||"[X]"} business days from payment
+
+Terms: ${s.deposit>=100?"Full":s.deposit+"%"} payment to place the order${s.deposit<100?", balance on shipment":""}.
+Returns: unused parts in original packaging, subject to the supplier's restocking fee.
+Reply "approved" to confirm and I'll send the invoice.`;
+}
+$("#qAdd").onclick=()=>{ q().lines.push({part:"",desc:"",qty:1,cost:""}); save(); renderQ(); };
+$("#qClear").onclick=()=>{ if(confirm("Clear this quote?")){ db.quote=null; save(); renderQ(); } };
+$("#qCopy").onclick=()=>{ navigator.clipboard.writeText($("#qText").textContent).then(()=>toast("Copied — paste into text or email"),()=>toast("Select the text and copy manually")); };
+$("#qSave").onclick=()=>{
+  const Q=q(), sub=Q.lines.reduce((a,l)=>a+num(l.qty)*num(l.cost),0); if(!sub){ toast("Add a line with a cost first"); return; }
+  const extra = num(Q.inb)+num(Q.outb)+num(Q.other), L=sub+extra;
+  const target = Q.pick==="m" ? atMargin(L,num(Q.margin)/100) : Q.pick==="own" ? num(Q.own) : suggest(L);
+  const price = target;
+  const named = Q.lines.filter(l=>num(l.cost));
+  db.rfqs.push({id:uid(),no:++db.seq,dateIn:Q.date||today(),customer:Q.cust,part:named.map(l=>l.part).join(", "),desc:named.map(l=>l.desc).filter(Boolean).join(", "),
+    qty:1,unitCost:Math.round(sub*100)/100,shipping:extra,override:price===suggest(L)?"":price,status:"Quoted",neededBy:"",supplier:"",datePaid:"",
+    notes:`From quote ${Q.no}: `+named.map(l=>`${l.qty} x ${l.part} @ ${usd(num(l.cost))}`).join("; ")});
+  addContactIfNew(Q.cust,"customers"); db.quote=null; save(); toast("Saved to RFQ Log as Quoted"); renderQ();
+};
+
+// ---------- backup / restore ----------
+function download(name, text, type){ const a=document.createElement("a"); a.href=URL.createObjectURL(new Blob([text],{type})); a.download=name; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),1000); }
+$("#bkp").onclick=()=>download("partsdesk-backup-"+today()+".json", JSON.stringify(db,null,1), "application/json");
+$("#restore").onchange=e=>{
+  const f=e.target.files[0]; if(!f) return;
+  f.text().then(t=>{ const d=JSON.parse(t); if(!d.rfqs||!d.settings) throw 0;
+    if(confirm("Replace everything here with this backup?")){ db=d; db.settings=Object.assign(structuredClone(DEFAULTS),d.settings); save(); render(); toast("Restored"); } })
+   .catch(()=>alert("That file isn't a Parts Desk backup.")); e.target.value="";
+};
+
+// ---------- theme ----------
+$("#theme").onclick=()=>{ const r=document.documentElement; const dark = r.dataset.theme ? r.dataset.theme==="dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  r.dataset.theme = dark?"light":"dark"; try{localStorage.setItem(KEY+".theme",r.dataset.theme);}catch(e){} themeLabel(); };
+function themeLabel(){ const r=document.documentElement; const dark = r.dataset.theme ? r.dataset.theme==="dark" : matchMedia("(prefers-color-scheme: dark)").matches; $("#theme").textContent = dark?"Light mode":"Dark mode"; }
+try{ const t=localStorage.getItem(KEY+".theme"); if(t) document.documentElement.dataset.theme=t; }catch(e){}
+themeLabel();
+
+// ---------- render ----------
+function lists(){ $("#custList").innerHTML=db.customers.map(c=>`<option value="${esc(c.name)}">`).join(""); $("#supList").innerHTML=db.suppliers.map(s=>`<option value="${esc(s.name)}">`).join(""); }
+function render(){
+  lists();
+  const t = document.querySelector("main section.on").id;
+  ({dash:renderDash,log:renderLog,quote:renderQ,sup:renderSup,cus:renderCus,set:renderSet})[t]?.();
+}
+load(); save();
+try{ const t=localStorage.getItem(KEY+".tab"); if(t) document.querySelector(`#nav button[data-t="${t}"]`)?.click(); }catch(e){}
+render();
+</script>
+</body>
+</html>
