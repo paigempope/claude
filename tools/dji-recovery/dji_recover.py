@@ -405,6 +405,31 @@ def salvage(dev, runs, size, ref_head, outpath, mtime=None):
     return None
 
 
+def probe_free_space(dev, fs, start, end, samples=3000):
+    """Sample unallocated space: is old footage still physically there?"""
+    zero = ff = data = 0
+    step = max((end - start) // samples, SECTOR)
+    step -= step % SECTOR
+    for off in range(start, end - 4096, step):
+        if fs and fs.allocated(2 + (off - fs.heap_off) // fs.cluster):
+            continue
+        b = dev.read(off, 4096)
+        if b.count(0) == len(b):
+            zero += 1
+        elif b.count(0xFF) == len(b):
+            ff += 1
+        else:
+            data += 1
+    tot = max(zero + ff + data, 1)
+    print('  free space check: %.0f%% blank (zeros), %.0f%% blank (FF), '
+          '%.0f%% still holds old data' % (100.0 * zero / tot, 100.0 * ff / tot,
+                                           100.0 * data / tot))
+    if data * 20 < tot:
+        print('  !! The free space is almost entirely blank: the card itself erased\n'
+              '  !! the deleted data (format/erase). Little can be carved from it.')
+    return zero, ff, data
+
+
 def free_space(path):
     st = os.statvfs(path)
     return st.f_bavail * st.f_frsize
@@ -579,20 +604,27 @@ def main():
         def is_claimed(o):
             return any(a <= o < b for a, b in claimed)
 
-        align = fs.cluster if fs else SECTOR
+        # Sector alignment, not cluster: clips recorded under an older format
+        # (different cluster size / heap offset) don't sit on today's grid.
+        align = SECTOR
         start = fs.heap_off if fs else 0
         end = (fs.heap_off + fs.nclusters * fs.cluster) if fs else dev.size
+        probe_free_space(dev, fs, start, end)
         chunk = 64 << 20
-        pos, n_found, t0 = start, 0, time.time()
+        pos, n_found, t0, last_pct = start, 0, time.time(), -5
         while pos < end:
             blob = dev.read(pos, min(chunk + 8, end - pos))
             if not blob:
+                print('\n  ! read returned no data at offset %d - stopping' % pos)
                 break
             el = time.time() - t0
             rate = (pos - start) / el if el > 1 else 0
             eta = (end - pos) / rate if rate else 0
-            print('\r  %5.1f%%  %s/s  ETA %dm   ' % (100.0 * (pos - start) / (end - start),
-                                                    human(rate), eta // 60), end='', flush=True)
+            pct = 100.0 * (pos - start) / (end - start)
+            print('\r  %5.1f%%  %s/s  ETA %dm   ' % (pct, human(rate), eta // 60),
+                  end='\n' if pct - last_pct >= 5 else '', flush=True)
+            if pct - last_pct >= 5:
+                last_pct = pct
             next_pos = pos + chunk
             p = blob.find(b'ftyp')
             while p != -1 and p < chunk:
@@ -632,7 +664,8 @@ def main():
                                 p = skip_to - pos + 3
                 p = blob.find(b'ftyp', p + 1)
             pos = next_pos
-        print('\r  carving done, %d extra clip(s) found.            ' % n_found)
+        print('\r  carving done in %d min, %d extra clip(s) found.            '
+              % ((time.time() - t0) // 60, n_found))
 
     # ---------------- report
     if args.outdir:
