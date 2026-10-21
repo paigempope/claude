@@ -11,7 +11,7 @@ A clip matches if
 
 Usage:
   sudo python3 find_clips.py                       # defaults below
-  sudo python3 find_clips.py --numbers 898-999,1-71 --dates 2001-02-20:2001-03-05
+  sudo python3 find_clips.py --numbers 898-999,1-71 --dates 2001-02-20:2001-02-28
 """
 
 import argparse
@@ -78,7 +78,7 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('--numbers', default='898-999,1-71')
-    ap.add_argument('--dates', default='2001-02-20:2001-03-05',
+    ap.add_argument('--dates', default='2001-02-20:2001-02-28',
                     help='internal recording date window, YYYY-MM-DD:YYYY-MM-DD')
     ap.add_argument('--out', default=None, help='report file (default: Desktop)')
     ap.add_argument('roots', nargs='*', default=['/'])
