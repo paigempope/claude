@@ -580,6 +580,33 @@ def main():
         print('  %d live files, %d deleted media entries found'
               % (len(entries) - len([e for e in entries if not e['live']]), len(deleted)))
 
+        # Self-test: read the live clips through the same raw path. If they come
+        # back as zeros too, the "blank" verdict is a reading problem, not the card.
+        live_mp4 = [e for e in entries if e['live'] and fs.valid(e['first'])
+                    and e['name'].upper().endswith(MP4_EXT) and not e['name'].startswith('._')]
+        if live_mp4:
+            good, zero, other, offs = 0, 0, 0, []
+            for e in live_mp4:
+                o = fs.coff(e['first'])
+                offs.append(o)
+                h = dev.read(o, 4096)
+                mid = dev.read(o + (e['size'] // 2) // SECTOR * SECTOR, 4096) if e['nofat'] else h
+                if h[4:8] == b'ftyp' and mid.count(0) != len(mid):
+                    good += 1
+                elif h.count(0) == len(h):
+                    zero += 1
+                else:
+                    other += 1
+            print('  self-test on %d live clips: %d read correctly, %d read as zeros, %d odd'
+                  % (len(live_mp4), good, zero, other))
+            print('  live clips stored between %s and %s into the card'
+                  % (human(min(offs)), human(max(offs))))
+            if zero:
+                print('  !! Live clips read back as zeros: the card or reader is misreporting\n'
+                      '  !! data, so "blank" results are NOT trustworthy. Try another reader.')
+            elif good == len(live_mp4):
+                print('  reading verified: zeros reported elsewhere are really zeros.')
+
         ref_heads = {}     # '.MP4' / '.LRF' -> first bytes of a healthy clip
         for e in entries:
             ext = os.path.splitext(e['name'].upper())[1]
