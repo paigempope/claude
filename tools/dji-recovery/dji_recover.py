@@ -150,6 +150,17 @@ class ExFAT:
         i = c - 2
         return bool(self.bitmap[i >> 3] & (1 << (i & 7))) if (i >> 3) < len(self.bitmap) else False
 
+    def allocated_at(self, off):
+        return self.allocated(2 + (off - self.heap_off) // self.cluster)
+
+    def free_runs(self):
+        """(start, end) byte ranges of free space, at 8-cluster granularity."""
+        if self.bitmap is None:
+            return [(self.heap_off, self.heap_off + self.nclusters * self.cluster)]
+        span = 8 * self.cluster
+        return [(self.heap_off + m.start() * span, self.heap_off + m.end() * span)
+                for m in re.finditer(b'\x00+', self.bitmap[:(self.nclusters + 7) // 8])]
+
     # Directory parsing -------------------------------------------------
 
     def parse_dir(self, data):
@@ -220,6 +231,62 @@ def exfat_time(v):
                                  (v >> 11) & 31, (v >> 5) & 63, (v & 31) * 2)
     except ValueError:
         return None
+
+
+class HFSPlus:
+    """Just enough HFS+ (Mac OS Extended) to know which blocks are free."""
+
+    def __init__(self, dev, part_off):
+        self.dev = dev
+        vh = dev.read(part_off + 1024, 512)
+        self.cluster = struct.unpack_from('>I', vh, 40)[0]
+        self.nclusters = struct.unpack_from('>I', vh, 44)[0]
+        self.heap_off = part_off
+        size = struct.unpack_from('>Q', vh, 112)[0]
+        bm = bytearray()
+        for k in range(8):
+            start, count = struct.unpack_from('>II', vh, 128 + 8 * k)
+            if count:
+                bm += dev.read(part_off + start * self.cluster, count * self.cluster)
+        self.bitmap = bytes(bm[:size]) if len(bm) >= (self.nclusters + 7) // 8 else None
+
+    def allocated_at(self, off):
+        b = (off - self.heap_off) // self.cluster
+        if self.bitmap is None or not 0 <= b < self.nclusters:
+            return False
+        return bool(self.bitmap[b >> 3] & (0x80 >> (b & 7)))
+
+    def free_runs(self):
+        if self.bitmap is None:
+            return [(self.heap_off, self.heap_off + self.nclusters * self.cluster)]
+        span = 8 * self.cluster
+        return [(self.heap_off + m.start() * span, self.heap_off + m.end() * span)
+                for m in re.finditer(b'\x00+', self.bitmap[:(self.nclusters + 7) // 8])]
+
+
+def partition_offsets(dev):
+    head = dev.read(0, 1024)
+    cands = [0]
+    if head[510:512] == b'\x55\xaa':
+        for k in range(4):
+            lba = struct.unpack_from('<I', head, 446 + 16 * k + 8)[0]
+            if lba:
+                cands.append(lba * SECTOR)
+    if head[512:520] == b'EFI PART':
+        ent_lba, n, esz = struct.unpack_from('<QII', head, 512 + 72)
+        tab = dev.read(ent_lba * SECTOR, min(n, 128) * esz)
+        for k in range(min(n, 128)):
+            lba = struct.unpack_from('<Q', tab, k * esz + 32)[0]
+            if lba:
+                cands.append(lba * SECTOR)
+    return cands
+
+
+def find_hfs(dev):
+    for off in partition_offsets(dev):
+        if dev.read(off + 1024, 2) in (b'H+', b'HX'):
+            return off
+    return None
 
 
 def find_exfat(dev):
@@ -411,7 +478,7 @@ def probe_free_space(dev, fs, start, end, samples=3000):
     step = max((end - start) // samples, SECTOR)
     step -= step % SECTOR
     for off in range(start, end - 4096, step):
-        if fs and fs.allocated(2 + (off - fs.heap_off) // fs.cluster):
+        if fs and fs.allocated_at(off):
             continue
         b = dev.read(off, 4096)
         if b.count(0) == len(b):
@@ -476,15 +543,22 @@ def main():
 
     part = find_exfat(dev)
     fs = None
-    if part is None:
-        print('No exFAT filesystem found - carving whole device.')
-    else:
+    if part is not None:
         fs = ExFAT(dev, part)
         print('exFAT at offset %d, cluster %s, %d clusters'
               % (part, human(fs.cluster), fs.nclusters))
+    else:
+        hp = find_hfs(dev)
+        if hp is not None:
+            fs = HFSPlus(dev, hp)
+            print('Mac OS Extended (HFS+) at offset %d, block %s, %d blocks%s'
+                  % (hp, human(fs.cluster), fs.nclusters,
+                     '' if fs.bitmap is not None else ' (free-space map unreadable)'))
+        else:
+            print('No known filesystem found - carving whole device.')
 
     # ---------------- pass 1: directory entries
-    if fs:
+    if isinstance(fs, ExFAT):
         print('\n[1/2] Reading directory entries ...')
         entries = list(fs.walk())
         if fs.bitmap is None:
@@ -597,8 +671,7 @@ def main():
 
     # ---------------- pass 2: carving unallocated space
     if not args.no_carve:
-        print('\n[2/2] Carving free space for video headers (this reads the whole '
-              'card; ~1 min per 5 GB) ...')
+        print('\n[2/2] Carving free space for video headers ...')
         claimed.sort()
 
         def is_claimed(o):
@@ -609,41 +682,50 @@ def main():
         align = SECTOR
         start = fs.heap_off if fs else 0
         end = (fs.heap_off + fs.nclusters * fs.cluster) if fs else dev.size
+        end = min(end, dev.size)
         probe_free_space(dev, fs, start, end)
+        runs = fs.free_runs() if fs else [(start, end)]
+        runs = [(max(a, start), min(b, end)) for a, b in runs if b > a]
+        total_free = sum(b - a for a, b in runs) or 1
+        print('  scanning %s of free space in %d region(s)' % (human(total_free), len(runs)))
         chunk = 64 << 20
-        pos, n_found, t0, last_pct = start, 0, time.time(), -5
-        while pos < end:
-            blob = dev.read(pos, min(chunk + 8, end - pos))
-            if not blob:
-                print('\n  ! read returned no data at offset %d - stopping' % pos)
-                break
-            el = time.time() - t0
-            rate = (pos - start) / el if el > 1 else 0
-            eta = (end - pos) / rate if rate else 0
-            pct = 100.0 * (pos - start) / (end - start)
-            print('\r  %5.1f%%  %s/s  ETA %dm   ' % (pct, human(rate), eta // 60),
-                  end='\n' if pct - last_pct >= 5 else '', flush=True)
-            if pct - last_pct >= 5:
-                last_pct = pct
-            next_pos = pos + chunk
-            p = blob.find(b'ftyp')
-            while p != -1 and p < chunk:
-                off = pos + p - 4
-                if off >= start and (off - start) % align == 0 and not is_claimed(off):
-                    c = 2 + (off - fs.heap_off) // fs.cluster if fs else None
-                    if fs is None or not fs.allocated(c):
-                        ext = mp4_extent(lambda o, n: dev.read(o, n), off, end)
+        n_found, t0, last_pct, done_bytes = 0, time.time(), -5, 0
+        for run_a, run_b in runs:
+            pos = run_a
+            while pos < run_b:
+                n = min(chunk, run_b - pos)
+                blob = dev.read(pos, n + 8)
+                if not blob:
+                    print('\n  ! read returned no data at offset %d - stopping' % pos)
+                    break
+                el = time.time() - t0
+                rate = done_bytes / el if el > 1 else 0
+                eta = (total_free - done_bytes) / rate if rate else 0
+                pct = 100.0 * done_bytes / total_free
+                newline = pct - last_pct >= 5
+                print('\r  %5.1f%%  %s/s  ETA %dm   ' % (pct, human(rate), eta // 60),
+                      end='\n' if newline else '', flush=True)
+                if newline:
+                    last_pct = pct
+                next_pos = pos + n
+                p = blob.find(b'ftyp')
+                while p != -1 and p < n:
+                    off = pos + p - 4
+                    if off >= start and off % align == 0 and not is_claimed(off) \
+                            and not (fs and fs.allocated_at(off)):
+                        ext = mp4_extent(lambda o, k: dev.read(o, k), off, end)
                         if ext and ext[0] > 64 << 10:
                             length, info = ext
                             n_found += 1
                             name = 'carved_%05d_at_%012x.MP4' % (n_found, off)
                             dur = ('%.0fs' % info['duration']) if info.get('duration') else ''
-                            st = 'CARVED' + ('' if info['complete'] else ' (index missing)')
+                            st = 'CARVED' + ('' if info['complete'] else ' (cut off - index missing)')
                             if fs:
-                                cl = range(c, c + -(-length // fs.cluster))
-                                ov = sum(1 for x in cl if fs.allocated(x))
+                                step = fs.cluster
+                                blocks = range(off, off + length, step)
+                                ov = sum(1 for x in blocks if fs.allocated_at(x))
                                 if ov:
-                                    st += ' %.0f%% overwritten' % (100.0 * ov / len(cl))
+                                    st += ' %.0f%% overwritten' % (100.0 * ov / max(len(blocks), 1))
                             print('\r  %-40s %10s  %-28s %s' % (name, human(length), st, dur))
                             report.append((name, length, st, dur))
                             claimed.append((off, off + length))
@@ -655,15 +737,16 @@ def main():
                                     copy_out(dev, dst, [(off, length)], length)
                                     print('    saved -> %s' % dst)
                             # jump past this clip
-                            if off + length > pos + p:
-                                skip_to = off + length
-                                skip_to += (-(skip_to - start)) % align
-                                if skip_to >= next_pos:
-                                    next_pos = skip_to
-                                    break
+                            skip_to = off + length
+                            skip_to += (-skip_to) % align
+                            if skip_to >= next_pos:
+                                next_pos = skip_to
+                                break
+                            if skip_to > pos + p:
                                 p = skip_to - pos + 3
-                p = blob.find(b'ftyp', p + 1)
-            pos = next_pos
+                    p = blob.find(b'ftyp', p + 1)
+                done_bytes += min(next_pos, run_b) - pos
+                pos = next_pos
         print('\r  carving done in %d min, %d extra clip(s) found.            '
               % ((time.time() - t0) // 60, n_found))
 
