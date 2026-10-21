@@ -690,6 +690,8 @@ def main():
         print('  scanning %s of free space in %d region(s)' % (human(total_free), len(runs)))
         chunk = 64 << 20
         n_found, t0, last_pct, done_bytes = 0, time.time(), -5, 0
+        ZERO = bytes(128 << 10)
+        nonzero = []      # (offset, length) of free 128 KB blocks holding any data
         for run_a, run_b in runs:
             pos = run_a
             while pos < run_b:
@@ -708,6 +710,12 @@ def main():
                 if newline:
                     last_pct = pct
                 next_pos = pos + n
+                for k in range(0, n, len(ZERO)):
+                    if blob[k:k + len(ZERO)] != ZERO[:min(len(ZERO), n - k)]:
+                        if nonzero and nonzero[-1][0] + nonzero[-1][1] == pos + k:
+                            nonzero[-1] = (nonzero[-1][0], nonzero[-1][1] + len(ZERO))
+                        else:
+                            nonzero.append((pos + k, len(ZERO)))
                 p = blob.find(b'ftyp')
                 while p != -1 and p < n:
                     off = pos + p - 4
@@ -749,6 +757,16 @@ def main():
                 pos = next_pos
         print('\r  carving done in %d min, %d extra clip(s) found.            '
               % ((time.time() - t0) // 60, n_found))
+        nz = sum(l for _, l in nonzero)
+        print('  free space holding ANY data (not zeros): %s in %d region(s)'
+              % (human(nz), len(nonzero)))
+        for off, l in sorted(nonzero, key=lambda r: -r[1])[:15]:
+            print('    at %012x  %s' % (off, human(l)))
+        if args.outdir and nonzero and not args.list:
+            rp = os.path.join(args.outdir, 'nonzero_regions.txt')
+            with open(rp, 'w') as f:
+                for off, l in nonzero:
+                    f.write('%d %d\n' % (off, l))
 
     # ---------------- report
     if args.outdir:
