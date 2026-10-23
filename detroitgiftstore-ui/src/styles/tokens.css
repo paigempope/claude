@@ -1,0 +1,112 @@
+/*
+ * Design tokens. Components read ONLY these variables, so a rebrand or
+ * dark theme is a token change, never a component change.
+ * Override on :root or any subtree (e.g. a holiday campaign section).
+ */
+:root {
+  /* Color: brand */
+  --dgs-color-brand: #0f5132;          /* deep Detroit green */
+  --dgs-color-brand-hover: #0a3d25;
+  --dgs-color-on-brand: #ffffff;
+  --dgs-color-accent: #b3541e;         /* brick / rust */
+
+  /* Color: neutrals & surfaces */
+  --dgs-color-bg: #faf8f5;
+  --dgs-color-surface: #ffffff;
+  --dgs-color-surface-muted: #f1eee9;
+  --dgs-color-border: #ddd8d0;
+  --dgs-color-text: #1c1b19;
+  --dgs-color-text-muted: #5c5750;     /* 7.0:1 on surface */
+
+  /* Color: feedback (all ≥ 4.5:1 on surface) */
+  --dgs-color-sale: #b42318;
+  --dgs-color-success: #146c43;
+  --dgs-color-warning: #8a4b00;
+  --dgs-color-danger: #b42318;
+  --dgs-color-star: #a15c00;
+
+  --dgs-color-focus: #1d4ed8;
+  --dgs-color-skeleton: #e7e3dc;
+  --dgs-color-skeleton-shine: #f4f1ec;
+
+  /* Typography */
+  --dgs-font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --dgs-font-display: Georgia, "Times New Roman", serif;
+  --dgs-text-xs: 0.75rem;
+  --dgs-text-sm: 0.875rem;
+  --dgs-text-md: 1rem;
+  --dgs-text-lg: 1.125rem;
+  --dgs-text-xl: 1.375rem;
+  --dgs-leading-tight: 1.25;
+  --dgs-leading-normal: 1.5;
+  --dgs-weight-medium: 500;
+  --dgs-weight-bold: 700;
+
+  /* Spacing (4px scale) */
+  --dgs-space-1: 0.25rem;
+  --dgs-space-2: 0.5rem;
+  --dgs-space-3: 0.75rem;
+  --dgs-space-4: 1rem;
+  --dgs-space-5: 1.5rem;
+  --dgs-space-6: 2rem;
+  --dgs-space-8: 3rem;
+
+  /* Shape & elevation */
+  --dgs-radius-sm: 4px;
+  --dgs-radius-md: 8px;
+  --dgs-radius-lg: 12px;
+  --dgs-radius-full: 999px;
+  --dgs-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.06);
+  --dgs-shadow-md: 0 4px 16px rgb(0 0 0 / 0.08);
+
+  /* Motion */
+  --dgs-duration-fast: 120ms;
+  --dgs-duration-base: 200ms;
+  --dgs-ease: cubic-bezier(0.2, 0, 0, 1);
+
+  /* Sizing */
+  --dgs-tap-target: 44px;              /* WCAG 2.5.5 */
+  --dgs-grid-min-col: 15rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --dgs-color-brand: #5cc28f;
+    --dgs-color-brand-hover: #7ed3a8;
+    --dgs-color-on-brand: #06210f;
+    --dgs-color-bg: #121211;
+    --dgs-color-surface: #1c1b19;
+    --dgs-color-surface-muted: #262522;
+    --dgs-color-border: #3a3834;
+    --dgs-color-text: #f3f1ed;
+    --dgs-color-text-muted: #b8b2a8;
+    --dgs-color-sale: #ff8a80;
+    --dgs-color-success: #6fd3a0;
+    --dgs-color-warning: #f0b45a;
+    --dgs-color-danger: #ff8a80;
+    --dgs-color-star: #f0b45a;
+    --dgs-color-focus: #8ab4ff;
+    --dgs-color-skeleton: #2c2a27;
+    --dgs-color-skeleton-shine: #36332f;
+  }
+}
+
+:root[data-theme="dark"] {
+  --dgs-color-brand: #5cc28f;
+  --dgs-color-brand-hover: #7ed3a8;
+  --dgs-color-on-brand: #06210f;
+  --dgs-color-bg: #121211;
+  --dgs-color-surface: #1c1b19;
+  --dgs-color-surface-muted: #262522;
+  --dgs-color-border: #3a3834;
+  --dgs-color-text: #f3f1ed;
+  --dgs-color-text-muted: #b8b2a8;
+  --dgs-color-sale: #ff8a80;
+  --dgs-color-success: #6fd3a0;
+  --dgs-color-warning: #f0b45a;
+  --dgs-color-danger: #ff8a80;
+  --dgs-color-star: #f0b45a;
+  --dgs-color-focus: #8ab4ff;
+  --dgs-color-skeleton: #2c2a27;
+  --dgs-color-skeleton-shine: #36332f;
+}

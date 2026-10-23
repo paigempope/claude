@@ -1,0 +1,206 @@
+/* Component styles. Prefix: .dgs-  |  Reads tokens from tokens.css only. */
+
+.dgs-visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
+}
+
+/* Shared focus ring: visible for keyboard, hidden for mouse */
+.dgs-focusable:focus-visible,
+.dgs-btn:focus-visible,
+.dgs-stepper__btn:focus-visible,
+.dgs-stepper__input:focus-visible,
+.dgs-card__link:focus-visible {
+  outline: 3px solid var(--dgs-color-focus);
+  outline-offset: 2px;
+}
+
+/* ---------- Button ---------- */
+.dgs-btn {
+  position: relative;
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: var(--dgs-space-2);
+  min-height: var(--dgs-tap-target);
+  padding: 0 var(--dgs-space-4);
+  border: 1px solid transparent;
+  border-radius: var(--dgs-radius-md);
+  font: var(--dgs-weight-medium) var(--dgs-text-md)/1 var(--dgs-font-sans);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color var(--dgs-duration-fast) var(--dgs-ease),
+              border-color var(--dgs-duration-fast) var(--dgs-ease);
+  -webkit-tap-highlight-color: transparent;
+}
+.dgs-btn--sm { min-height: 36px; padding: 0 var(--dgs-space-3); font-size: var(--dgs-text-sm); }
+.dgs-btn--lg { min-height: 52px; padding: 0 var(--dgs-space-5); font-size: var(--dgs-text-lg); }
+.dgs-btn--full { width: 100%; }
+
+.dgs-btn--primary { background: var(--dgs-color-brand); color: var(--dgs-color-on-brand); }
+.dgs-btn--primary:hover:not([aria-disabled="true"]) { background: var(--dgs-color-brand-hover); }
+.dgs-btn--secondary { background: var(--dgs-color-surface); color: var(--dgs-color-text); border-color: var(--dgs-color-border); }
+.dgs-btn--secondary:hover:not([aria-disabled="true"]) { background: var(--dgs-color-surface-muted); }
+.dgs-btn--ghost { background: transparent; color: var(--dgs-color-text); }
+.dgs-btn--ghost:hover:not([aria-disabled="true"]) { background: var(--dgs-color-surface-muted); }
+.dgs-btn--danger { background: var(--dgs-color-danger); color: #fff; }
+
+.dgs-btn[aria-disabled="true"] { cursor: not-allowed; opacity: 0.55; }
+.dgs-btn[aria-busy="true"] { cursor: progress; opacity: 1; }
+/* Keep width stable while loading: hide label visually, overlay spinner */
+.dgs-btn[aria-busy="true"] .dgs-btn__content { visibility: hidden; }
+.dgs-btn__spinner { position: absolute; inset: 0; display: grid; place-items: center; }
+.dgs-btn__content { display: inline-flex; align-items: center; gap: var(--dgs-space-2); }
+
+/* ---------- Spinner ---------- */
+.dgs-spinner {
+  display: inline-block;
+  width: 1.1em; height: 1.1em;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: dgs-spin 0.7s linear infinite;
+}
+@keyframes dgs-spin { to { transform: rotate(360deg); } }
+
+/* ---------- Skeleton ---------- */
+.dgs-skeleton {
+  display: block;
+  background: var(--dgs-color-skeleton);
+  border-radius: var(--dgs-radius-sm);
+  background-image: linear-gradient(90deg, transparent, var(--dgs-color-skeleton-shine), transparent);
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
+  animation: dgs-shimmer 1.4s ease-in-out infinite;
+}
+.dgs-skeleton--circle { border-radius: 50%; }
+@keyframes dgs-shimmer { from { background-position: 150% 0; } to { background-position: -50% 0; } }
+
+/* ---------- Badge ---------- */
+.dgs-badge {
+  display: inline-flex; align-items: center;
+  padding: 2px var(--dgs-space-2);
+  border-radius: var(--dgs-radius-full);
+  font: var(--dgs-weight-bold) var(--dgs-text-xs)/1.4 var(--dgs-font-sans);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  background: var(--dgs-color-surface-muted);
+  color: var(--dgs-color-text);
+}
+.dgs-badge--sale { background: var(--dgs-color-sale); color: #fff; }
+.dgs-badge--brand { background: var(--dgs-color-brand); color: var(--dgs-color-on-brand); }
+.dgs-badge--warning { background: transparent; color: var(--dgs-color-warning); box-shadow: inset 0 0 0 1px currentColor; }
+.dgs-badge--muted { background: var(--dgs-color-text-muted); color: var(--dgs-color-surface); }
+
+/* ---------- Price ---------- */
+.dgs-price { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: var(--dgs-space-2); font-family: var(--dgs-font-sans); font-variant-numeric: tabular-nums; }
+.dgs-price__current { font-weight: var(--dgs-weight-bold); color: var(--dgs-color-text); }
+.dgs-price--sale .dgs-price__current { color: var(--dgs-color-sale); }
+.dgs-price__compare { color: var(--dgs-color-text-muted); font-size: 0.875em; }
+.dgs-price--lg { font-size: var(--dgs-text-xl); }
+
+/* ---------- Rating ---------- */
+.dgs-rating { display: inline-flex; align-items: center; gap: var(--dgs-space-1); font-size: var(--dgs-text-sm); color: var(--dgs-color-text-muted); }
+.dgs-rating__stars { position: relative; display: inline-block; line-height: 1; letter-spacing: 1px; color: var(--dgs-color-border); }
+.dgs-rating__fill { position: absolute; inset: 0 auto 0 0; overflow: hidden; white-space: nowrap; color: var(--dgs-color-star); }
+
+/* ---------- Quantity stepper ---------- */
+.dgs-stepper { display: inline-flex; align-items: stretch; border: 1px solid var(--dgs-color-border); border-radius: var(--dgs-radius-md); background: var(--dgs-color-surface); }
+.dgs-stepper__btn {
+  min-width: var(--dgs-tap-target); min-height: var(--dgs-tap-target);
+  border: 0; background: transparent; color: var(--dgs-color-text);
+  font-size: var(--dgs-text-lg); cursor: pointer; border-radius: var(--dgs-radius-md);
+}
+.dgs-stepper__btn:disabled { color: var(--dgs-color-text-muted); opacity: 0.5; cursor: not-allowed; }
+.dgs-stepper__input {
+  width: 3ch; min-width: 3rem; border: 0; text-align: center;
+  font: var(--dgs-weight-medium) var(--dgs-text-md) var(--dgs-font-sans);
+  background: transparent; color: var(--dgs-color-text);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- State message (empty / error) ---------- */
+.dgs-state {
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  gap: var(--dgs-space-3);
+  padding: var(--dgs-space-8) var(--dgs-space-4);
+  color: var(--dgs-color-text);
+  font-family: var(--dgs-font-sans);
+}
+.dgs-state__icon { font-size: 2.5rem; line-height: 1; color: var(--dgs-color-text-muted); }
+.dgs-state__title { margin: 0; font: var(--dgs-weight-bold) var(--dgs-text-xl)/var(--dgs-leading-tight) var(--dgs-font-display); }
+.dgs-state__body { margin: 0; max-width: 40ch; color: var(--dgs-color-text-muted); line-height: var(--dgs-leading-normal); }
+.dgs-state__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--dgs-space-2); margin-top: var(--dgs-space-2); }
+
+/* ---------- Product card ---------- */
+.dgs-card {
+  position: relative;
+  display: flex; flex-direction: column;
+  height: 100%;
+  background: var(--dgs-color-surface);
+  border: 1px solid var(--dgs-color-border);
+  border-radius: var(--dgs-radius-lg);
+  overflow: hidden;
+  font-family: var(--dgs-font-sans);
+  transition: box-shadow var(--dgs-duration-base) var(--dgs-ease);
+}
+.dgs-card:hover { box-shadow: var(--dgs-shadow-md); }
+.dgs-card__media {
+  position: relative;
+  aspect-ratio: 1 / 1;              /* reserves space: no layout shift */
+  background: var(--dgs-color-surface-muted);
+}
+.dgs-card__img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform var(--dgs-duration-base) var(--dgs-ease); }
+.dgs-card:hover .dgs-card__img { transform: scale(1.03); }
+.dgs-card__placeholder { position: absolute; inset: 0; display: grid; place-items: center; color: var(--dgs-color-text-muted); font-size: 2.5rem; }
+.dgs-card__badges { position: absolute; top: var(--dgs-space-2); left: var(--dgs-space-2); display: flex; flex-wrap: wrap; gap: var(--dgs-space-1); pointer-events: none; }
+.dgs-card__body { display: flex; flex-direction: column; flex: 1; gap: var(--dgs-space-2); padding: var(--dgs-space-3) var(--dgs-space-4) var(--dgs-space-4); }
+.dgs-card__vendor { margin: 0; font-size: var(--dgs-text-xs); text-transform: uppercase; letter-spacing: 0.06em; color: var(--dgs-color-text-muted); }
+.dgs-card__title {
+  margin: 0;
+  font: var(--dgs-weight-medium) var(--dgs-text-md)/var(--dgs-leading-tight) var(--dgs-font-sans);
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  overflow-wrap: anywhere;          /* long unbroken titles don't blow out the grid */
+}
+.dgs-card__link { color: var(--dgs-color-text); text-decoration: none; border-radius: var(--dgs-radius-sm); }
+/* Stretched link: the whole card is clickable, but there's only ONE link in the tab order */
+.dgs-card__link::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+.dgs-card__link:hover { text-decoration: underline; }
+.dgs-card__footer { margin-top: auto; display: flex; flex-direction: column; gap: var(--dgs-space-3); }
+/* Interactive children sit above the stretched link */
+.dgs-card__action { position: relative; z-index: 2; }
+.dgs-card--sold-out .dgs-card__img { filter: grayscale(0.6); opacity: 0.8; }
+
+/* ---------- Product grid ---------- */
+.dgs-grid {
+  list-style: none; margin: 0; padding: 0;
+  display: grid;
+  gap: var(--dgs-space-4);
+  /* Two columns on phones, then as many ≥ min-col columns as fit */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+@media (min-width: 640px) {
+  .dgs-grid { grid-template-columns: repeat(auto-fill, minmax(var(--dgs-grid-min-col), 1fr)); gap: var(--dgs-space-5); }
+}
+.dgs-grid > li { min-width: 0; }
+.dgs-grid-wrapper { position: relative; }
+.dgs-grid__more { display: flex; justify-content: center; margin-top: var(--dgs-space-6); }
+
+@media (max-width: 400px) {
+  .dgs-card__body { padding: var(--dgs-space-2) var(--dgs-space-3) var(--dgs-space-3); }
+}
+
+/* ---------- Motion safety ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .dgs-spinner { animation-duration: 1.6s; }
+  .dgs-skeleton { animation: none; background-image: none; }
+  .dgs-card, .dgs-card__img, .dgs-btn { transition: none; }
+  .dgs-card:hover .dgs-card__img { transform: none; }
+}
+
+/* ---------- Windows High Contrast ---------- */
+@media (forced-colors: active) {
+  .dgs-btn, .dgs-card, .dgs-stepper { border: 1px solid CanvasText; }
+  .dgs-skeleton { background: GrayText; }
+}
