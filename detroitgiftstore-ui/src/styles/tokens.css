@@ -24,6 +24,8 @@
   --dgs-color-warning: #8a4b00;
   --dgs-color-danger: #b42318;
   --dgs-color-star: #a15c00;
+  --dgs-color-on-sale: #ffffff;
+  --dgs-color-on-danger: #ffffff;
 
   --dgs-color-focus: #1d4ed8;
   --dgs-color-skeleton: #e7e3dc;
@@ -85,9 +87,12 @@
     --dgs-color-warning: #f0b45a;
     --dgs-color-danger: #ff8a80;
     --dgs-color-star: #f0b45a;
+    --dgs-color-on-sale: #2a0a07;
+    --dgs-color-on-danger: #2a0a07;
     --dgs-color-focus: #8ab4ff;
     --dgs-color-skeleton: #2c2a27;
     --dgs-color-skeleton-shine: #36332f;
+    color-scheme: dark;
   }
 }
 
@@ -106,7 +111,10 @@
   --dgs-color-warning: #f0b45a;
   --dgs-color-danger: #ff8a80;
   --dgs-color-star: #f0b45a;
+  --dgs-color-on-sale: #2a0a07;
+  --dgs-color-on-danger: #2a0a07;
   --dgs-color-focus: #8ab4ff;
   --dgs-color-skeleton: #2c2a27;
   --dgs-color-skeleton-shine: #36332f;
+  color-scheme: dark;
 }
