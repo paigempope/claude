@@ -1,0 +1,49 @@
+<section class="section section--tight{% if section.settings.paper %} section--paper{% endif %}">
+  <div class="page-width">
+    <div class="section-head section-head--center">
+      {%- if section.settings.kicker != blank -%}<span class="kicker">{{ section.settings.kicker }}</span>{%- endif -%}
+      <h2>{{ section.settings.heading }}</h2>
+    </div>
+    <ol class="steps">
+      {%- for block in section.blocks -%}
+        <li class="step reveal" {{ block.shopify_attributes }}>
+          <span class="step__num">{{ forloop.index }}</span>
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.text }}</p>
+        </li>
+      {%- endfor -%}
+    </ol>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "How gifting works",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Handwritten kicker", "default": "so, how does it work?" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Three steps to a very happy Michigander" },
+    { "type": "checkbox", "id": "paper", "label": "Paper background", "default": true }
+  ],
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Pick a box" },
+        { "type": "textarea", "id": "text", "label": "Text" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "How gifting works",
+      "blocks": [
+        { "type": "step", "settings": { "title": "Pick a box (or build one)", "text": "Ready-to-send boxes from $45, or choose every item yourself." } },
+        { "type": "step", "settings": { "title": "Write the card", "text": "Type your note in the cart. We write it by hand on a Michigan postcard. No prices inside." } },
+        { "type": "step", "settings": { "title": "We pack it in Michigan", "text": "Packed by hand and shipped the next business day, or on the date you pick." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

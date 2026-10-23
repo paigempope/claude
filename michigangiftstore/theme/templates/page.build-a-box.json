@@ -1,0 +1,16 @@
+{
+  "sections": {
+    "main": { "type": "build-a-box", "settings": { "counts": "4,6,10", "default_size": 1 } },
+    "how": {
+      "type": "how-it-works",
+      "blocks": {
+        "s1": { "type": "step", "settings": { "title": "Pick a size", "text": "4, 6 or 10 items. Every size includes a gift box and a handwritten card." } },
+        "s2": { "type": "step", "settings": { "title": "Fill it up", "text": "Mix chips, pop, sweets and Up North pantry. Doubles are fine." } },
+        "s3": { "type": "step", "settings": { "title": "We pack it by hand", "text": "Packed in Michigan and shipped next business day. Free shipping at $75." } }
+      },
+      "block_order": ["s1", "s2", "s3"],
+      "settings": { "kicker": "so, how does it work?", "heading": "Your box, your way", "paper": true }
+    }
+  },
+  "order": ["main", "how"]
+}

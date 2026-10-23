@@ -1,0 +1,11 @@
+<section class="notfound">
+  {% render 'michigan-shape', class: 'notfound__mitten' %}
+  <span class="kicker" style="transform-origin:center">{{ 'notfound.kicker' | t }}</span>
+  <h1>{{ 'notfound.title' | t }}</h1>
+  <p class="lede" style="margin:0 auto 24px">{{ 'notfound.text' | t }}</p>
+  <a class="btn" href="{{ routes.all_products_collection_url }}">{{ 'cart.start_shopping' | t }}</a>
+</section>
+
+{% schema %}
+{ "name": "404", "settings": [] }
+{% endschema %}

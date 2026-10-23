@@ -1,0 +1,27 @@
+{%- layout none -%}
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{ 'gift_card.title' | t }} – {{ shop.name }}</title>
+  {{ 'fraunces-roman.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
+  {% render 'fonts' %}
+  {% render 'css-variables' %}
+  {{ 'base.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'vendor/qrcode.js' | shopify_asset_url }}" defer></script>
+</head>
+<body>
+  <main class="notfound">
+    {% render 'michigan-shape', class: 'notfound__mitten' %}
+    <span class="kicker" style="transform-origin:center">{{ 'gift_card.kicker' | t }}</span>
+    <h1>{{ gift_card.initial_value | money_without_trailing_zeros }} {{ 'gift_card.title' | t }}</h1>
+    {%- if gift_card.expired or gift_card.enabled == false -%}<p class="form-error">{{ 'gift_card.expired' | t }}</p>{%- endif -%}
+    <p class="lede" style="margin:0 auto 16px">{{ 'gift_card.balance' | t }}: <strong>{{ gift_card.balance | money }}</strong></p>
+    <p class="stamp" style="font-size:1rem" id="GiftCardCode">{{ gift_card.code | format_code }}</p>
+    <div id="QrCode" data-identifier="{{ gift_card.qr_identifier }}" style="margin:20px auto;width:120px"></div>
+    <p><a class="btn" href="{{ shop.url }}">{{ 'gift_card.shop' | t }}</a></p>
+    {%- if gift_card.pass_url -%}<p><a href="{{ gift_card.pass_url }}">{{ 'gift_card.apple_wallet' | t }}</a></p>{%- endif -%}
+  </main>
+  <script>window.addEventListener('load',function(){var el=document.getElementById('QrCode');if(window.QRCode){new QRCode(el,{text:el.dataset.identifier,width:120,height:120});}});</script>
+</body>
+</html>

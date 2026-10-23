@@ -1,0 +1,113 @@
+{%- assign menu = linklists[section.settings.menu] -%}
+<div class="header-wrapper" data-header>
+  <header class="header page-width">
+    <div class="header__left">
+      <button type="button" class="icon-btn menu-toggle" data-drawer-open="MenuDrawer" aria-controls="MenuDrawer" aria-label="{{ 'general.menu' | t }}">{% render 'icon', name: 'menu' %}</button>
+      <nav class="nav" aria-label="{{ 'general.main_nav' | t }}">
+        <ul class="nav__list">
+          {%- for link in menu.links -%}
+            <li class="nav__item">
+              {%- if link.links != blank -%}
+                <a class="nav__link{% if link.active %} is-active{% endif %}" href="{{ link.url }}" aria-haspopup="true">{{ link.title }} <span aria-hidden="true" style="font-size:.7em">▾</span></a>
+                <ul class="nav__dropdown">
+                  {%- for child in link.links -%}
+                    <li><a href="{{ child.url }}"{% if child.current %} aria-current="page"{% endif %}>{{ child.title }}</a></li>
+                  {%- endfor -%}
+                </ul>
+              {%- else -%}
+                {%- assign highlight = false -%}
+                {%- if section.settings.highlight_title != blank and link.title == section.settings.highlight_title -%}{%- assign highlight = true -%}{%- endif -%}
+                <a class="nav__link{% if highlight %} nav__link--highlight{% endif %}" href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title }}</a>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+      </nav>
+    </div>
+
+    <a class="header__logo" href="{{ routes.root_url }}" aria-label="{{ shop.name }}">
+      {%- if settings.logo -%}
+        {{ settings.logo | image_url: width: 520 | image_tag: alt: shop.name, loading: 'eager', width: settings.logo_width }}
+      {%- else -%}
+        {% render 'wordmark' %}
+      {%- endif -%}
+    </a>
+
+    <div class="header__right">
+      <details class="header-search" style="position:static">
+        <summary class="icon-btn" aria-label="{{ 'general.search' | t }}" style="list-style:none">{% render 'icon', name: 'search' %}</summary>
+        <div style="position:absolute;left:0;right:0;top:100%;background:var(--paper);border-bottom:1px solid var(--line);padding:16px 0">
+          <form action="{{ routes.search_url }}" method="get" role="search" class="page-width field-row">
+            <input type="hidden" name="type" value="product">
+            <label class="visually-hidden" for="HeaderSearch">{{ 'general.search' | t }}</label>
+            <input class="input" id="HeaderSearch" type="search" name="q" placeholder="{{ 'general.search_placeholder' | t }}" autocomplete="off">
+            <button class="btn" type="submit">{{ 'general.search' | t }}</button>
+          </form>
+        </div>
+      </details>
+      {%- if shop.customer_accounts_enabled -%}
+        <a class="icon-btn" href="{{ routes.account_url }}" aria-label="{{ 'general.account' | t }}">{% render 'icon', name: 'account' %}</a>
+      {%- endif -%}
+      <a class="icon-btn" href="{{ routes.cart_url }}" data-drawer-open="CartDrawer" aria-label="{{ 'cart.title' | t }}">
+        {% render 'icon', name: 'cart' %}
+        <span class="cart-count" data-cart-count data-count="{{ cart.item_count }}">{% if cart.item_count > 0 %}{{ cart.item_count }}{% endif %}</span>
+      </a>
+    </div>
+  </header>
+</div>
+
+<aside class="drawer drawer--left" id="MenuDrawer" aria-label="{{ 'general.menu' | t }}" role="dialog" aria-modal="true" tabindex="-1">
+  <div class="drawer__head">
+    {% render 'wordmark' %}
+    <button type="button" class="icon-btn" data-drawer-close aria-label="{{ 'general.close' | t }}">{% render 'icon', name: 'close' %}</button>
+  </div>
+  <div class="drawer__body">
+    <ul class="mobile-nav">
+      {%- for link in menu.links -%}
+        <li>
+          {%- if link.links != blank -%}
+            <details>
+              <summary>{{ link.title }}</summary>
+              <ul>
+                <li><a href="{{ link.url }}">{{ 'general.view_all' | t }}</a></li>
+                {%- for child in link.links -%}<li><a href="{{ child.url }}">{{ child.title }}</a></li>{%- endfor -%}
+              </ul>
+            </details>
+          {%- else -%}
+            <a href="{{ link.url }}">{{ link.title }}</a>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+  {%- if settings.sister_brand_url != blank -%}
+    <div class="drawer__foot">
+      <a href="{{ settings.sister_brand_url }}" class="btn btn--secondary btn--block" rel="noopener">{{ settings.sister_brand_name }} →</a>
+    </div>
+  {%- endif -%}
+</aside>
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": {{ shop.name | json }},
+    "url": {{ request.origin | append: routes.root_url | json }},
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {{ request.origin | append: routes.search_url | append: '?q={search_term_string}' | json }},
+      "query-input": "required name=search_term_string"
+    }
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Header",
+  "class": "section-header",
+  "settings": [
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" },
+    { "type": "text", "id": "highlight_title", "label": "Highlight menu item (exact title)", "default": "Build a Box", "info": "Rendered in cherry red to draw the eye." }
+  ]
+}
+{% endschema %}

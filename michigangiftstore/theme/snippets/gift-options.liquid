@@ -1,0 +1,20 @@
+{%- comment -%} Gift message + ship date, saved to cart attributes (shown on the order in Shopify admin). {%- endcomment -%}
+{%- if settings.cart_gift_message -%}
+  <details class="cart-note"{% if cart.attributes['Gift message'] != blank %} open{% endif %}>
+    <summary>{% render 'icon', name: 'gift' %} {{ 'cart.gift_message' | t }}</summary>
+    <label class="visually-hidden" for="GiftMessage-{{ id }}">{{ 'cart.gift_message' | t }}</label>
+    <textarea class="input" id="GiftMessage-{{ id }}" maxlength="300" data-cart-attribute="Gift message" placeholder="{{ 'cart.gift_message_placeholder' | t }}">{{ cart.attributes['Gift message'] }}</textarea>
+    <label style="display:flex;gap:8px;align-items:center;margin-top:8px;font-size:.9rem">
+      <input type="checkbox" data-cart-attribute="Hide prices (gift receipt)" value="Yes" {% if cart.attributes['Hide prices (gift receipt)'] == 'Yes' %}checked{% endif %} style="accent-color:var(--cherry)">
+      {{ 'cart.gift_receipt' | t }}
+    </label>
+  </details>
+{%- endif -%}
+{%- if settings.cart_ship_date -%}
+  <details class="cart-note"{% if cart.attributes['Ship on'] != blank %} open{% endif %}>
+    <summary>{% render 'icon', name: 'calendar' %} {{ 'cart.ship_date' | t }}</summary>
+    <label class="visually-hidden" for="ShipOn-{{ id }}">{{ 'cart.ship_date' | t }}</label>
+    <input class="input" type="date" id="ShipOn-{{ id }}" data-cart-attribute="Ship on" value="{{ cart.attributes['Ship on'] }}" data-min-today>
+    <p class="form-note">{{ 'cart.ship_date_note' | t }}</p>
+  </details>
+{%- endif -%}

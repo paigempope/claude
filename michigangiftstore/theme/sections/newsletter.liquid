@@ -1,0 +1,45 @@
+<section class="section section--tight">
+  <div class="page-width">
+    <div class="newsletter">
+      {% render 'michigan-shape', class: 'newsletter__mitten' %}
+      <div>
+        {%- if section.settings.kicker != blank -%}<span class="kicker" style="color:var(--sunset)">{{ section.settings.kicker }}</span>{%- endif -%}
+        <h2>{{ section.settings.heading }}</h2>
+        <p>{{ section.settings.text }}</p>
+      </div>
+      <div>
+        {%- assign newsletter_id = 'Newsletter-' | append: section.id -%}
+        {%- form 'customer', id: newsletter_id -%}
+          <input type="hidden" name="contact[tags]" value="newsletter,{{ section.settings.tag }}">
+          {%- if form.posted_successfully? -%}
+            <p class="form-success">{{ section.settings.success }}</p>
+          {%- else -%}
+            {%- if form.errors -%}<p class="form-error">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>{%- endif -%}
+            <div class="field-row">
+              <label class="visually-hidden" for="NewsletterEmail-{{ section.id }}">{{ 'newsletter.email' | t }}</label>
+              <input id="NewsletterEmail-{{ section.id }}" type="email" name="contact[email]" required autocomplete="email" placeholder="{{ 'newsletter.email' | t }}">
+              <button type="submit" class="btn btn--light">{{ section.settings.button }}</button>
+            </div>
+          {%- endif -%}
+          <p class="form-note">{{ section.settings.note }}</p>
+        {%- endform -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Newsletter",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Handwritten kicker", "default": "letters from the Mitten" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Get 10% off your first box" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Plus seasonal drops (Mackinac fudge season, cherry harvest) and holiday ship-by reminders so you never miss Christmas." },
+    { "type": "text", "id": "button", "label": "Button", "default": "Send my code" },
+    { "type": "text", "id": "tag", "label": "Customer tag", "default": "mgs-signup" },
+    { "type": "text", "id": "success", "label": "Success message", "default": "You're in! Check your inbox for your code." },
+    { "type": "text", "id": "note", "label": "Fine print", "default": "One or two emails a month. Unsubscribe anytime." }
+  ],
+  "presets": [{ "name": "Newsletter" }]
+}
+{% endschema %}

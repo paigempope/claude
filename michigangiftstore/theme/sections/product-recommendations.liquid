@@ -1,0 +1,26 @@
+<section class="section" data-recommendations data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ section.settings.limit }}">
+  {%- if recommendations.performed? and recommendations.products_count > 0 -%}
+    <div class="page-width">
+      <div class="section-head">
+        <div>
+          {%- if section.settings.kicker != blank -%}<span class="kicker">{{ section.settings.kicker }}</span>{%- endif -%}
+          <h2>{{ section.settings.heading }}</h2>
+        </div>
+      </div>
+      <div class="scroller scroller--desktop-grid">
+        {%- for product in recommendations.products -%}{% render 'product-card', product: product %}{%- endfor -%}
+      </div>
+    </div>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Product recommendations",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Handwritten kicker", "default": "Michiganders also grabbed" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "More from the Mitten" },
+    { "type": "range", "id": "limit", "label": "Products", "min": 4, "max": 8, "step": 4, "default": 4 }
+  ]
+}
+{% endschema %}

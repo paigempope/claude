@@ -1,0 +1,8 @@
+{
+  "name": "mitten-theme-preview",
+  "private": true,
+  "description": "Renders the Shopify theme locally with mock data (approximation of Shopify Liquid) for design review.",
+  "type": "module",
+  "scripts": { "build": "node render.mjs" },
+  "dependencies": { "liquidjs": "10.21.1" }
+}

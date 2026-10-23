@@ -1,0 +1,7 @@
+{%- comment -%} Params: rating (number 0-5) {%- endcomment -%}
+{%- assign r = rating | default: 5 | round -%}
+<span class="stars" aria-label="{{ rating | default: 5 }} / 5">
+  {%- for i in (1..5) -%}
+    <span{% if i > r %} style="opacity:.25"{% endif %}>{% render 'icon', name: 'star' %}</span>
+  {%- endfor -%}
+</span>

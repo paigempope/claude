@@ -1,0 +1,114 @@
+{
+  "general": {
+    "skip_to_content": "Skip to content",
+    "menu": "Menu",
+    "main_nav": "Main navigation",
+    "close": "Close",
+    "search": "Search",
+    "search_placeholder": "Search Faygo, fudge, cherries…",
+    "account": "Account",
+    "home": "Home",
+    "view_all": "View all",
+    "page": "Page {{ page }}",
+    "tagged_with": "Tagged \"{{ tags }}\"",
+    "opening_soon": "Opening soon",
+    "store_owner": "Store owner? Enter password",
+    "enter": "Enter"
+  },
+  "products": {
+    "add_to_cart": "Add to cart",
+    "choose_options": "Choose options",
+    "sold_out": "Sold out",
+    "unavailable": "Unavailable",
+    "sale": "Sale",
+    "bestseller": "Bestseller",
+    "new": "New",
+    "ships_free": "Ships free",
+    "ships_free_long": "Free shipping on this gift box",
+    "from_price": "From {{ price }}",
+    "made_in": "From {{ place }}",
+    "since": "Since {{ year }}",
+    "reviews": "reviews",
+    "see_inside": "See what's inside",
+    "quantity": "Quantity",
+    "increase": "Increase quantity",
+    "decrease": "Decrease quantity",
+    "view_image": "View image {{ n }}",
+    "ingredients": "Ingredients & allergens",
+    "shipping_returns": "Shipping & our guarantee",
+    "ships_from_michigan": "Ships from Michigan in 1 business day"
+  },
+  "cart": {
+    "title": "Your box",
+    "add": "Add",
+    "added": "Added to your box",
+    "remove": "Remove",
+    "increase": "Increase quantity of {{ title }}",
+    "decrease": "Decrease quantity of {{ title }}",
+    "subtotal": "Subtotal",
+    "checkout": "Check out securely",
+    "taxes_shipping": "Taxes and shipping calculated at checkout.",
+    "empty": "Your box is empty",
+    "empty_sub": "Let's fill it with a little Michigan.",
+    "start_shopping": "Start shopping",
+    "free_shipping_remaining_html": "You're <strong>{{ amount }}</strong> away from free shipping.",
+    "free_shipping_unlocked_html": "🎉 <strong>Free shipping unlocked!</strong>",
+    "gift_message": "Add a handwritten gift note",
+    "gift_message_placeholder": "Happy birthday from home! Love, Mom",
+    "gift_receipt": "This is a gift: leave prices out of the box",
+    "ship_date": "Choose a ship date",
+    "ship_date_note": "Leave blank to ship next business day."
+  },
+  "collections": {
+    "items": "items",
+    "sort_by": "Sort by",
+    "apply": "Apply",
+    "clear": "Clear filters",
+    "empty": "No products match those filters.",
+    "shop_region": "Shop {{ region }}",
+    "kicker": "so, where to start?",
+    "all_title": "All collections"
+  },
+  "bab": {
+    "box_size": "Box size",
+    "items": "{{ count }} items",
+    "total": "Box total",
+    "add": "Add box to cart",
+    "setup": "Pick an items collection and a box product in the theme editor to turn on the box builder."
+  },
+  "contact": {
+    "name": "Name",
+    "email": "Email",
+    "company": "Company",
+    "quantity": "Number of gifts",
+    "budget": "Budget per gift",
+    "date": "In-hand date",
+    "message": "Anything else?"
+  },
+  "newsletter": {
+    "email": "Your email",
+    "notify": "Notify me",
+    "success": "Thanks! We'll be in touch."
+  },
+  "search": {
+    "kicker": "so, what are you hunting for?",
+    "title": "Search the Mitten",
+    "results_count": "{{ count }} results for \"{{ terms }}\"",
+    "no_results": "Nothing yet. Try \"Faygo\", \"fudge\" or \"cherry\"."
+  },
+  "notfound": {
+    "kicker": "well, that's not on the map",
+    "title": "You took a wrong turn at Gaylord",
+    "text": "This page doesn't exist, but the chips, pop and fudge sure do."
+  },
+  "blog": { "kicker": "stories from the Mitten" },
+  "gift_card": {
+    "title": "gift card",
+    "kicker": "a little Michigan, on us",
+    "balance": "Balance",
+    "expired": "This gift card is no longer valid.",
+    "shop": "Start shopping",
+    "apple_wallet": "Add to Apple Wallet"
+  },
+  "onboarding": { "product_title": "Your Michigan classic" }
+}

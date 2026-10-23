@@ -1,0 +1,45 @@
+<section class="page-width section" data-cart-page>
+  <span class="kicker">{{ section.settings.kicker }}</span>
+  <h1 style="font-size:clamp(2.2rem,4.5vw,3.6rem)">{{ 'cart.title' | t }}</h1>
+  {%- if cart.item_count > 0 -%}
+    <div class="cart-page">
+      <div>
+        {% render 'ship-meter' %}
+        {% render 'cart-items' %}
+      </div>
+      <aside class="cart-summary">
+        <form action="{{ routes.cart_url }}" method="post" id="CartForm">
+          {% render 'gift-options', id: 'page' %}
+          <div class="cart-totals" style="margin-top:16px"><span>{{ 'cart.subtotal' | t }}</span><span>{{ cart.total_price | money }}</span></div>
+          {%- for discount in cart.cart_level_discount_applications -%}
+            <p class="stamp stamp--cherry">{{ discount.title }} (−{{ discount.total_allocated_amount | money }})</p>
+          {%- endfor -%}
+          <p class="form-note">{{ 'cart.taxes_shipping' | t }}</p>
+          <button type="submit" name="checkout" class="btn btn--block">{{ 'cart.checkout' | t }}</button>
+          {%- if additional_checkout_buttons -%}<div style="margin-top:12px">{{ content_for_additional_checkout_buttons }}</div>{%- endif -%}
+          <div class="payment-icons">{%- for type in shop.enabled_payment_types -%}{{ type | payment_type_svg_tag }}{%- endfor -%}</div>
+          <ul class="perks" style="margin-top:16px">
+            <li>{% render 'icon', name: 'shield' %} {{ section.settings.guarantee }}</li>
+          </ul>
+        </form>
+      </aside>
+    </div>
+  {%- else -%}
+    <div class="cart-empty">
+      {% render 'michigan-shape' %}
+      <h2>{{ 'cart.empty' | t }}</h2>
+      <p>{{ 'cart.empty_sub' | t }}</p>
+      <a class="btn" href="{{ routes.all_products_collection_url }}">{{ 'cart.start_shopping' | t }}</a>
+    </div>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Cart",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Handwritten kicker", "default": "almost on its way home" },
+    { "type": "text", "id": "guarantee", "label": "Guarantee line", "default": "Arrives damaged or melted? We resend it. Nothing to return." }
+  ]
+}
+{% endschema %}

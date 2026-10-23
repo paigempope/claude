@@ -1,0 +1,4 @@
+{%- comment -%} Great Lakes wave divider. Params: color (css value), flip (bool) {%- endcomment -%}
+<svg class="wave{% if flip %} wave--flip{% endif %}" style="color: {{ color | default: 'var(--navy)' }}" viewBox="0 0 1440 38" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M0 38V18c60 0 60-14 120-14s60 14 120 14 60-14 120-14 60 14 120 14 60-14 120-14 60 14 120 14 60-14 120-14 60 14 120 14 60-14 120-14 60 14 120 14 60-14 120-14 60 14 120 14v20z"/>
+</svg>

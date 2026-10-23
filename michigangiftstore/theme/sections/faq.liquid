@@ -1,0 +1,63 @@
+<section class="section{% if section.settings.paper %} section--paper{% endif %}">
+  <div class="page-width">
+    <div class="section-head section-head--center">
+      {%- if section.settings.kicker != blank -%}<span class="kicker">{{ section.settings.kicker }}</span>{%- endif -%}
+      <h2>{{ section.settings.heading }}</h2>
+    </div>
+    <div class="faq">
+      {%- for block in section.blocks -%}
+        <details {{ block.shopify_attributes }}{% if forloop.first and section.settings.open_first %} open{% endif %}>
+          <summary>{{ block.settings.question }}</summary>
+          <div class="faq__answer rte">{{ block.settings.answer }}</div>
+        </details>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {%- for block in section.blocks -%}
+        { "@type": "Question", "name": {{ block.settings.question | json }}, "acceptedAnswer": { "@type": "Answer", "text": {{ block.settings.answer | strip_html | json }} } }{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    ]
+  }
+</script>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Handwritten kicker", "default": "questions before you send it" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Good questions" },
+    { "type": "checkbox", "id": "open_first", "label": "Open first item", "default": true },
+    { "type": "checkbox", "id": "paper", "label": "Paper background", "default": false }
+  ],
+  "blocks": [
+    {
+      "type": "qa",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "Question" },
+        { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>Answer</p>" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ",
+      "blocks": [
+        { "type": "qa", "settings": { "question": "How fast do you ship?", "answer": "<p>Orders placed by 1 p.m. ET Monday–Friday ship the same or next business day from Michigan. Ground takes 1–6 business days, and Priority and Express are offered at checkout.</p>" } },
+        { "type": "qa", "settings": { "question": "Will chocolate and fudge melt?", "answer": "<p>From May through September, we pack chocolate and fudge with cold packs and ship early in the week so they don't sit in a warehouse over the weekend. If anything arrives melted, send us a photo and we'll replace it.</p>" } },
+        { "type": "qa", "settings": { "question": "Can I include a gift message? Are prices in the box?", "answer": "<p>Yes. Add a note in the cart and we write it on a Michigan postcard by hand. We never put prices or receipts in a gift box.</p>" } },
+        { "type": "qa", "settings": { "question": "Why can't I get Hudsonville, Koegel's or Sanders Bumpy Cake?", "answer": "<p>They need to stay frozen or refrigerated, and we only ship things that arrive tasting right. We stick to shelf-stable Michigan classics.</p>" } },
+        { "type": "qa", "settings": { "question": "Do you ship to Canada or APO addresses?", "answer": "<p>We ship to all 50 states, APO/FPO, and most of Canada. Some items, like products with meat or lard, can't cross the border. Checkout will flag them.</p>" } },
+        { "type": "qa", "settings": { "question": "Do you do corporate or bulk gifts?", "answer": "<p>Yes, for 10 boxes or more. Send one spreadsheet of addresses, add your logo card, and get volume pricing. <a href=\"/pages/corporate-gifts\">Get a quote</a>.</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

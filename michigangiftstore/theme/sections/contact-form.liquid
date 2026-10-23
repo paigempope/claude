@@ -1,0 +1,65 @@
+{%- comment -%} Contact / corporate quote form (Shopify contact form; submissions arrive in the store email). {%- endcomment -%}
+<section class="section">
+  <div class="page-width story">
+    <div>
+      {%- if section.settings.kicker != blank -%}<span class="kicker">{{ section.settings.kicker }}</span>{%- endif -%}
+      <h1 style="font-size:clamp(2.2rem,4.5vw,3.8rem)">{{ section.settings.heading }}</h1>
+      <div class="rte lede" style="max-width:none">{{ section.settings.text }}</div>
+      {%- if section.settings.bullets != blank -%}
+        <ul class="contents" style="margin-top:20px">
+          {%- assign bl = section.settings.bullets | split: '|' -%}
+          {%- for b in bl -%}<li><span>{{ b | strip }}</span></li>{%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+    <div class="quiz">
+      {%- assign contact_id = 'ContactForm-' | append: section.id -%}
+      {%- form 'contact', class: 'contact-form', id: contact_id -%}
+        {%- if form.posted_successfully? -%}
+          <p class="form-success">{{ section.settings.success }}</p>
+        {%- elsif form.errors -%}
+          <div class="form-error">{{ form.errors | default_errors }}</div>
+        {%- endif -%}
+        <input type="hidden" name="contact[Form]" value="{{ section.settings.form_name }}">
+        <div class="two">
+          <div><label class="label" for="cf-name">{{ 'contact.name' | t }}</label><input class="input" id="cf-name" name="contact[name]" autocomplete="name" required></div>
+          <div><label class="label" for="cf-email">{{ 'contact.email' | t }}</label><input class="input" id="cf-email" type="email" name="contact[email]" autocomplete="email" required></div>
+        </div>
+        {%- if section.settings.corporate -%}
+          <div class="two">
+            <div><label class="label" for="cf-company">{{ 'contact.company' | t }}</label><input class="input" id="cf-company" name="contact[Company]" autocomplete="organization"></div>
+            <div>
+              <label class="label" for="cf-qty">{{ 'contact.quantity' | t }}</label>
+              <select class="input" id="cf-qty" name="contact[Number of gifts]">
+                <option>10–24</option><option>25–49</option><option>50–99</option><option>100–249</option><option>250+</option>
+              </select>
+            </div>
+          </div>
+          <div class="two">
+            <div><label class="label" for="cf-budget">{{ 'contact.budget' | t }}</label><input class="input" id="cf-budget" name="contact[Budget per gift]" placeholder="$50"></div>
+            <div><label class="label" for="cf-date">{{ 'contact.date' | t }}</label><input class="input" id="cf-date" type="date" name="contact[In-hand date]"></div>
+          </div>
+        {%- endif -%}
+        <div><label class="label" for="cf-body">{{ 'contact.message' | t }}</label><textarea class="input" id="cf-body" name="contact[body]"></textarea></div>
+        <button type="submit" class="btn">{{ section.settings.button }}</button>
+      {%- endform -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Contact / quote form",
+  "settings": [
+    { "type": "checkbox", "id": "corporate", "label": "Show corporate fields", "default": true },
+    { "type": "text", "id": "form_name", "label": "Form name (internal)", "default": "Corporate quote" },
+    { "type": "text", "id": "kicker", "label": "Handwritten kicker", "default": "gift like a Michigander" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Corporate & bulk gifts" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Thank clients, welcome new hires and win over the Michigan transplants on your team. We handle 10 to 1,000+ boxes.</p>" },
+    { "type": "text", "id": "bullets", "label": "Bullets (separate with |)", "default": "One spreadsheet for every address. We ship to each one | Your logo on the card, free on 25+ boxes | Volume pricing from 25 boxes | Invoice or card, with a reply within one business day" },
+    { "type": "text", "id": "button", "label": "Button", "default": "Get my quote" },
+    { "type": "text", "id": "success", "label": "Success message", "default": "Thanks! A real person in Michigan will reply within one business day." }
+  ],
+  "presets": [{ "name": "Contact / quote form" }]
+}
+{% endschema %}

@@ -1,0 +1,16 @@
+<style>
+  :root {
+    --navy: {{ settings.color_navy }};
+    --lake: {{ settings.color_lake }};
+    --cherry: {{ settings.color_cherry }};
+    --pine: {{ settings.color_pine }};
+    --sunset: {{ settings.color_sunset }};
+    --birch: {{ settings.color_birch }};
+    --paper: {{ settings.color_paper }};
+    --ink: {{ settings.color_ink }};
+    --ink-soft: {{ settings.color_ink | color_mix: settings.color_birch, 70 }};
+    --line: {{ settings.color_ink | color_mix: settings.color_birch, 14 }};
+    --cherry-dark: {{ settings.color_cherry | color_darken: 8 }};
+    --logo-width: {{ settings.logo_width }}px;
+  }
+</style>

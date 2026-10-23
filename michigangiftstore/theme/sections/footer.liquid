@@ -1,0 +1,65 @@
+{% render 'wave', color: 'var(--navy)' %}
+<footer class="footer">
+  <div class="page-width">
+    {%- if settings.sister_brand_url != blank -%}
+      <a class="footer__sister" href="{{ settings.sister_brand_url }}" rel="noopener">
+        <span class="stamp stamp--solid">Sister shop</span>
+        <span><b>{{ settings.sister_brand_name }}</b>{{ section.settings.sister_text }}</span>
+        <span aria-hidden="true" style="margin-left:auto;font-size:1.6rem">→</span>
+      </a>
+    {%- endif -%}
+
+    <div class="footer__top">
+      <div class="footer__brand">
+        {% render 'wordmark' %}
+        <p>{{ section.settings.about }}</p>
+        <div class="socials">
+          {%- if settings.social_instagram != blank -%}<a href="{{ settings.social_instagram }}" aria-label="Instagram" rel="noopener">{% render 'icon', name: 'instagram' %}</a>{%- endif -%}
+          {%- if settings.social_facebook != blank -%}<a href="{{ settings.social_facebook }}" aria-label="Facebook" rel="noopener">{% render 'icon', name: 'facebook' %}</a>{%- endif -%}
+          {%- if settings.social_tiktok != blank -%}<a href="{{ settings.social_tiktok }}" aria-label="TikTok" rel="noopener">{% render 'icon', name: 'tiktok' %}</a>{%- endif -%}
+          {%- if settings.social_pinterest != blank -%}<a href="{{ settings.social_pinterest }}" aria-label="Pinterest" rel="noopener">{% render 'icon', name: 'pinterest' %}</a>{%- endif -%}
+        </div>
+      </div>
+      {%- for block in section.blocks -%}
+        <div {{ block.shopify_attributes }}>
+          <h3>{{ block.settings.heading | default: linklists[block.settings.menu].title }}</h3>
+          <ul>
+            {%- for link in linklists[block.settings.menu].links -%}
+              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {%- endfor -%}
+          </ul>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    <div class="footer__bottom">
+      <span>© {{ 'now' | date: '%Y' }} {{ shop.name }} · {{ section.settings.legal }}</span>
+      <span>{{ section.settings.made_in }}</span>
+    </div>
+  </div>
+  <div class="footer__giant" aria-hidden="true">{{ section.settings.giant_text }}</div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "max_blocks": 3,
+  "settings": [
+    { "type": "textarea", "id": "about", "label": "About text", "default": "Michigan-only snacks, pop and sweets, hand-picked from the stores you grew up with and packed by Michiganders for wherever you landed." },
+    { "type": "text", "id": "sister_text", "label": "Sister brand blurb", "default": "Coneys, Motown and the 313: gifts for Detroiters, from our sister shop." },
+    { "type": "text", "id": "legal", "label": "Legal line", "default": "Not affiliated with the brands we carry. All trademarks belong to their owners." },
+    { "type": "text", "id": "made_in", "label": "Bottom-right text", "default": "Packed with love in the Mitten ✋" },
+    { "type": "text", "id": "giant_text", "label": "Oversized background text", "default": "The Mitten." }
+  ],
+  "blocks": [
+    {
+      "type": "menu",
+      "name": "Menu column",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading" },
+        { "type": "link_list", "id": "menu", "label": "Menu", "default": "footer" }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,16 @@
+{
+  "sections": {
+    "faq": { "type": "faq", "blocks": {
+      "f1": { "type": "qa", "settings": { "question": "How fast do you ship?", "answer": "<p>Orders placed by 1 p.m. ET Monday–Friday ship the same or next business day from Michigan.</p>" } },
+      "f2": { "type": "qa", "settings": { "question": "Will chocolate and fudge melt?", "answer": "<p>From May through September, chocolate and fudge ship with cold packs, early in the week.</p>" } },
+      "f3": { "type": "qa", "settings": { "question": "What if something arrives damaged?", "answer": "<p>Send a photo within 7 days and we'll replace or refund it. Nothing to send back.</p>" } }
+    }, "block_order": ["f1", "f2", "f3"], "settings": { "kicker": "questions before you send it", "heading": "Shipping & FAQ" } },
+    "deadlines": { "type": "shipping-deadlines", "blocks": {
+      "d1": { "type": "row", "settings": { "service": "Ground", "note": "Free on gift boxes & orders $75+", "date": "2026-12-11" } },
+      "d2": { "type": "row", "settings": { "service": "Priority", "note": "2–3 business days", "date": "2026-12-15" } },
+      "d3": { "type": "row", "settings": { "service": "Express", "note": "1–2 business days", "date": "2026-12-17" } }
+    }, "block_order": ["d1", "d2", "d3"], "settings": {} },
+    "cant": { "type": "cant-ship", "settings": {} }
+  },
+  "order": ["faq", "deadlines", "cant"]
+}

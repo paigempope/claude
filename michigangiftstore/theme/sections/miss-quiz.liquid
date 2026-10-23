@@ -1,0 +1,66 @@
+{%- comment -%}
+  "What do they miss most?" gift finder: pick up to 3 cravings and get
+  recommendations. Each option maps to a collection; the result routes to the best
+  match (one pick) or to a box (2+ picks).
+{%- endcomment -%}
+<section class="section section--tight" data-quiz>
+  <div class="page-width">
+    <div class="quiz">
+      {%- if section.settings.kicker != blank -%}<span class="kicker">{{ section.settings.kicker }}</span>{%- endif -%}
+      <h2 style="margin-bottom:.2em">{{ section.settings.heading }}</h2>
+      <p class="lede">{{ section.settings.subheading }}</p>
+      <div class="quiz__options">
+        {%- for block in section.blocks -%}
+          <button type="button" class="quiz__option" aria-pressed="false" data-quiz-option data-url="{{ block.settings.collection.url | default: routes.all_products_collection_url }}" {{ block.shopify_attributes }}>
+            <span aria-hidden="true">{{ block.settings.emoji }}</span>{{ block.settings.label }}
+          </button>
+        {%- endfor -%}
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
+        <a class="btn" href="{{ routes.all_products_collection_url }}" data-quiz-go data-box-url="{{ section.settings.box_link | default: routes.all_products_collection_url }}" aria-disabled="true">{{ section.settings.button }}</a>
+        <span class="form-note" style="margin:0">{{ section.settings.note }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Gift finder quiz",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Handwritten kicker", "default": "so, who's it for?" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What do they miss most?" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Pick up to three and we'll point you to the right box." },
+    { "type": "text", "id": "button", "label": "Button", "default": "Show me gifts" },
+    { "type": "url", "id": "box_link", "label": "Link when 2+ picked", "info": "Usually your Build a Box page." },
+    { "type": "text", "id": "note", "label": "Note", "default": "Takes 10 seconds. No email needed." }
+  ],
+  "max_blocks": 8,
+  "blocks": [
+    {
+      "type": "option",
+      "name": "Option",
+      "settings": [
+        { "type": "text", "id": "emoji", "label": "Emoji", "default": "🥔" },
+        { "type": "text", "id": "label", "label": "Label", "default": "Chips" },
+        { "type": "collection", "id": "collection", "label": "Collection" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gift finder quiz",
+      "blocks": [
+        { "type": "option", "settings": { "emoji": "🥔", "label": "Better Made chips" } },
+        { "type": "option", "settings": { "emoji": "🥤", "label": "Faygo & Vernors" } },
+        { "type": "option", "settings": { "emoji": "🍫", "label": "Fudge & Sanders" } },
+        { "type": "option", "settings": { "emoji": "🍒", "label": "Up North cherries" } },
+        { "type": "option", "settings": { "emoji": "🥜", "label": "Germack nuts" } },
+        { "type": "option", "settings": { "emoji": "🌲", "label": "The U.P." } },
+        { "type": "option", "settings": { "emoji": "☕", "label": "Coffee & breakfast" } },
+        { "type": "option", "settings": { "emoji": "🌶️", "label": "Hot sauce & pantry" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

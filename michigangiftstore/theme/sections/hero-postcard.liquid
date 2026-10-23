@@ -1,0 +1,112 @@
+{%- comment -%}
+  "Greetings from Michigan" postcard hero. The big-letter postcard and stamp are
+  pure CSS/SVG so the hero looks finished even before photography is ready.
+{%- endcomment -%}
+<section class="hero" id="hero-{{ section.id }}">
+  <div class="page-width hero__grid">
+    <div class="hero__copy">
+      {%- if section.settings.kicker != blank -%}<span class="kicker">{{ section.settings.kicker }}</span>{%- endif -%}
+      <h1 class="hero__title">{{ section.settings.heading }}</h1>
+      <p class="lede">{{ section.settings.subheading }}</p>
+      <div class="hero__ctas">
+        {%- if section.settings.cta_label != blank -%}
+          <a class="btn" href="{{ section.settings.cta_link }}">{% render 'icon', name: 'gift' %} {{ section.settings.cta_label }}</a>
+        {%- endif -%}
+        {%- if section.settings.cta2_label != blank -%}
+          <a class="btn btn--secondary" href="{{ section.settings.cta2_link }}">{{ section.settings.cta2_label }}</a>
+        {%- endif -%}
+        {%- if section.settings.cta3_label != blank -%}
+          <a class="link-arrow" href="{{ section.settings.cta3_link }}" style="align-self:center">{{ section.settings.cta3_label }}</a>
+        {%- endif -%}
+      </div>
+      {%- if section.settings.bullets != blank -%}
+        <ul class="hero__bullets">
+          {%- assign bl = section.settings.bullets | split: '|' -%}
+          {%- for b in bl -%}<li>{{ b | strip }}</li>{%- endfor -%}
+        </ul>
+      {%- endif -%}
+      <div class="hero__proof">
+        {%- if section.settings.rating != blank -%}
+          <span>{% render 'stars', rating: 5 %}</span>
+          <span><strong>{{ section.settings.rating }}</strong> {{ section.settings.rating_label }}</span>
+        {%- endif -%}
+        {%- if section.settings.proof_2 != blank -%}<span class="stamp">{{ section.settings.proof_2 }}</span>{%- endif -%}
+      </div>
+    </div>
+
+    <div class="hero__art" style="position:relative">
+      <div class="postcard">
+        <div class="postcard__media">
+          {%- if section.settings.image -%}
+            {{ section.settings.image | image_url: width: 1400 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '600,900,1200,1400', sizes: '(min-width: 990px) 46vw, 92vw', alt: section.settings.image.alt | default: '' }}
+          {%- else -%}
+            {%- comment -%} Illustrated fallback: lake horizon, dunes, a lighthouse. {%- endcomment -%}
+            <svg viewBox="0 0 400 310" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%" aria-hidden="true">
+              <defs><linearGradient id="sky-{{ section.id }}" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#F6C46B"/><stop offset=".55" stop-color="#F3A88B"/><stop offset="1" stop-color="#9CC3D8"/></linearGradient></defs>
+              <rect width="400" height="310" fill="url(#sky-{{ section.id }})"/>
+              <circle cx="300" cy="150" r="46" fill="#FBE3A3" opacity=".9"/>
+              <path d="M0 170h400v140H0z" fill="#2F6E96"/>
+              <path d="M0 180c40 6 80-4 120 2s80 8 120 0 100-6 160 2v6c-60-8-110-2-160 4s-80-2-120-4-80 6-120 0z" fill="#fff" opacity=".25"/>
+              <path d="M0 250c60-40 140-46 210-30s120 40 190 20v70H0z" fill="#E8D9AA"/>
+              <path d="M0 275c80-24 170-20 250-4s110 12 150 6v33H0z" fill="#D9C48C"/>
+              <g transform="translate(78 128)"><path d="M10 0h16l6 112H4z" fill="#FBF8F1"/><path d="M8 28h20l1 14H7zM6 66h24l1 14H5z" fill="#B8352B"/><path d="M6 -14h24v14H6z" fill="#1F2D5C"/><path d="M2 -14 18 -28l16 14z" fill="#B8352B"/><circle cx="18" cy="-7" r="4" fill="#FBE3A3"/></g>
+            </svg>
+          {%- endif -%}
+          <div class="postcard__greeting">
+            <small>{{ section.settings.greeting_small }}</small>
+            <span class="postcard__big">{{ section.settings.greeting_big }}</span>
+          </div>
+        </div>
+        <div class="postcard__caption">
+          <span>{{ section.settings.caption_left }}</span>
+          <span>{{ section.settings.caption_right }}</span>
+        </div>
+        <div class="postcard__stamp" aria-hidden="true">
+          <div class="postcard__stamp-inner">
+            <span>USA · 1837</span>
+            {% render 'michigan-shape' %}
+            <span>MI · 26¢</span>
+          </div>
+        </div>
+        <div class="postcard__postmark" aria-hidden="true">{{ section.settings.postmark }}</div>
+      </div>
+
+      {%- if section.settings.float_a != blank -%}
+        <div class="hero__float hero__float--a"><span class="dot">📦</span><span>{{ section.settings.float_a }}</span></div>
+      {%- endif -%}
+      {%- if section.settings.float_b != blank -%}
+        <div class="hero__float hero__float--b"><span class="dot">❤️</span><span>{{ section.settings.float_b }}</span></div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero: postcard",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Handwritten kicker", "default": "homesick? we get it." },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Michigan, <em>shipped home.</em>", "info": "Italic text renders in cherry red." },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Better Made, Faygo, Vernors, Sanders, Mackinac fudge, Up North cherries. The grocery-aisle classics you can't get where you live now, hand-packed in Michigan and shipped wherever you ended up." },
+    { "type": "text", "id": "cta_label", "label": "Primary button", "default": "Shop gift boxes" },
+    { "type": "url", "id": "cta_link", "label": "Primary link" },
+    { "type": "text", "id": "cta2_label", "label": "Secondary button", "default": "Build your own box" },
+    { "type": "url", "id": "cta2_link", "label": "Secondary link" },
+    { "type": "text", "id": "cta3_label", "label": "Text link", "default": "Corporate gifts" },
+    { "type": "url", "id": "cta3_link", "label": "Text link URL" },
+    { "type": "text", "id": "bullets", "label": "Reassurance bullets (separate with |)", "default": "Free handwritten gift note | Gift boxes ship free | Arrives right or we resend" },
+    { "type": "text", "id": "rating", "label": "Rating proof (bold)", "info": "e.g. 4.9/5. Only show real numbers from your reviews app; leave blank until you have them." },
+    { "type": "text", "id": "rating_label", "label": "Rating proof label", "default": "from Michiganders in 50 states" },
+    { "type": "text", "id": "proof_2", "label": "Stamp text", "default": "Packed in Michigan" },
+    { "type": "image_picker", "id": "image", "label": "Postcard photo", "info": "A lake, dune or lighthouse photo. Leave blank to use the illustration." },
+    { "type": "text", "id": "greeting_small", "label": "Postcard small line", "default": "Greetings from" },
+    { "type": "text", "id": "greeting_big", "label": "Postcard big word", "default": "MICHIGAN" },
+    { "type": "text", "id": "caption_left", "label": "Caption left", "default": "The Great Lakes State" },
+    { "type": "text", "id": "caption_right", "label": "Caption right", "default": "Wish you were here" },
+    { "type": "text", "id": "postmark", "label": "Postmark text", "default": "SHIPPED · FROM · THE MITTEN" },
+    { "type": "text", "id": "float_a", "label": "Floating card 1", "default": "Ships next business day" },
+    { "type": "text", "id": "float_b", "label": "Floating card 2", "default": "Gift note, handwritten" }
+  ],
+  "presets": [{ "name": "Hero: postcard" }]
+}
+{% endschema %}

@@ -1,0 +1,80 @@
+{%- comment -%}
+  Product card.
+  Params: product, lazy (bool, default true)
+  Reads optional metafields:
+    custom.region       (single line) e.g. "Up North"
+    custom.origin_city  (single line) e.g. "Battle Creek, MI"
+    reviews.rating / reviews.rating_count (standard review app metafields)
+  Falls back to a "region:Up North" tag when custom.region is empty.
+{%- endcomment -%}
+{%- liquid
+  assign region = product.metafields.custom.region.value
+  if region == blank
+    for tag in product.tags
+      if tag contains 'region:'
+        assign region = tag | remove: 'region:' | strip
+        break
+      endif
+    endfor
+  endif
+  assign origin = product.metafields.custom.origin_city.value
+  assign v = product.selected_or_first_available_variant
+  assign loading = 'lazy'
+  if lazy == false
+    assign loading = 'eager'
+  endif
+-%}
+<article class="card reveal">
+  <div class="card__media">
+    {%- if product.available == false -%}
+      <span class="badge badge--soldout">{{ 'products.sold_out' | t }}</span>
+    {%- elsif v.compare_at_price > v.price -%}
+      <span class="badge badge--sale">{{ 'products.sale' | t }}</span>
+    {%- elsif product.tags contains 'ships-free' -%}
+      <span class="badge badge--free">{{ 'products.ships_free' | t }}</span>
+    {%- elsif product.tags contains 'bestseller' -%}
+      <span class="badge">{{ 'products.bestseller' | t }}</span>
+    {%- elsif product.tags contains 'new' -%}
+      <span class="badge">{{ 'products.new' | t }}</span>
+    {%- endif -%}
+
+    {%- if product.featured_media -%}
+      {{ product.featured_media | image_url: width: 720 | image_tag: loading: loading, widths: '300,450,600,720', sizes: '(min-width: 1100px) 25vw, (min-width: 750px) 33vw, 50vw', alt: product.featured_media.alt | default: product.title }}
+      {%- if product.media[1] -%}
+        {{ product.media[1] | image_url: width: 720 | image_tag: loading: 'lazy', widths: '300,450,600,720', sizes: '(min-width: 1100px) 25vw, (min-width: 750px) 33vw, 50vw', alt: '' }}
+      {%- endif -%}
+    {%- else -%}
+      {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- endif -%}
+  </div>
+
+  <div class="card__body">
+    {%- if settings.card_show_region and region != blank -%}
+      <span class="card__region">{{ region }}</span>
+    {%- endif -%}
+    <h3 class="card__title"><a href="{{ product.url }}">{{ product.title }}</a></h3>
+    {%- if origin != blank -%}
+      <p class="card__origin">{{ 'products.made_in' | t: place: origin }}</p>
+    {%- endif -%}
+    {%- if settings.card_show_rating and product.metafields.reviews.rating.value != blank -%}
+      <div class="card__rating">
+        {% render 'stars', rating: product.metafields.reviews.rating.value.rating %}
+        <span>({{ product.metafields.reviews.rating_count | default: 0 }})</span>
+      </div>
+    {%- endif -%}
+    <div class="card__foot">
+      {% render 'price', product: product %}
+      {%- if settings.card_quick_add and product.available -%}
+        {%- if product.has_only_default_variant -%}
+          <button type="button" class="card__add" data-quick-add="{{ v.id }}" aria-label="{{ 'products.add_to_cart' | t }}: {{ product.title | escape }}">
+            {% render 'icon', name: 'plus' %}
+          </button>
+        {%- else -%}
+          <a class="card__add" href="{{ product.url }}" aria-label="{{ 'products.choose_options' | t }}: {{ product.title | escape }}">
+            {% render 'icon', name: 'plus' %}
+          </a>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+  </div>
+</article>

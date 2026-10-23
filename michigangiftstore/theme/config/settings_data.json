@@ -1,0 +1,29 @@
+{
+  "current": "Default",
+  "presets": {
+    "Default": {
+      "logo_width": 170,
+      "sister_brand_name": "Detroit Gift Store",
+      "sister_brand_url": "https://detroitgiftstore.com",
+      "sister_brand_teaser": "Shopping for a Detroiter? Visit our sister shop",
+      "tagline": "Michigan, shipped home.",
+      "color_navy": "#1F2D5C",
+      "color_lake": "#2F6E96",
+      "color_cherry": "#B8352B",
+      "color_pine": "#1D6A47",
+      "color_sunset": "#E9C450",
+      "color_birch": "#F3EEE2",
+      "color_paper": "#FBF8F1",
+      "color_ink": "#1F2D5C",
+      "free_shipping_threshold": 75,
+      "cart_gift_message": true,
+      "cart_ship_date": true,
+      "deadline_enable": true,
+      "deadline_date": "2026-12-11",
+      "deadline_label": "Order by Dec 11 for Christmas (ground)",
+      "card_show_region": true,
+      "card_quick_add": true,
+      "card_show_rating": true
+    }
+  }
+}

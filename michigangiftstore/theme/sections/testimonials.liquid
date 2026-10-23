@@ -1,0 +1,59 @@
+{%- comment -%}
+  Hand-picked reviews. Use real customer reviews only (with permission); the FTC's
+  2024 rule bans fake or AI-written reviews. A reviews app block can replace this later.
+{%- endcomment -%}
+<section class="section section--{{ section.settings.scheme }}">
+  <div class="page-width">
+    <div class="section-head">
+      <div>
+        {%- if section.settings.kicker != blank -%}<span class="kicker">{{ section.settings.kicker }}</span>{%- endif -%}
+        <h2>{{ section.settings.heading }}</h2>
+      </div>
+      {%- if section.settings.score != blank -%}
+        <div class="reviews-summary">
+          <span class="reviews-summary__score">{{ section.settings.score }}</span>
+          <span>{% render 'stars', rating: 5 %}<br><span style="font-size:.9rem">{{ section.settings.score_label }}</span></span>
+        </div>
+      {%- endif -%}
+    </div>
+    <div class="reviews">
+      {%- for block in section.blocks -%}
+        <figure class="review reveal" {{ block.shopify_attributes }}>
+          {% render 'stars', rating: block.settings.rating %}
+          <blockquote>“{{ block.settings.quote }}”</blockquote>
+          <figcaption class="review__who">
+            <span class="review__avatar">{{ block.settings.name | slice: 0 }}</span>
+            <span><strong>{{ block.settings.name }}</strong><br><span class="review__from">{{ block.settings.from }}</span></span>
+          </figcaption>
+        </figure>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "settings": [
+    { "type": "select", "id": "scheme", "label": "Color scheme", "options": [{ "value": "navy", "label": "Navy" }, { "value": "paper", "label": "Paper" }, { "value": "pine", "label": "Pine" }], "default": "pine" },
+    { "type": "text", "id": "kicker", "label": "Handwritten kicker", "default": "so, did it taste like home?" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Letters from homesick Michiganders" },
+    { "type": "text", "id": "score", "label": "Average score", "info": "Only show your real average." },
+    { "type": "text", "id": "score_label", "label": "Score label", "default": "average rating" }
+  ],
+  "max_blocks": 6,
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        { "type": "range", "id": "rating", "label": "Stars", "min": 1, "max": 5, "step": 1, "default": 5 },
+        { "type": "textarea", "id": "quote", "label": "Quote", "default": "Replace with a real customer quote." },
+        { "type": "text", "id": "name", "label": "Name", "default": "Customer name" },
+        { "type": "text", "id": "from", "label": "From → now", "default": "Grand Rapids → Phoenix" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Testimonials", "blocks": [{ "type": "review" }, { "type": "review" }, { "type": "review" }] }]
+}
+{% endschema %}

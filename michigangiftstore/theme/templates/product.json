@@ -1,0 +1,23 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "origin": { "type": "origin", "settings": {} },
+        "title": { "type": "title", "settings": {} },
+        "price": { "type": "price", "settings": {} },
+        "why": { "type": "why_miss", "settings": {} },
+        "buy": { "type": "buy_buttons", "settings": { "dynamic_checkout": true, "cutoff_hour": 13 } },
+        "perks": { "type": "perks", "settings": {} },
+        "contents": { "type": "contents", "settings": { "heading": "What's inside" } },
+        "desc": { "type": "description", "settings": {} },
+        "addons": { "type": "complementary", "settings": { "heading": "Make it a bigger hug", "limit": 3 } },
+        "acc": { "type": "accordion", "settings": {} }
+      },
+      "block_order": ["origin", "title", "price", "why", "buy", "perks", "contents", "desc", "addons", "acc"],
+      "settings": {}
+    },
+    "recs": { "type": "product-recommendations", "settings": {} }
+  },
+  "order": ["main", "recs"]
+}

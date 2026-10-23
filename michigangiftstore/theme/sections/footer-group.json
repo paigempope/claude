@@ -1,0 +1,17 @@
+{
+  "type": "footer",
+  "name": "Footer group",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "shop": { "type": "menu", "settings": { "heading": "Shop", "menu": "footer-shop" } },
+        "help": { "type": "menu", "settings": { "heading": "Help", "menu": "footer-help" } },
+        "about": { "type": "menu", "settings": { "heading": "The Mitten", "menu": "footer" } }
+      },
+      "block_order": ["shop", "help", "about"],
+      "settings": {}
+    }
+  },
+  "order": ["footer"]
+}

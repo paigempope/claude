@@ -1,0 +1,32 @@
+<article class="text-page">
+  <nav class="breadcrumbs"><a href="{{ blog.url }}">{{ blog.title }}</a></nav>
+  <h1 style="font-size:clamp(2.2rem,4.5vw,3.6rem)">{{ article.title }}</h1>
+  <p class="mono" style="color:var(--ink-soft);font-size:.85rem">{{ article.published_at | date: '%B %-d, %Y' }}{% if article.author %} · {{ article.author }}{% endif %}</p>
+  {%- if article.image -%}<div style="margin:24px 0">{{ article.image | image_url: width: 1400 | image_tag: loading: 'eager', widths: '600,900,1400', sizes: '(min-width: 800px) 760px, 100vw', alt: article.image.alt | default: article.title, style: 'border-radius:18px' }}</div>{%- endif -%}
+  <div class="rte" style="font-size:1.1rem">{{ article.content }}</div>
+  {%- if section.settings.cta_label != blank -%}
+    <div class="why-miss" style="margin-top:40px"><p>{{ section.settings.cta_text }}</p><p style="margin-top:14px"><a class="btn btn--light" href="{{ section.settings.cta_link }}">{{ section.settings.cta_label }}</a></p></div>
+  {%- endif -%}
+</article>
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": {{ article.title | json }},
+    "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
+    "author": { "@type": "Organization", "name": {{ shop.name | json }} }
+    {%- if article.image -%},"image": {{ article.image | image_url: width: 1200 | prepend: 'https:' | json }}{%- endif -%}
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Article",
+  "settings": [
+    { "type": "text", "id": "cta_text", "label": "End-of-article pitch", "default": "Missing it already? We ship Michigan's classics to all 50 states." },
+    { "type": "text", "id": "cta_label", "label": "Button", "default": "Shop gift boxes" },
+    { "type": "url", "id": "cta_link", "label": "Button link" }
+  ]
+}
+{% endschema %}

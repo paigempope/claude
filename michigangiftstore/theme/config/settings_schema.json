@@ -1,0 +1,72 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Mitten",
+    "theme_version": "1.0.0",
+    "theme_author": "Michigan Gift Store",
+    "theme_documentation_url": "https://michigangiftstore.com",
+    "theme_support_url": "https://michigangiftstore.com/pages/contact"
+  },
+  {
+    "name": "Brand",
+    "settings": [
+      { "type": "image_picker", "id": "logo", "label": "Logo image (optional)", "info": "Leave empty to use the custom wordmark." },
+      { "type": "range", "id": "logo_width", "label": "Logo width", "min": 80, "max": 260, "step": 10, "unit": "px", "default": 170 },
+      { "type": "image_picker", "id": "favicon", "label": "Favicon", "info": "32 x 32px .png" },
+      { "type": "text", "id": "sister_brand_name", "label": "Sister brand name", "default": "Detroit Gift Store" },
+      { "type": "url", "id": "sister_brand_url", "label": "Sister brand link" },
+      { "type": "text", "id": "sister_brand_teaser", "label": "Sister brand teaser", "default": "Shopping for a Detroiter? Visit our sister shop" },
+      { "type": "text", "id": "tagline", "label": "Tagline", "default": "Michigan, shipped home." }
+    ]
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      { "type": "header", "content": "Palette" },
+      { "type": "color", "id": "color_navy", "label": "Great Lakes navy", "default": "#1F2D5C" },
+      { "type": "color", "id": "color_lake", "label": "Lake blue", "default": "#2F6E96" },
+      { "type": "color", "id": "color_cherry", "label": "Cherry red (primary action)", "default": "#B8352B" },
+      { "type": "color", "id": "color_pine", "label": "Pine green", "default": "#1D6A47" },
+      { "type": "color", "id": "color_sunset", "label": "Sunset amber", "default": "#E9C450" },
+      { "type": "color", "id": "color_birch", "label": "Birch (page background)", "default": "#F3EEE2" },
+      { "type": "color", "id": "color_paper", "label": "Paper (cards)", "default": "#FBF8F1" },
+      { "type": "color", "id": "color_ink", "label": "Ink (text)", "default": "#1F2D5C" }
+    ]
+  },
+  {
+    "name": "Shipping & gifting",
+    "settings": [
+      { "type": "number", "id": "free_shipping_threshold", "label": "Free shipping threshold (store currency)", "default": 75, "info": "Drives the progress bar in the cart. Match this to your Shopify shipping rates." },
+      { "type": "checkbox", "id": "cart_gift_message", "label": "Show gift message field in cart", "default": true },
+      { "type": "checkbox", "id": "cart_ship_date", "label": "Show 'ship on' date picker in cart", "default": true },
+      { "type": "text", "id": "melt_notice", "label": "Warm-weather chocolate notice", "default": "Chocolate & fudge ship with ice packs May–September." },
+      { "type": "header", "content": "Holiday deadline" },
+      { "type": "checkbox", "id": "deadline_enable", "label": "Show holiday ship-by countdown", "default": true },
+      { "type": "text", "id": "deadline_date", "label": "Deadline (YYYY-MM-DD)", "default": "2026-12-11" },
+      { "type": "text", "id": "deadline_label", "label": "Deadline label", "default": "Order by Dec 11 for Christmas (ground)" }
+    ]
+  },
+  {
+    "name": "Product cards",
+    "settings": [
+      { "type": "checkbox", "id": "card_show_region", "label": "Show region tag (from product tag 'region:...')", "default": true },
+      { "type": "checkbox", "id": "card_quick_add", "label": "Enable quick add", "default": true },
+      { "type": "checkbox", "id": "card_show_rating", "label": "Show rating stars (reads reviews.rating metafield)", "default": true }
+    ]
+  },
+  {
+    "name": "Social",
+    "settings": [
+      { "type": "url", "id": "social_instagram", "label": "Instagram" },
+      { "type": "url", "id": "social_facebook", "label": "Facebook" },
+      { "type": "url", "id": "social_tiktok", "label": "TikTok" },
+      { "type": "url", "id": "social_pinterest", "label": "Pinterest" }
+    ]
+  },
+  {
+    "name": "Social sharing",
+    "settings": [
+      { "type": "image_picker", "id": "share_image", "label": "Default share image", "info": "1200 x 628px recommended" }
+    ]
+  }
+]

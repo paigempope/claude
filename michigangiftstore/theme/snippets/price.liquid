@@ -1,0 +1,12 @@
+{%- comment -%} Params: product, variant (optional) {%- endcomment -%}
+{%- assign v = variant | default: product.selected_or_first_available_variant -%}
+{%- assign on_sale = false -%}
+{%- if v.compare_at_price > v.price -%}{%- assign on_sale = true -%}{%- endif -%}
+<span class="price{% if on_sale %} price--sale{% endif %}" data-price>
+  {%- if product.price_varies and variant == blank -%}
+    {{ 'products.from_price' | t: price: product.price_min | money }}
+  {%- else -%}
+    {{ v.price | money }}
+  {%- endif -%}
+  {%- if on_sale -%}<s>{{ v.compare_at_price | money }}</s>{%- endif -%}
+</span>

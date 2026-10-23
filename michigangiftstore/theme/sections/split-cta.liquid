@@ -1,0 +1,43 @@
+<section class="section section--tight">
+  <div class="page-width split-cta">
+    {%- for block in section.blocks -%}
+      <a class="split-cta__card{% if forloop.index == 2 %} split-cta__card--pine{% endif %} reveal" href="{{ block.settings.link }}" {{ block.shopify_attributes }}>
+        {%- if block.settings.image -%}{{ block.settings.image | image_url: width: 1000 | image_tag: loading: 'lazy', widths: '500,800,1000', sizes: '(min-width: 900px) 50vw, 100vw', alt: '' }}{%- endif -%}
+        <span class="stamp" style="align-self:flex-start;color:var(--sunset);background:transparent">{{ block.settings.eyebrow }}</span>
+        <h3 style="margin-top:12px">{{ block.settings.title }}</h3>
+        <p style="max-width:40ch;opacity:.9">{{ block.settings.text }}</p>
+        <span class="btn btn--light" style="align-self:flex-start">{{ block.settings.button }}</span>
+      </a>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Split CTA",
+  "max_blocks": 2,
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "eyebrow", "label": "Stamp", "default": "Build a box" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Pick every item yourself" },
+        { "type": "textarea", "id": "text", "label": "Text" },
+        { "type": "text", "id": "button", "label": "Button", "default": "Start building" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Split CTA",
+      "blocks": [
+        { "type": "card", "settings": { "eyebrow": "Build a box", "title": "Pick every item yourself", "text": "Choose 4, 6 or 10 Michigan favorites. We pack them in a gift box with your handwritten note.", "button": "Start building" } },
+        { "type": "card", "settings": { "eyebrow": "Corporate gifting", "title": "Gift like a Michigander", "text": "Client and employee gifts from 10 to 1,000 boxes. Logo cards, one spreadsheet for every address, and volume pricing.", "button": "Get a quote" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

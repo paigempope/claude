@@ -1,0 +1,63 @@
+<aside class="drawer drawer--right" id="CartDrawer" data-cart-drawer aria-label="{{ 'cart.title' | t }}" aria-modal="true" role="dialog" tabindex="-1">
+  <div class="drawer__head">
+    <h2>{{ 'cart.title' | t }} <span class="mono" style="font-size:.9rem;color:var(--ink-soft)">({{ cart.item_count }})</span></h2>
+    <button type="button" class="icon-btn" data-drawer-close aria-label="{{ 'general.close' | t }}">{% render 'icon', name: 'close' %}</button>
+  </div>
+
+  {%- if cart.item_count > 0 -%}
+    <div class="drawer__body">
+      {% render 'ship-meter' %}
+      <div data-cart-items>{% render 'cart-items' %}</div>
+
+      {%- assign upsell = section.settings.upsell_collection -%}
+      {%- if upsell != blank and upsell.products_count > 0 -%}
+        <div class="cart-upsell">
+          <h3>{{ section.settings.upsell_heading }}</h3>
+          {%- assign shown = 0 -%}
+          {%- for p in upsell.products -%}
+            {%- assign in_cart = false -%}
+            {%- for item in cart.items -%}{%- if item.product_id == p.id -%}{%- assign in_cart = true -%}{%- endif -%}{%- endfor -%}
+            {%- if in_cart == false and p.available and shown < 3 -%}
+              {%- assign shown = shown | plus: 1 -%}
+              <div class="upsell-item">
+                {%- if p.featured_media -%}{{ p.featured_media | image_url: width: 120 | image_tag: loading: 'lazy', alt: '' }}{%- else -%}<span></span>{%- endif -%}
+                <div><a href="{{ p.url }}" style="text-decoration:none;font-weight:700">{{ p.title }}</a><br>{{ p.price | money }}</div>
+                <button type="button" class="btn btn--sm btn--secondary" data-quick-add="{{ p.selected_or_first_available_variant.id }}">{{ 'cart.add' | t }}</button>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+      {% render 'gift-options', id: 'drawer' %}
+    </div>
+    <div class="drawer__foot">
+      <div class="cart-totals"><span>{{ 'cart.subtotal' | t }}</span><span>{{ cart.total_price | money }}</span></div>
+      <p class="form-note" style="margin:0 0 12px">{{ 'cart.taxes_shipping' | t }}</p>
+      <form action="{{ routes.cart_url }}" method="post">
+        <button type="submit" name="checkout" class="btn btn--block">{{ 'cart.checkout' | t }}</button>
+      </form>
+      {%- if settings.melt_notice != blank -%}<p class="form-note center">{{ settings.melt_notice }}</p>{%- endif -%}
+    </div>
+  {%- else -%}
+    <div class="drawer__body">
+      <div class="cart-empty">
+        {% render 'michigan-shape' %}
+        <h3>{{ 'cart.empty' | t }}</h3>
+        <p>{{ 'cart.empty_sub' | t }}</p>
+        <a class="btn" href="{{ section.settings.empty_link | default: routes.all_products_collection_url }}">{{ 'cart.start_shopping' | t }}</a>
+      </div>
+    </div>
+  {%- endif -%}
+</aside>
+
+{% schema %}
+{
+  "name": "Cart drawer",
+  "settings": [
+    { "type": "collection", "id": "upsell_collection", "label": "Upsell collection", "info": "Shows up to 3 products not already in the cart. Great for $5–$12 add-ons (pop, chips, fudge)." },
+    { "type": "text", "id": "upsell_heading", "label": "Upsell heading", "default": "Toss one more in the box" },
+    { "type": "url", "id": "empty_link", "label": "Empty cart button link" }
+  ]
+}
+{% endschema %}

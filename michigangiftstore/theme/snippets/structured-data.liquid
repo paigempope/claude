@@ -1,0 +1,41 @@
+{%- comment -%} JSON-LD for rich results: Organization on every page, Product + Breadcrumb on PDPs. {%- endcomment -%}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": {{ shop.name | json }},
+    "url": {{ request.origin | append: routes.root_url | json }},
+    {%- if settings.logo -%}"logo": {{ settings.logo | image_url: width: 600 | prepend: 'https:' | json }},{%- endif -%}
+    "slogan": {{ settings.tagline | json }},
+    "areaServed": "US",
+    "sameAs": [
+      {%- assign socials = '' -%}
+      {%- if settings.social_instagram != blank -%}{%- assign socials = socials | append: settings.social_instagram | append: '|' -%}{%- endif -%}
+      {%- if settings.social_facebook != blank -%}{%- assign socials = socials | append: settings.social_facebook | append: '|' -%}{%- endif -%}
+      {%- if settings.social_tiktok != blank -%}{%- assign socials = socials | append: settings.social_tiktok | append: '|' -%}{%- endif -%}
+      {%- if settings.sister_brand_url != blank -%}{%- assign socials = socials | append: settings.sister_brand_url | append: '|' -%}{%- endif -%}
+      {%- assign social_list = socials | split: '|' -%}
+      {%- for s in social_list -%}{{ s | json }}{% unless forloop.last %},{% endunless %}{%- endfor -%}
+    ]
+  }
+</script>
+{%- if request.page_type == 'product' -%}
+  {{ product | structured_data }}
+{%- endif -%}
+{%- if request.page_type == 'product' or request.page_type == 'collection' -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": {{ request.origin | append: routes.root_url | json }} }
+        {%- if collection -%}
+          ,{ "@type": "ListItem", "position": 2, "name": {{ collection.title | json }}, "item": {{ request.origin | append: collection.url | json }} }
+        {%- endif -%}
+        {%- if product -%}
+          ,{ "@type": "ListItem", "position": {% if collection %}3{% else %}2{% endif %}, "name": {{ product.title | json }}, "item": {{ request.origin | append: product.url | json }} }
+        {%- endif -%}
+      ]
+    }
+  </script>
+{%- endif -%}

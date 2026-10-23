@@ -1,0 +1,58 @@
+{%- comment -%}
+  Holiday ship-by table. Rows whose date has passed are struck through automatically,
+  so the section stays truthful without daily edits.
+{%- endcomment -%}
+{%- assign today = 'now' | date: '%Y-%m-%d' -%}
+<section class="section section--tight" id="deadlines">
+  <div class="page-width" style="max-width:900px">
+    <div class="section-head section-head--center">
+      {%- if section.settings.kicker != blank -%}<span class="kicker">{{ section.settings.kicker }}</span>{%- endif -%}
+      <h2>{{ section.settings.heading }}</h2>
+      {%- if section.settings.text != blank -%}<p class="lede">{{ section.settings.text }}</p>{%- endif -%}
+    </div>
+    <div class="deadlines">
+      {%- for block in section.blocks -%}
+        {%- assign passed = false -%}
+        {%- if block.settings.date < today -%}{%- assign passed = true -%}{%- endif -%}
+        <div class="deadline{% if passed %} is-passed{% endif %}" {{ block.shopify_attributes }}>
+          <span class="deadline__service">{{ block.settings.service }}</span>
+          <span class="deadline__note">{{ block.settings.note }}</span>
+          <span class="deadline__date mono">{{ block.settings.date | date: '%a, %b %-d' }}</span>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Holiday deadlines",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Handwritten kicker", "default": "don't be the one who's late" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Order-by dates for Christmas" },
+    { "type": "text", "id": "text", "label": "Text", "default": "Order by 1 p.m. ET on these dates for delivery by Dec 24." }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Deadline",
+      "settings": [
+        { "type": "text", "id": "service", "label": "Service", "default": "Ground (free over $75)" },
+        { "type": "text", "id": "note", "label": "Note", "default": "Contiguous US" },
+        { "type": "text", "id": "date", "label": "Date (YYYY-MM-DD)", "default": "2026-12-11" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Holiday deadlines",
+      "blocks": [
+        { "type": "row", "settings": { "service": "Ground", "note": "Free on gift boxes & orders $75+", "date": "2026-12-11" } },
+        { "type": "row", "settings": { "service": "Priority", "note": "2–3 business days", "date": "2026-12-15" } },
+        { "type": "row", "settings": { "service": "Express", "note": "1–2 business days", "date": "2026-12-17" } },
+        { "type": "row", "settings": { "service": "Canada", "note": "Some items restricted", "date": "2026-12-09" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

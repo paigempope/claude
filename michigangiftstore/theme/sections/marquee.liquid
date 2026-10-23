@@ -1,0 +1,22 @@
+<div class="marquee" aria-label="{{ section.settings.label | escape }}">
+  <div class="marquee__track">
+    {%- assign words = section.settings.words | split: ',' -%}
+    {%- for n in (1..2) -%}
+      <div class="marquee__group"{% if n == 2 %} aria-hidden="true"{% endif %}>
+        {%- for w in words -%}<span class="marquee__item">{{ w | strip }}</span>{%- endfor -%}
+        {%- for w in words -%}<span class="marquee__item" aria-hidden="true">{{ w | strip }}</span>{%- endfor -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Marquee",
+  "settings": [
+    { "type": "textarea", "id": "words", "label": "Words (comma separated)", "default": "Vernors · since 1866, Sanders · since 1875, Murdick's Fudge · since 1887, Faygo · since 1907, Germack · since 1924, Koeze · since 1925, Trenary Toast · since 1928, Better Made · since 1930, Jiffy · since 1930, Kar's · since 1933", "info": "Heritage dates are trust signals: competitors lead with 'since 19xx'." },
+    { "type": "text", "id": "label", "label": "Accessible label", "default": "Michigan brands we carry" }
+  ],
+  "presets": [{ "name": "Marquee" }]
+}
+{% endschema %}

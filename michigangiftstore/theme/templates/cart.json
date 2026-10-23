@@ -1,0 +1,1 @@
+{ "sections": { "main": { "type": "main-cart", "settings": {} }, "bestsellers": { "type": "featured-collection", "settings": { "kicker": "while you're here", "heading": "Toss one more in the box", "limit": 4, "layout": "scroller", "link_label": "Shop all", "paper": false } } }, "order": ["main", "bestsellers"] }

@@ -1,0 +1,22 @@
+{%- comment -%} Honest "classics we can't ship" panel: builds trust and answers a common objection. {%- endcomment -%}
+<section class="section section--tight">
+  <div class="page-width" style="max-width:900px">
+    <div class="cant-ship">
+      <span class="kicker">{{ section.settings.kicker }}</span>
+      <h2 style="font-size:clamp(1.5rem,3vw,2.2rem)">{{ section.settings.heading }}</h2>
+      <div class="rte">{{ section.settings.text }}</div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Can't-ship classics",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Handwritten kicker", "default": "we know, we miss them too" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Michigan classics we won't ship (yet)" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Hudsonville and Stroh's ice cream, Koegel Viennas, Sanders Bumpy Cake, Garden Fresh salsa and Buddy's pizza all need to stay frozen or cold. We only ship what arrives tasting right, so our boxes are 100% shelf-stable. Bumpy Cake craving? A Sanders hot fudge jar and a box of cake mix gets you close.</p>" }
+  ],
+  "presets": [{ "name": "Can't-ship classics" }]
+}
+{% endschema %}

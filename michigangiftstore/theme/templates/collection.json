@@ -1,0 +1,1 @@
+{ "sections": { "main": { "type": "main-collection", "settings": { "per_page": 24, "chips_menu": "collection-chips" } }, "newsletter": { "type": "newsletter", "settings": {} } }, "order": ["main", "newsletter"] }
