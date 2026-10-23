@@ -5,7 +5,7 @@
     {%- for c in collections -%}
       {%- unless c.handle == 'all' or c.handle == 'frontpage' -%}
         <a class="tile reveal" href="{{ c.url }}">
-          <span class="tile__img">{%- if c.featured_image -%}{{ c.featured_image | image_url: width: 400 | image_tag: loading: 'lazy', alt: '' }}{%- else -%}<span class="tile__emoji">✋</span>{%- endif -%}</span>
+          <span class="tile__img">{%- if c.featured_image -%}{{ c.featured_image | image_url: width: 400 | image_tag: loading: 'lazy', alt: '' }}{%- else -%}<span class="tile__icon">{% render 'icon', name: 'mitten' %}</span>{%- endif -%}</span>
           <span class="tile__title">{{ c.title }}</span>
           <span class="tile__count">{{ c.products_count }} {{ 'collections.items' | t }}</span>
         </a>

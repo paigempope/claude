@@ -25,7 +25,7 @@
 | 8 | **Michigan Pantry** (michiganpantry.com) | Michigan gift boxes, since 2013 | Gift boxes and pantry items | $8–$76 | Not shown | "michigan gifts" |
 | 9 | **Gift Baskets from Michigan** (giftbasketsfrommichigan.com) | Michigan baskets, "over 20 years" | Birch-box baskets, corporate gifts | $45–$110 | Not shown | "michigan gifts" |
 | 10 | **All About Michigan** (tastemichigan.com) | Two retail stores plus web | Michigan snacks, fudge, fish, macarons | No prices on homepage | Not shown | "michigan gifts" |
-| 11 | **American Spoon** (spoon.com) | Preserves DTC, since 1982 | Jams, gifts, "With ❤️ From Michigan" collection | $13.95–$135 | "12+ jars ship for $12" | "michigan gifts" |
+| 11 | **American Spoon** (spoon.com) | Preserves DTC, since 1982 | Jams, gifts, "With [heart] From Michigan" collection | $13.95–$135 | "12+ jars ship for $12" | "michigan gifts" |
 | 12 | **Original Murdick's Fudge** | Mackinac fudge, since 1887 | Fudge slice boxes, brittle, taffy | $13.95–$99.95 | Not shown | "mackinac fudge shipped" |
 | 13 | **Joann's Fudge** | Mackinac fudge | Slice boxes, Fudge of the Month | $9.95–$128 | Not shown | "mackinac fudge shipped" |
 | 14 | **Sanders** (now redirects to secondnaturebrands.com) | Brand DTC | Chocolates, caramels, Build-a-Gift, subscriptions | Not shown | $60 | Brand check |
@@ -134,7 +134,7 @@ Also seen in results but not fetched: **Fustini's "Taste of Michigan Gift Box"**
 - **Missing:** no trust signals, no shipping promo, no boxes.
 
 ### 8. Michigan Pantry
-- **Hero:** "Thoughtfully Curated Gifts, Michigan Made 🍒". The CTA is "Learn More" and goes to the FAQ (a weak CTA).
+- **Hero:** "Thoughtfully Curated Gifts, Michigan Made". The CTA is "Learn More" and goes to the FAQ (a weak CTA).
 - **Reviews:** star reviews via Judge.me, with small counts (5.0 from 4 reviews; 5.0 from 2 reviews).
 - **Gift message:** free: "custom gift message at no added cost".
 - **Shipping:** "tracking and insurance included".
@@ -158,7 +158,7 @@ Also seen in results but not fetched: **Fustini's "Taste of Michigan Gift Box"**
 
 ### 11. American Spoon (spoon.com)
 - **Hero:** "Give Jam / Spread Joy". Tagline: "Gifts grown and made in Northern Michigan since 1982".
-- **Gifts menu:** **Gifts $75 & Under / $150 & Under**, Design Your Own Gift, Gifts that WOW!, Be the Best Guest, "With ❤️ From Michigan".
+- **Gifts menu:** **Gifts $75 & Under / $150 & Under**, Design Your Own Gift, Gifts that WOW!, Be the Best Guest, "With [heart] From Michigan".
 - **Bundles:** "Build Your Own Bundle" with monthly delivery.
 - **Announcement bar:** "12+ Jars ship for $12".
 - **Gift detail:** recipe cards included in gifts.
@@ -332,7 +332,7 @@ Also worth offering *(inferred)*: a recurring "Taste of Home" quarterly box, fol
 **Queries and pages observed ranking:**
 - "taste of michigan gift box": Fustini's (top), Goldbelly Taste of Michigan box, Free Press/AOL guides.
 - "michigan gifts" / "michigan gift baskets":
-  - Spoon "With ❤️ From Michigan" (`/collections/michigan-fruit-gifts`)
+  - Spoon "With [heart] From Michigan" (`/collections/michigan-fruit-gifts`)
   - Gift Baskets from Michigan ("Unique & Handcrafted Michigan Gifts")
   - Michigan Pantry ("Michigan Gift Boxes — Locally Made Gourmet Gifts", "Custom Michigan Gift Boxes & Corporate Gifting")
   - tastemichigan ("Michigan Made Gifts"), City Bird, Amazon

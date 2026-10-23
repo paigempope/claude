@@ -21,7 +21,8 @@ competitor finding behind it, and includes the step-by-step Shopify launch check
   - Great Lakes postcard hero ("Greetings from MICHIGAN") with a postage stamp and postmark
   - An accurate two-peninsula Michigan outline, projected from public-domain US Census data
   - Self-hosted Fraunces, Overpass, Patrick Hand SC and DM Mono fonts
-  - Palette shared with Detroit Gift Store (navy, cream, red, mustard)
+  - Lake-and-pines atmosphere: sky-to-lake hero, pine treeline, Great Lakes blue band, water-blue sections
+  - Custom Michigan line icons instead of emoji; brand colors shared with Detroit Gift Store (navy, red, gold)
 - **Conversion features:**
   - Free-shipping progress bar and holiday-deadline countdown
   - Ships-free badges and good / better / best box tiers

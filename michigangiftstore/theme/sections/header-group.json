@@ -5,7 +5,7 @@
     "announcement": {
       "type": "announcement-bar",
       "blocks": {
-        "msg-1": { "type": "message", "settings": { "text": "🚚 Free shipping on orders $75+", "link_label": "Shop gift boxes", "link": "shopify://collections/gift-boxes" } },
+        "msg-1": { "type": "message", "settings": { "text": "Free shipping on orders $75+", "link_label": "Shop gift boxes", "link": "shopify://collections/gift-boxes" } },
         "msg-2": { "type": "message", "settings": { "text": "Packed in Michigan, shipped to all 50 states", "link_label": "", "link": "" } }
       },
       "block_order": ["msg-1", "msg-2"],

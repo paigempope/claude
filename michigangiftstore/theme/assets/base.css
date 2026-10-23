@@ -19,7 +19,7 @@
   --section-space: clamp(56px, 8vw, 112px);
   --ease: cubic-bezier(.2, .7, .2, 1);
 
-  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --ripple: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='36' viewBox='0 0 120 36'%3E%3Cpath d='M0 18c10 0 10-6 20-6s10 6 20 6 10-6 20-6 10 6 20 6 10-6 20-6 10 6 20 6' fill='none' stroke='%231F6FA3' stroke-opacity='.06' stroke-width='1.5'/%3E%3C/svg%3E");
 }
 
 /* ---------- Reset ---------- */
@@ -32,7 +32,7 @@ body {
   line-height: 1.6;
   color: var(--ink);
   background-color: var(--birch);
-  background-image: var(--grain);
+  background-image: var(--ripple);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -134,7 +134,7 @@ em, .accent { font-style: italic; color: var(--cherry); }
 @media (min-width: 990px) { .announcement__sister { display: inline; opacity: .8; } }
 
 /* ---------- Header ---------- */
-.header-wrapper { position: sticky; top: 0; z-index: 50; background: rgba(247, 242, 232, .92); backdrop-filter: saturate(1.3) blur(10px); -webkit-backdrop-filter: saturate(1.3) blur(10px); border-bottom: 1px solid var(--line); transition: box-shadow .2s; }
+.header-wrapper { position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, .9); backdrop-filter: saturate(1.3) blur(10px); -webkit-backdrop-filter: saturate(1.3) blur(10px); border-bottom: 1px solid var(--line); transition: box-shadow .2s; }
 .header-wrapper.is-scrolled { box-shadow: 0 8px 24px -18px rgba(15, 42, 68, .5); }
 .header { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 1rem; min-height: 76px; }
 .header__left, .header__right { display: flex; align-items: center; gap: .25rem; }
@@ -236,11 +236,11 @@ em, .accent { font-style: italic; color: var(--cherry); }
 .wave--flip { transform: scaleY(-1); }
 
 /* ---------- Marquee ---------- */
-.marquee { overflow: hidden; background: var(--sunset); color: var(--navy); border-block: 2px solid var(--navy); }
+.marquee { overflow: hidden; background: var(--lake); color: #fff; border-block: 2px solid var(--navy); }
 .marquee__track { display: flex; width: max-content; animation: marquee 38s linear infinite; }
 .marquee__group { display: flex; align-items: center; }
 .marquee__item { display: inline-flex; align-items: center; gap: 22px; padding: 14px 22px 14px 0; font-family: var(--font-display); font-weight: 900; font-size: clamp(1.15rem, 2vw, 1.6rem); white-space: nowrap; }
-.marquee__item::after { content: '✦'; font-size: .8em; color: var(--cherry); }
+.marquee__item::after { content: ''; width: 9px; height: 9px; border-radius: 50%; background: var(--sunset); flex: none; }
 .marquee:hover .marquee__track { animation-play-state: paused; }
 @keyframes marquee { to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .marquee__track { animation: none; } html { scroll-behavior: auto; } }
@@ -597,12 +597,13 @@ label.label { display: block; font-weight: 700; font-size: .9rem; margin-bottom:
 /* "item, size. Place, since year." product lines */
 .contents { list-style: none; padding: 0; margin: 0 0 1.2rem; display: grid; gap: 8px; }
 .contents li { display: grid; grid-template-columns: 22px 1fr; gap: 8px; font-size: .95rem; line-height: 1.4; }
-.contents li::before { content: '✓'; color: var(--pine); font-weight: 800; }
+.contents li::before { content: ''; width: 18px; height: 18px; margin-top: 2px; border-radius: 50%; background: var(--pine) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center / 11px no-repeat; }
 .contents small { display: block; color: var(--ink-soft); font-size: .82rem; }
 .cant-ship { border: 2px dashed var(--line); border-radius: var(--radius); padding: 18px 20px; background: var(--paper); }
 .cant-ship ul { margin: .4rem 0 0; padding-left: 1.1rem; color: var(--ink-soft); }
 .hero__bullets { list-style: none; padding: 0; margin: -.6rem 0 1.6rem; display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: .92rem; font-weight: 600; color: var(--pine); }
-.hero__bullets li::before { content: '✓ '; font-weight: 800; }
+.hero__bullets li { display: inline-flex; align-items: center; gap: 7px; }
+.hero__bullets li::before { content: ''; width: 16px; height: 16px; border-radius: 50%; background: var(--pine) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center / 10px no-repeat; }
 
 /* ---------- How it works ---------- */
 .steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 22px; counter-reset: step; }
@@ -642,3 +643,40 @@ label.label { display: block; font-weight: 700; font-size: .9rem; margin-bottom:
   .wordmark__mark { width: 28px; height: 32px; }
 }
 .announcement__deadline [data-countdown] { white-space: nowrap; }
+
+/* ==========================================================================
+   Michigan atmosphere: lake water, dune sand, northern pines, big sky.
+   ========================================================================== */
+.section--paper { background: var(--paper); background-image: none; }
+.section--water { background: var(--water); }
+.section--water .card, .section--water .tile, .section--water .deadline { box-shadow: 0 1px 0 rgba(31, 45, 92, .05), 0 12px 28px -20px rgba(31, 45, 92, .45); }
+
+/* Hero: sky over the big lake, pine shoreline, waves rolling in */
+.hero { background: linear-gradient(180deg, #BFE0F3 0%, #DCEFFA 45%, #EEF7FC 72%, var(--birch) 100%); padding-bottom: 0; }
+.hero__grid { padding-bottom: clamp(120px, 14vw, 200px); position: relative; z-index: 2; }
+.hero__scene { position: absolute; left: 0; right: 0; bottom: 0; height: clamp(110px, 12vw, 170px); pointer-events: none; z-index: 1; }
+.hero__scene .treeline { position: absolute; left: 0; bottom: 34px; width: 100%; height: 72%; opacity: .9; }
+.hero__scene .treeline--far { bottom: 48px; height: 58%; opacity: .35; color: var(--lake) !important; transform: scaleX(-1); }
+.hero__scene .wave { position: absolute; left: 0; bottom: 0; height: 40px; }
+.hero__sun { position: absolute; right: 8%; top: 12%; width: clamp(140px, 18vw, 260px); aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(255, 236, 170, .9), rgba(255, 236, 170, 0) 70%); pointer-events: none; }
+.hero + .marquee { margin-top: -2px; }
+
+/* Cards and controls sit on snow white with lake-tinted fills */
+.step { background: var(--water); border-color: rgba(31, 111, 163, .3); }
+.quiz__option { background: var(--water); border-color: rgba(31, 111, 163, .2); color: var(--navy); }
+.quiz__option .icon { width: 44px; height: 44px; stroke-width: 1.4; color: var(--lake); }
+.quiz__option[aria-pressed='true'] .icon { color: var(--cherry); }
+.tile__icon { display: grid; place-items: center; color: var(--navy); }
+.tile__icon .icon { width: clamp(44px, 6vw, 64px); height: clamp(44px, 6vw, 64px); stroke-width: 1.4; }
+.tile__img { border-color: rgba(31, 111, 163, .25); }
+.hero__float .dot { background: var(--water); color: var(--lake); }
+.hero__float .dot .icon { width: 18px; height: 18px; }
+.deadline__date, .bab__slot, .progress, .card__media, .bab-item__media, .cart-item__media, .tier__media { background-color: var(--water); }
+.bab__slot.is-filled::after { content: ''; width: 10px; height: 10px; border-radius: 50%; background: var(--pine); }
+.bab__slot.is-filled:has(img)::after { display: none; }
+.toolbar { background: var(--birch); }
+.drawer__foot { background: var(--water); }
+.newsletter { background: linear-gradient(160deg, var(--lake), var(--navy)); }
+.newsletter .kicker { color: var(--sunset) !important; }
+.footer-shore { display: block; background: var(--birch); line-height: 0; }
+.footer-shore .treeline { display: block; width: 100%; height: clamp(50px, 7vw, 96px); }

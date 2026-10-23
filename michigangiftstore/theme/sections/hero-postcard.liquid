@@ -3,6 +3,7 @@
   pure CSS/SVG so the hero looks finished even before photography is ready.
 {%- endcomment -%}
 <section class="hero" id="hero-{{ section.id }}">
+  <div class="hero__sun" aria-hidden="true"></div>
   <div class="page-width hero__grid">
     <div class="hero__copy">
       {%- if section.settings.kicker != blank -%}<span class="kicker">{{ section.settings.kicker }}</span>{%- endif -%}
@@ -72,12 +73,17 @@
       </div>
 
       {%- if section.settings.float_a != blank -%}
-        <div class="hero__float hero__float--a"><span class="dot">📦</span><span>{{ section.settings.float_a }}</span></div>
+        <div class="hero__float hero__float--a"><span class="dot">{% render 'icon', name: 'truck' %}</span><span>{{ section.settings.float_a }}</span></div>
       {%- endif -%}
       {%- if section.settings.float_b != blank -%}
-        <div class="hero__float hero__float--b"><span class="dot">❤️</span><span>{{ section.settings.float_b }}</span></div>
+        <div class="hero__float hero__float--b"><span class="dot">{% render 'icon', name: 'gift' %}</span><span>{{ section.settings.float_b }}</span></div>
       {%- endif -%}
     </div>
+  </div>
+  <div class="hero__scene" aria-hidden="true">
+    {% render 'treeline', class: 'treeline--far', color: 'var(--lake)' %}
+    {% render 'treeline', color: 'var(--pine)' %}
+    {% render 'wave', color: 'var(--lake)' %}
   </div>
 </section>
 

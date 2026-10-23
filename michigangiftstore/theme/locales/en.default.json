@@ -52,7 +52,7 @@
     "empty_sub": "Let's fill it with a little Michigan.",
     "start_shopping": "Start shopping",
     "free_shipping_remaining_html": "You're <strong>{{ amount }}</strong> away from free shipping.",
-    "free_shipping_unlocked_html": "🎉 <strong>Free shipping unlocked!</strong>",
+    "free_shipping_unlocked_html": "<strong>Free shipping unlocked.</strong> Your box ships free.",
     "gift_message": "Add a handwritten gift note",
     "gift_message_placeholder": "Happy birthday from home! Love, Mom",
     "gift_receipt": "This is a gift: leave prices out of the box",

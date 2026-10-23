@@ -122,101 +122,101 @@ There are about 20 SEO blog posts, including "Michigan-made food gifts", "Famous
 ## JOB 2: Michigan-only product catalog
 
 **Key to the shipping column:**
-- ✅ shelf-stable and ships normally
-- 🌡️ heat-sensitive (needs a cold pack or a seasonal swap)
-- 🫙 glass (breakage risk)
-- 🥤 carbonated
-- ❄️ frozen or refrigerated (needs a cold chain)
-- 🍺 alcohol (excluded)
+- [OK] shelf-stable and ships normally
+- [HEAT] heat-sensitive (needs a cold pack or a seasonal swap)
+- [GLASS] glass (breakage risk)
+- [FIZZ] carbonated
+- [COLD] frozen or refrigerated (needs a cold chain)
+- [ALCOHOL] alcohol (excluded)
 
 **Where sold:** "MI grocers" means common at Meijer, Kroger Michigan and similar in my judgement, but not confirmed against a specific listing **(unverified)**. Any listing I actually found is named.
 
 ### 1. Chips & Snacks
 | # | Brand / Product | Origin (founded) | Where sold | Approx. price (source) | Ship | Why Michiganders miss it |
 |---|---|---|---|---|---|---|
-| 1 | **Better Made** Original and Rainbow chips | Detroit, Gratiot Ave (1930, as Cross & Peters; Better Made name 1934) | MI grocers, Kroger (listing found) | Not found | ✅ Fragile: pack in a void-filled box | The chip on every Detroit table since 1930. Rainbow chips are the darker "burnt" ones fans fight over |
-| 2 | **Better Made Special BBQ** | Detroit | Costco (50 × 1 oz case) | $16.49 per 50-ct (Costco tracker) | ✅ | Its sweet BBQ is the Michigan chip people say they can't find anywhere else. *"Special Rip BBQ" as an exact product name is unverified. "Special BBQ" and "Red Hot BBQ" are confirmed* |
-| 3 | **Better Made Red Hot BBQ** | Detroit | Costco (50-ct) | Not captured | ✅ | The spicy cousin of Special BBQ |
-| 4 | **Uncle Ray's** potato chips | Detroit (Ray Jenkins began in 1965; chip brand launched 1995 or 1998, sources conflict). Owned by H.T. Hackney since 2006 | MI convenience stores, Walgreens, CVS. Meijer not confirmed | Not found | ✅ | Detroit-made gas-station chip with a founder story |
-| 5 | **Great Lakes Potato Chip Co.** Cherry BBQ kettle chips | Traverse City (2009) | Costco (22 oz bag) | $5.79 for 22 oz (Costco tracker) | ✅ | Kettle chips from Michigan potatoes, flavoured with Traverse City cherry |
-| 6 | **Kar's Sweet 'N Salty** trail mix | Madison Heights / Detroit (1933; Sue Kar sold nuts outside Navin Field). Same parent as Sanders, Second Nature Brands | National, but "Detroit Born" on the pack | Retail price not captured | ✅ (chocolate pieces 🌡️ mildly) | The ballpark-peanut origin story, and the snack in every Michigan lunchbox |
-| 7 | **Germack** pistachios and roasted nuts | Detroit, Eastern Market (1924; family importing since 1912). Oldest pistachio roaster in the US | Eastern Market shop, supermarkets, QVC. Costco unverified | Not found | ✅ | Credited with dyeing pistachios red. An Eastern Market institution |
-| 8 | **Germack** dried Michigan cherries and Cherry & Praline nuts | Detroit, Eastern Market | Germack shop (DGS stocks these) | Not found | ✅ | A Detroit source for Up North cherries |
-| 9 | **Pop Daddy** Dill Pickle (and Garlic Parmesan) pretzels | Howell (2013; pretzels from 2018, per DGS's blog) | Costco (28 oz and a 24-ct variety pack), Kroger | $7.99 for 28 oz, $29.99 for the 24-pack (Tasting Table, undated) | ✅ | The cult Michigan pretzel. Dill pickle is the gateway flavour |
-| 10 | **Detroit Popcorn Co.** | Detroit (1923, Samuel Carmas), now in Redford | Kroger Michigan (kiosk and expansion news) | Not found | ✅ | A century of Detroit popcorn. *A 1950 founding date was not supported. Sources say 1923* |
-| 11 | **McClure's** potato chips (Garlic Dill, Spicy) | Detroit (2006, Bob & Joe McClure) | Specialty and national grocers | Not found | ✅ | Pickle-brine chips from Detroit's pickle brothers |
+| 1 | **Better Made** Original and Rainbow chips | Detroit, Gratiot Ave (1930, as Cross & Peters; Better Made name 1934) | MI grocers, Kroger (listing found) | Not found | [OK] Fragile: pack in a void-filled box | The chip on every Detroit table since 1930. Rainbow chips are the darker "burnt" ones fans fight over |
+| 2 | **Better Made Special BBQ** | Detroit | Costco (50 × 1 oz case) | $16.49 per 50-ct (Costco tracker) | [OK] | Its sweet BBQ is the Michigan chip people say they can't find anywhere else. *"Special Rip BBQ" as an exact product name is unverified. "Special BBQ" and "Red Hot BBQ" are confirmed* |
+| 3 | **Better Made Red Hot BBQ** | Detroit | Costco (50-ct) | Not captured | [OK] | The spicy cousin of Special BBQ |
+| 4 | **Uncle Ray's** potato chips | Detroit (Ray Jenkins began in 1965; chip brand launched 1995 or 1998, sources conflict). Owned by H.T. Hackney since 2006 | MI convenience stores, Walgreens, CVS. Meijer not confirmed | Not found | [OK] | Detroit-made gas-station chip with a founder story |
+| 5 | **Great Lakes Potato Chip Co.** Cherry BBQ kettle chips | Traverse City (2009) | Costco (22 oz bag) | $5.79 for 22 oz (Costco tracker) | [OK] | Kettle chips from Michigan potatoes, flavoured with Traverse City cherry |
+| 6 | **Kar's Sweet 'N Salty** trail mix | Madison Heights / Detroit (1933; Sue Kar sold nuts outside Navin Field). Same parent as Sanders, Second Nature Brands | National, but "Detroit Born" on the pack | Retail price not captured | [OK] (chocolate pieces [HEAT] mildly) | The ballpark-peanut origin story, and the snack in every Michigan lunchbox |
+| 7 | **Germack** pistachios and roasted nuts | Detroit, Eastern Market (1924; family importing since 1912). Oldest pistachio roaster in the US | Eastern Market shop, supermarkets, QVC. Costco unverified | Not found | [OK] | Credited with dyeing pistachios red. An Eastern Market institution |
+| 8 | **Germack** dried Michigan cherries and Cherry & Praline nuts | Detroit, Eastern Market | Germack shop (DGS stocks these) | Not found | [OK] | A Detroit source for Up North cherries |
+| 9 | **Pop Daddy** Dill Pickle (and Garlic Parmesan) pretzels | Howell (2013; pretzels from 2018, per DGS's blog) | Costco (28 oz and a 24-ct variety pack), Kroger | $7.99 for 28 oz, $29.99 for the 24-pack (Tasting Table, undated) | [OK] | The cult Michigan pretzel. Dill pickle is the gateway flavour |
+| 10 | **Detroit Popcorn Co.** | Detroit (1923, Samuel Carmas), now in Redford | Kroger Michigan (kiosk and expansion news) | Not found | [OK] | A century of Detroit popcorn. *A 1950 founding date was not supported. Sources say 1923* |
+| 11 | **McClure's** potato chips (Garlic Dill, Spicy) | Detroit (2006, Bob & Joe McClure) | Specialty and national grocers | Not found | [OK] | Pickle-brine chips from Detroit's pickle brothers |
 
 ### 2. Pop (it's "pop" in Michigan, not "soda")
 | # | Brand / Product | Origin | Where sold | Approx. price | Ship | Hook |
 |---|---|---|---|---|---|---|
-| 12 | **Faygo Rock & Rye** | Detroit (Feigenson Bros., Nov 1907; Gratiot Ave plant since 1935; flavour dates to the 1920s) | MI grocers, Walmart | 8-pack about $4.34; 12-pack $24 or more from third-party sellers (Walmart, undated) | 🥤 Cans: pack upright, wrap, avoid freezing and heat | Cream soda with a cherry note. *The* Michigan pop |
-| 13 | **Faygo Redpop** (strawberry) | Detroit | MI grocers, Walmart | 12 × 12 oz about $24 (Walmart third party) | 🥤 | "Redpop" is a word only Michiganders use |
-| 14 | **Faygo** Moon Mist / Cotton Candy / others | Detroit | MI grocers | Not found | 🥤 | Dozens of flavours, a nostalgia grab bag. *Exact current flavour list unverified* |
-| 15 | **Vernors** ginger ale | Detroit (James Vernor, 1866; oldest surviving US ginger ale). Now Keurig Dr Pepper; Michigan plant in Holland | MI grocers (more widely spread now) | Not found | 🥤 | The Boston Cooler (Vernors and vanilla ice cream), and Vernors for an upset stomach |
-| 16 | **Old Orchard** tart cherry and apple juice | Sparta (1985). Owned by Lassonde | National | 64 oz bottles (no price captured) | ✅ Heavy: poor value to ship | West Michigan orchard juice. *Marginal: widely sold outside MI* |
+| 12 | **Faygo Rock & Rye** | Detroit (Feigenson Bros., Nov 1907; Gratiot Ave plant since 1935; flavour dates to the 1920s) | MI grocers, Walmart | 8-pack about $4.34; 12-pack $24 or more from third-party sellers (Walmart, undated) | [FIZZ] Cans: pack upright, wrap, avoid freezing and heat | Cream soda with a cherry note. *The* Michigan pop |
+| 13 | **Faygo Redpop** (strawberry) | Detroit | MI grocers, Walmart | 12 × 12 oz about $24 (Walmart third party) | [FIZZ] | "Redpop" is a word only Michiganders use |
+| 14 | **Faygo** Moon Mist / Cotton Candy / others | Detroit | MI grocers | Not found | [FIZZ] | Dozens of flavours, a nostalgia grab bag. *Exact current flavour list unverified* |
+| 15 | **Vernors** ginger ale | Detroit (James Vernor, 1866; oldest surviving US ginger ale). Now Keurig Dr Pepper; Michigan plant in Holland | MI grocers (more widely spread now) | Not found | [FIZZ] | The Boston Cooler (Vernors and vanilla ice cream), and Vernors for an upset stomach |
+| 16 | **Old Orchard** tart cherry and apple juice | Sparta (1985). Owned by Lassonde | National | 64 oz bottles (no price captured) | [OK] Heavy: poor value to ship | West Michigan orchard juice. *Marginal: widely sold outside MI* |
 
 ### 3. Sweets & Fudge
 | # | Brand / Product | Origin | Where sold | Approx. price | Ship | Hook |
 |---|---|---|---|---|---|---|
-| 17 | **Sanders Milk Chocolate Hot Fudge** topping | Detroit (Fred Sanders, 1875). Made in Clinton Twp by Morley/Second Nature | MI grocers, Costco (16 oz) | 16 oz $4.97 (Costco tracker, out of stock). 10 oz retail not found | ✅ 🫙 Shelf-stable unopened | The hot fudge from the Sanders sundae counter |
-| 18 | **Sanders Sea Salt Caramels** (milk or dark chocolate) | Detroit / Clinton Twp | Costco (36 oz tub) | $10.99–$13.99 per 36 oz (Costco reports) | 🌡️ Cold-pack May–Sept | The Costco tub every Michigan family brings to the holidays |
-| 19 | **Sanders Bumpy Cake** | Detroit | MI grocers (refrigerated or bakery case) | — | ❄️ **Perishable: do not stock** (pickup only, or list as "sorry, doesn't ship") | Chocolate cake with buttercream "bumps" under fudge frosting. Birthday tradition |
-| 20 | **Morley Candy Makers** (butter pecan clusters, peanut butter blocks) | Clinton Twp (1919). Owns Sanders | Morley stores (Clinton Twp, Rochester, Eastpointe) | Not found | 🌡️ | The candy company behind Sanders |
-| 21 | **Murdick's Fudge** | Mackinac Island (1887; island's first fudge shop) | Island shops, online year-round | Customer-built 5-slice box $62.95 + shipping (one reviewer) | 🌡️ Fudge dries out. One review reported stale, hard slabs | The original island fudge. "Fudgies" is what locals call tourists |
-| 22 | **JoAnn's Fudge** | Mackinac Island (1969, Joan & Frank Nephew); Mackinaw City shop added 1980 | Island and Mackinaw City shops, online | 3 slices about $20–25 (2017 and 2022 in-store) | 🌡️ | A Straits summer trip in a box |
-| 23 | **Kilwins** fudge and chocolates | Petoskey (1947, Don & Katy Kilwin) | Franchise shops in about 25–30 states | Not found | 🌡️ | Northern Michigan born. *Weak "Michigan-only" story: stores are nationwide* |
-| 24 | **Sayklly's Yooper Bar** (chocolate bar shaped like the U.P.) | Escanaba (1906, Joseph Sayklly) | Sayklly's shop, online | Not found | 🌡️ | A chocolate bar in the shape of the U.P. Instant Yooper pride |
-| 25 | **Cherry Republic** chocolate-covered cherries | Glen Arbor (1989, Bob Sutherland) | Cherry Republic stores (Glen Arbor, Traverse City, Ann Arbor, etc.), online | $4.95 (milk) / $5.95 (dark), third-party, undated | 🌡️ | A Sleeping Bear Dunes day trip, edible |
-| 26 | **Shatila** baklava | Dearborn | Shatila bakery; Goldbelly (US & Canada) | 72-piece tin $59.95 (Goldbelly) | ✅ Ships well for a short window. *Shelf life unverified* | Dearborn's famous Middle Eastern bakery. Founding year not verified |
+| 17 | **Sanders Milk Chocolate Hot Fudge** topping | Detroit (Fred Sanders, 1875). Made in Clinton Twp by Morley/Second Nature | MI grocers, Costco (16 oz) | 16 oz $4.97 (Costco tracker, out of stock). 10 oz retail not found | [OK] [GLASS] Shelf-stable unopened | The hot fudge from the Sanders sundae counter |
+| 18 | **Sanders Sea Salt Caramels** (milk or dark chocolate) | Detroit / Clinton Twp | Costco (36 oz tub) | $10.99–$13.99 per 36 oz (Costco reports) | [HEAT] Cold-pack May–Sept | The Costco tub every Michigan family brings to the holidays |
+| 19 | **Sanders Bumpy Cake** | Detroit | MI grocers (refrigerated or bakery case) | — | [COLD] **Perishable: do not stock** (pickup only, or list as "sorry, doesn't ship") | Chocolate cake with buttercream "bumps" under fudge frosting. Birthday tradition |
+| 20 | **Morley Candy Makers** (butter pecan clusters, peanut butter blocks) | Clinton Twp (1919). Owns Sanders | Morley stores (Clinton Twp, Rochester, Eastpointe) | Not found | [HEAT] | The candy company behind Sanders |
+| 21 | **Murdick's Fudge** | Mackinac Island (1887; island's first fudge shop) | Island shops, online year-round | Customer-built 5-slice box $62.95 + shipping (one reviewer) | [HEAT] Fudge dries out. One review reported stale, hard slabs | The original island fudge. "Fudgies" is what locals call tourists |
+| 22 | **JoAnn's Fudge** | Mackinac Island (1969, Joan & Frank Nephew); Mackinaw City shop added 1980 | Island and Mackinaw City shops, online | 3 slices about $20–25 (2017 and 2022 in-store) | [HEAT] | A Straits summer trip in a box |
+| 23 | **Kilwins** fudge and chocolates | Petoskey (1947, Don & Katy Kilwin) | Franchise shops in about 25–30 states | Not found | [HEAT] | Northern Michigan born. *Weak "Michigan-only" story: stores are nationwide* |
+| 24 | **Sayklly's Yooper Bar** (chocolate bar shaped like the U.P.) | Escanaba (1906, Joseph Sayklly) | Sayklly's shop, online | Not found | [HEAT] | A chocolate bar in the shape of the U.P. Instant Yooper pride |
+| 25 | **Cherry Republic** chocolate-covered cherries | Glen Arbor (1989, Bob Sutherland) | Cherry Republic stores (Glen Arbor, Traverse City, Ann Arbor, etc.), online | $4.95 (milk) / $5.95 (dark), third-party, undated | [HEAT] | A Sleeping Bear Dunes day trip, edible |
+| 26 | **Shatila** baklava | Dearborn | Shatila bakery; Goldbelly (US & Canada) | 72-piece tin $59.95 (Goldbelly) | [OK] Ships well for a short window. *Shelf life unverified* | Dearborn's famous Middle Eastern bakery. Founding year not verified |
 
 ### 4. Up North / Cherries
 | # | Brand / Product | Origin | Where sold | Approx. price | Ship | Hook |
 |---|---|---|---|---|---|---|
-| 27 | **Cherry Republic** dried Montmorency cherries | Glen Arbor (1989) | CR stores, online, regional markets | $11.95 (third-party, undated) | ✅ | "Life, Liberty, Beaches & Pie": the Up North cherry brand |
-| 28 | **Cherry Republic** cherry salsa | Glen Arbor | CR stores | 8 oz jar (price not found) | 🫙 | Cherry everything, the CR way |
+| 27 | **Cherry Republic** dried Montmorency cherries | Glen Arbor (1989) | CR stores, online, regional markets | $11.95 (third-party, undated) | [OK] | "Life, Liberty, Beaches & Pie": the Up North cherry brand |
+| 28 | **Cherry Republic** cherry salsa | Glen Arbor | CR stores | 8 oz jar (price not found) | [GLASS] | Cherry everything, the CR way |
 | 29 | **Cherry Republic** Boom Chunka cookies | Glen Arbor | CR stores, online | Not found | Baked goods: *shelf life unverified* | Cottage-trip cookie |
-| 30 | **American Spoon** Sour Cherry Preserves | Petoskey (1982; Rashid family) | American Spoon shops, spoon.com | $12.95 per 9.5 oz; 4-pack $50 (spoon.com, listed sold out) | 🫙 ✅ | Small-batch preserves from Petoskey, from Michigan Montmorency cherries |
-| 31 | **Traverse Bay Fruit Co.** dried tart cherries | Traverse City (maker unclear: one listing names Cherry Central) | Walmart (12 × 3 oz). Costco **unverified** | Not captured | ✅ | Plain Montmorency dried cherries, good for multi-packs |
-| 32 | **Cherry Bay Orchards** (Shoreline Fruit) dried cherries | Traverse City area (grower families since 1969; 6,000 acres) | Retail and specialty | Not found | ✅ | Grower-owned brand from the Grand Traverse region |
-| 33 | **Traverse Bay Farms** cherry salsa | Bellaire | Walmart LocalFinds, online | 16 oz (price not captured) | 🫙 | "Award-winning" claims are line-wide, not specific to the cherry salsa. Don't repeat them unverified |
-| 34 | **Traverse City Whiskey Co.** Premium Cocktail Cherries | Traverse City | Grocers, liquor stores | $17.99 per 16 oz (Lowes Foods) | 🫙 ✅ Hot-filled. ⚠️ Cooked in bourbon; label says alcohol cooks off, but **confirm the alcohol content** before listing | The Michigan Manhattan garnish |
-| 35 | **Michigan maple syrup** (farm brands vary) | Statewide. Michigan ranked 5th in the US in 2024 (200,000 gal, USDA NASS) | Farm stands, MI grocers | Varies | ✅ Use plastic or tin, not glass | Up North sugarbush syrup. *No single dominant grocery brand was verified* |
+| 30 | **American Spoon** Sour Cherry Preserves | Petoskey (1982; Rashid family) | American Spoon shops, spoon.com | $12.95 per 9.5 oz; 4-pack $50 (spoon.com, listed sold out) | [GLASS] [OK] | Small-batch preserves from Petoskey, from Michigan Montmorency cherries |
+| 31 | **Traverse Bay Fruit Co.** dried tart cherries | Traverse City (maker unclear: one listing names Cherry Central) | Walmart (12 × 3 oz). Costco **unverified** | Not captured | [OK] | Plain Montmorency dried cherries, good for multi-packs |
+| 32 | **Cherry Bay Orchards** (Shoreline Fruit) dried cherries | Traverse City area (grower families since 1969; 6,000 acres) | Retail and specialty | Not found | [OK] | Grower-owned brand from the Grand Traverse region |
+| 33 | **Traverse Bay Farms** cherry salsa | Bellaire | Walmart LocalFinds, online | 16 oz (price not captured) | [GLASS] | "Award-winning" claims are line-wide, not specific to the cherry salsa. Don't repeat them unverified |
+| 34 | **Traverse City Whiskey Co.** Premium Cocktail Cherries | Traverse City | Grocers, liquor stores | $17.99 per 16 oz (Lowes Foods) | [GLASS] [OK] Hot-filled. [CAUTION] Cooked in bourbon; label says alcohol cooks off, but **confirm the alcohol content** before listing | The Michigan Manhattan garnish |
+| 35 | **Michigan maple syrup** (farm brands vary) | Statewide. Michigan ranked 5th in the US in 2024 (200,000 gal, USDA NASS) | Farm stands, MI grocers | Varies | [OK] Use plastic or tin, not glass | Up North sugarbush syrup. *No single dominant grocery brand was verified* |
 
 ### 5. Pantry & Sauces
 | # | Brand / Product | Origin | Where sold | Approx. price | Ship | Hook |
 |---|---|---|---|---|---|---|
-| 36 | **Jiffy** Corn Muffin Mix | Chelsea (Chelsea Milling; mill 1901; first prepared baking mix sold to the public, 1930) | Everywhere, national | $0.69–$0.99 per 8.5 oz (Lowes Foods, Brookshire's) | ✅ ⚠️ Contains lard, so **no Canada** (as DGS found) | The little blue box made down the road in Chelsea. Cheap, so it works as a filler and story item |
-| 37 | **Koeze Cream-Nut** peanut butter | Grand Rapids (produce business 1910; peanut butter since 1925) | Grocers (Meijer unverified), specialty | $7.39–$7.95 per 17 oz (ShopRite, Harney) | 🫙 ✅ Heavy | Dark-roasted Virginia peanuts on the same equipment used since 1925 (per Koeze) |
-| 38 | **McClure's** pickles (Spicy, Garlic Dill) | Detroit (2006) | Grocers nationwide | 32 oz about $8.59 (H-E-B) | ❄️ **Sold refrigerated**: do not ship ambient (I believe they're unpasteurized; **check the label**). Use McClure's chips (#11) instead | Detroit's craft pickle |
-| 39 | **Garden Fresh Gourmet** salsa | Ferndale (Jack & Annette Aronson; 1997 or 2005, sources conflict). Sold to Campbell 2015, then to Fontaine Santé | Grocers | — | ❄️ **Refrigerated: do not ship** | The salsa that started in a Ferndale BBQ joint |
-| 40 | **Clancy's Fancy** hot sauce | Ann Arbor (first made in the 1970s) | Zingerman's, local markets | Not found | 🫙 ✅ | Thick, garlicky Ann Arbor hot sauce. *Current production status unverified* |
-| 41 | **Hell Fire Detroit** hot sauce | Metro Detroit, now Warren (around 2015; origin stories conflict) | Online, local; DGS stocks it | Not found | 🫙 ✅ | Featured on *Hot Ones* |
-| 42 | **National Coney Island** chili (coney) sauce | Metro Detroit | Walmart nationwide; NCI restaurants; online. Meijer and Kroger **unverified** | 4 × 7.5 oz pack (price not captured) | ✅ Canned. ⚠️ Contains meat, so **no Canada** | Make a Detroit coney at home |
-| 43 | **Zehnder's of Frankenmuth** egg noodles and seasonings | Frankenmuth | Zehnder's Marketplace, online. Grocery availability **unverified** | Not found | ✅ | The noodles from the Frankenmuth chicken dinner |
-| 44 | **Pioneer Sugar / Big Chief** (Michigan Sugar Co.) | Bay City (1906); factories in Caro, Croswell, Sebewaing; owned by about 1,000 growers, mostly in the Thumb | MI grocers (unverified at specific stores) | Not found | ✅ Heavy, low value | Thumb sugar beets. A good item for a "Thumb" story box |
-| 45 | **Michigan navy beans** | Huron County / the Thumb (top US dry-bean county; MI is #2 in navy beans) | Varies | Not found | ✅ | Michigan beans go into the US Senate bean soup (*recipe claim not verified here*). **No specific brand verified** |
-| 46 | **Pinconning cheese** (aged Colby-style) | Pinconning, Bay County (Dan Horn, about 1915; Wilson's Cheese Shoppe since 1939) | Wilson's Cheese Shoppe, regional grocers | Not found | ❄️ Semi-perishable: cold pack recommended, especially in warm months | The "Cheese Capital of Michigan" on old US-23 |
-| 47 | **Jampot** wild thimbleberry jam | Keweenaw Peninsula, near Eagle Harbor (run by monks; which order is unclear) | Jampot shop (seasonal), online; other U.P. retailers | 9 oz about $24–$30 at another retailer | 🫙 ✅ | Thimbleberries grow almost only in the U.P.'s north woods. Premium, rare |
+| 36 | **Jiffy** Corn Muffin Mix | Chelsea (Chelsea Milling; mill 1901; first prepared baking mix sold to the public, 1930) | Everywhere, national | $0.69–$0.99 per 8.5 oz (Lowes Foods, Brookshire's) | [OK] [CAUTION] Contains lard, so **no Canada** (as DGS found) | The little blue box made down the road in Chelsea. Cheap, so it works as a filler and story item |
+| 37 | **Koeze Cream-Nut** peanut butter | Grand Rapids (produce business 1910; peanut butter since 1925) | Grocers (Meijer unverified), specialty | $7.39–$7.95 per 17 oz (ShopRite, Harney) | [GLASS] [OK] Heavy | Dark-roasted Virginia peanuts on the same equipment used since 1925 (per Koeze) |
+| 38 | **McClure's** pickles (Spicy, Garlic Dill) | Detroit (2006) | Grocers nationwide | 32 oz about $8.59 (H-E-B) | [COLD] **Sold refrigerated**: do not ship ambient (I believe they're unpasteurized; **check the label**). Use McClure's chips (#11) instead | Detroit's craft pickle |
+| 39 | **Garden Fresh Gourmet** salsa | Ferndale (Jack & Annette Aronson; 1997 or 2005, sources conflict). Sold to Campbell 2015, then to Fontaine Santé | Grocers | — | [COLD] **Refrigerated: do not ship** | The salsa that started in a Ferndale BBQ joint |
+| 40 | **Clancy's Fancy** hot sauce | Ann Arbor (first made in the 1970s) | Zingerman's, local markets | Not found | [GLASS] [OK] | Thick, garlicky Ann Arbor hot sauce. *Current production status unverified* |
+| 41 | **Hell Fire Detroit** hot sauce | Metro Detroit, now Warren (around 2015; origin stories conflict) | Online, local; DGS stocks it | Not found | [GLASS] [OK] | Featured on *Hot Ones* |
+| 42 | **National Coney Island** chili (coney) sauce | Metro Detroit | Walmart nationwide; NCI restaurants; online. Meijer and Kroger **unverified** | 4 × 7.5 oz pack (price not captured) | [OK] Canned. [CAUTION] Contains meat, so **no Canada** | Make a Detroit coney at home |
+| 43 | **Zehnder's of Frankenmuth** egg noodles and seasonings | Frankenmuth | Zehnder's Marketplace, online. Grocery availability **unverified** | Not found | [OK] | The noodles from the Frankenmuth chicken dinner |
+| 44 | **Pioneer Sugar / Big Chief** (Michigan Sugar Co.) | Bay City (1906); factories in Caro, Croswell, Sebewaing; owned by about 1,000 growers, mostly in the Thumb | MI grocers (unverified at specific stores) | Not found | [OK] Heavy, low value | Thumb sugar beets. A good item for a "Thumb" story box |
+| 45 | **Michigan navy beans** | Huron County / the Thumb (top US dry-bean county; MI is #2 in navy beans) | Varies | Not found | [OK] | Michigan beans go into the US Senate bean soup (*recipe claim not verified here*). **No specific brand verified** |
+| 46 | **Pinconning cheese** (aged Colby-style) | Pinconning, Bay County (Dan Horn, about 1915; Wilson's Cheese Shoppe since 1939) | Wilson's Cheese Shoppe, regional grocers | Not found | [COLD] Semi-perishable: cold pack recommended, especially in warm months | The "Cheese Capital of Michigan" on old US-23 |
+| 47 | **Jampot** wild thimbleberry jam | Keweenaw Peninsula, near Eagle Harbor (run by monks; which order is unclear) | Jampot shop (seasonal), online; other U.P. retailers | 9 oz about $24–$30 at another retailer | [GLASS] [OK] | Thimbleberries grow almost only in the U.P.'s north woods. Premium, rare |
 
 ### 6. Coffee & Breakfast
 | # | Brand / Product | Origin | Where sold | Approx. price | Ship | Hook |
 |---|---|---|---|---|---|---|
-| 48 | **Trenary Toast** | Trenary, U.P. (1928, Finnish immigrant founder) | Bakery, U.P. stores, online | 16-slice bag $4.75 (Atlas Obscura, dated) | ✅ About 1-year shelf life | Cinnamon-sugar Finnish rusk for dunking in coffee. Pure Yooper |
-| 49 | **Great Lakes Coffee Roasting Co.** | Detroit, Midtown (1994) | Cafés, DTW airport, online | Not found | ✅ | Detroit-roasted beans |
-| 50 | **Zingerman's** coffee, coffee cake, bread | Ann Arbor (deli 1982; Mail Order 1992) | Zingerman's, online | Not found | Coffee ✅; bread and cake ship fast | Ann Arbor's food landmark. ⚠️ **Also a direct competitor in Michigan gift boxes** |
-| 51 | **Germack coffee** | Detroit, Eastern Market | Germack shop | Not found | ✅ | Germack roasts coffee as well as nuts |
-| 52 | **Kellogg's cereals** (WK Kellogg Co) | Battle Creek. Ferrero bought WK Kellogg on Sept 26, 2025; Battle Creek stays the North American cereal HQ | Everywhere | National pricing | ✅ | "Cereal City" story only. ⚠️ **Not Michigan-only; low value as a product.** Use it in "Battle Creek" storytelling, not as a hero SKU |
+| 48 | **Trenary Toast** | Trenary, U.P. (1928, Finnish immigrant founder) | Bakery, U.P. stores, online | 16-slice bag $4.75 (Atlas Obscura, dated) | [OK] About 1-year shelf life | Cinnamon-sugar Finnish rusk for dunking in coffee. Pure Yooper |
+| 49 | **Great Lakes Coffee Roasting Co.** | Detroit, Midtown (1994) | Cafés, DTW airport, online | Not found | [OK] | Detroit-roasted beans |
+| 50 | **Zingerman's** coffee, coffee cake, bread | Ann Arbor (deli 1982; Mail Order 1992) | Zingerman's, online | Not found | Coffee [OK]; bread and cake ship fast | Ann Arbor's food landmark. [CAUTION] **Also a direct competitor in Michigan gift boxes** |
+| 51 | **Germack coffee** | Detroit, Eastern Market | Germack shop | Not found | [OK] | Germack roasts coffee as well as nuts |
+| 52 | **Kellogg's cereals** (WK Kellogg Co) | Battle Creek. Ferrero bought WK Kellogg on Sept 26, 2025; Battle Creek stays the North American cereal HQ | Everywhere | National pricing | [OK] | "Cereal City" story only. [CAUTION] **Not Michigan-only; low value as a product.** Use it in "Battle Creek" storytelling, not as a hero SKU |
 
 ### 7. Frozen / perishable / alcohol: list as "Michigan classics we can't ship" or ship only with a cold chain
 | # | Product | Origin | Notes |
 |---|---|---|---|
-| 53 | **Koegel Viennas** | Flint (1916) | ❄️ Koegel now sells online through Lynch Shipping (all 50 states). Point customers there rather than stocking it |
-| 54 | **Buddy's** frozen Detroit-style pizza | Detroit (1946, by common account; no source found in this search) | ❄️ In grocery freezers (30 oz cheese at Giant; $13.49 at a SE Michigan Kroger, one Reddit report). Ships nationally through Goldbelly |
-| 55 | **Achatz** pies | Armada (1993) | ❄️ Goldbelly ships them frozen. Meijer stocking **unverified** |
-| 56 | **Hudsonville Ice Cream** | Hudsonville / Holland (ice cream since 1926; creamery roots 1895) | ❄️ Do not ship |
-| 57 | **Stroh's Ice Cream** / **Superman** ice cream | Detroit brand / Michigan regional flavour | ❄️ Superman's origin is disputed: Michigan Public calls the Stroh's origin claim "dubious". Hudsonville sells "Super Scoop"; Meijer sells "Scooperman". Good for **merchandise and content only** |
-| 58 | **Detroit Style Pizza Co.** | Metro Detroit | ❄️ **Grocery availability unverified.** Buscemi's has also moved into grocery freezers |
-| 59 | **Bell's, Founders, Detroit City Distillery, etc.** | Various | 🍺 **Excluded.** Shipping alcohol needs licences |
+| 53 | **Koegel Viennas** | Flint (1916) | [COLD] Koegel now sells online through Lynch Shipping (all 50 states). Point customers there rather than stocking it |
+| 54 | **Buddy's** frozen Detroit-style pizza | Detroit (1946, by common account; no source found in this search) | [COLD] In grocery freezers (30 oz cheese at Giant; $13.49 at a SE Michigan Kroger, one Reddit report). Ships nationally through Goldbelly |
+| 55 | **Achatz** pies | Armada (1993) | [COLD] Goldbelly ships them frozen. Meijer stocking **unverified** |
+| 56 | **Hudsonville Ice Cream** | Hudsonville / Holland (ice cream since 1926; creamery roots 1895) | [COLD] Do not ship |
+| 57 | **Stroh's Ice Cream** / **Superman** ice cream | Detroit brand / Michigan regional flavour | [COLD] Superman's origin is disputed: Michigan Public calls the Stroh's origin claim "dubious". Hudsonville sells "Super Scoop"; Meijer sells "Scooperman". Good for **merchandise and content only** |
+| 58 | **Detroit Style Pizza Co.** | Metro Detroit | [COLD] **Grocery availability unverified.** Buscemi's has also moved into grocery freezers |
+| 59 | **Bell's, Founders, Detroit City Distillery, etc.** | Various | [ALCOHOL] **Excluded.** Shipping alcohol needs licences |
 | — | **"Mackinaw Peanut Butter Co."** | — | **Not found. Possibly doesn't exist.** Use Koeze Cream-Nut (#37) |
 
 ### By region

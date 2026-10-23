@@ -33,14 +33,19 @@ from fighting over the same Google queries:
 cross-link so only one site targets "michigan gift box".
 
 **Shared family DNA.** The two brands should feel related. They share:
-- Palette: navy #1F2D5C, cream #F3EEE2, red #B8352B, mustard #E9C450
+- Brand colors: navy #1F2D5C, red #B8352B, mustard gold #E9C450
 - Fonts: Overpass for body text, Patrick Hand SC for handwritten kickers
 - The lowercase "so, who's it for?" kicker pattern
 - The "item, size | Place · since year" product line format
 
-They differ on visual motif:
-- **DGS:** road signs and blackletter.
-- **MGS:** Great Lakes postcards, postage stamps, postmarks and an accurate two-peninsula map, with Fraunces as the display font.
+They differ in setting:
+- **DGS:** cream paper, road signs and blackletter.
+- **MGS:** the outdoors. Cool lake-mist and shallow-water blues instead of tan, a sky-to-lake hero with a pine treeline and
+  waves, a Great Lakes blue heritage band, a pine-forest shoreline above the footer, postcards, stamps and an accurate
+  two-peninsula map, with Fraunces as the display font.
+
+**No emojis anywhere.** Use the theme's Michigan line-icon set instead (chip bag, pop can, fudge, cherries, peanut,
+pine, mug, jar, bottle, lighthouse, crate, waves, mitten).
 
 ## 2. What the theme does, and why (research → feature)
 

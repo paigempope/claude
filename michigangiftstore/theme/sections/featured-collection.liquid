@@ -1,5 +1,5 @@
 {%- assign c = section.settings.collection -%}
-<section class="section{% if section.settings.paper %} section--paper{% endif %}">
+<section class="section{% if section.settings.paper %} section--paper{% endif %}{% if section.settings.water %} section--water{% endif %}">
   <div class="page-width">
     <div class="section-head">
       <div>
@@ -32,7 +32,8 @@
     { "type": "range", "id": "limit", "label": "Products", "min": 4, "max": 12, "step": 4, "default": 8 },
     { "type": "select", "id": "layout", "label": "Mobile layout", "options": [{ "value": "grid", "label": "2-up grid" }, { "value": "scroller", "label": "Swipe row" }], "default": "scroller" },
     { "type": "text", "id": "link_label", "label": "Link label", "default": "Shop all" },
-    { "type": "checkbox", "id": "paper", "label": "Paper background", "default": false }
+    { "type": "checkbox", "id": "water", "label": "Lake-blue background", "default": false },
+    { "type": "checkbox", "id": "paper", "label": "White background", "default": false }
   ],
   "presets": [{ "name": "Featured collection" }]
 }

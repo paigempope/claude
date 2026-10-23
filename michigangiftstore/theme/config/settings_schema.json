@@ -24,12 +24,13 @@
     "settings": [
       { "type": "header", "content": "Palette" },
       { "type": "color", "id": "color_navy", "label": "Great Lakes navy", "default": "#1F2D5C" },
-      { "type": "color", "id": "color_lake", "label": "Lake blue", "default": "#2F6E96" },
+      { "type": "color", "id": "color_lake", "label": "Lake blue", "default": "#1F6FA3" },
       { "type": "color", "id": "color_cherry", "label": "Cherry red (primary action)", "default": "#B8352B" },
-      { "type": "color", "id": "color_pine", "label": "Pine green", "default": "#1D6A47" },
-      { "type": "color", "id": "color_sunset", "label": "Sunset amber", "default": "#E9C450" },
-      { "type": "color", "id": "color_birch", "label": "Birch (page background)", "default": "#F3EEE2" },
-      { "type": "color", "id": "color_paper", "label": "Paper (cards)", "default": "#FBF8F1" },
+      { "type": "color", "id": "color_pine", "label": "Pine green", "default": "#1E5B3F" },
+      { "type": "color", "id": "color_sunset", "label": "Dune sand / sunset gold", "default": "#E9C450" },
+      { "type": "color", "id": "color_birch", "label": "Lake mist (page background)", "default": "#F4F9FC" },
+      { "type": "color", "id": "color_paper", "label": "Snow (cards)", "default": "#FFFFFF" },
+      { "type": "color", "id": "color_water", "label": "Shallow water (alternate sections)", "default": "#DCEDF7" },
       { "type": "color", "id": "color_ink", "label": "Ink (text)", "default": "#1F2D5C" }
     ]
   },

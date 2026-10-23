@@ -8,7 +8,7 @@
       {%- assign now_ts = 'now' | date: '%s' -%}
       {%- if deadline_ts > now_ts -%}
         <span class="announcement__deadline" data-deadline="{{ settings.deadline_date }}T23:59:00">
-          🎄 {{ settings.deadline_label }} <span data-countdown></span>
+          {{ settings.deadline_label }} <span data-countdown></span>
         </span>
       {%- endif -%}
     {%- endif -%}

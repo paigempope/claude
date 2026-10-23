@@ -36,19 +36,38 @@ const PAGE_MAP = {
 };
 const fixUrl = (v) => (typeof v === 'string' && v.startsWith('shopify://') ? PAGE_MAP[v] || '#' : v);
 
-/* Product art: an illustrated "package" so the preview isn't a wall of grey placeholders. */
-function art(p, w = 800) {
-  const name = p.title.split(',')[0].replace(/&/g, '&amp;').replace(/'/g, '&#39;');
-  const words = name.split(' ');
+/* Product art: an illustrated package per product (bag, can, jar...). No emoji, no brand logos. */
+const ACCENT = { 'Chips & Snacks': '#B8352B', 'Michigan Pop': '#1F6FA3', 'Fudge & Sweets': '#6B3E26', 'Up North Cherries': '#B8352B', 'Pantry & Sauces': '#1E5B3F', 'Coffee & Breakfast': '#1F2D5C', 'Gift Boxes': '#1F2D5C' };
+function art(p) {
+  const esc = (t) => t.replace(/&/g, '&amp;').replace(/'/g, '&#39;').replace(/</g, '&lt;');
+  const name = esc(p.title.split(',')[0]);
   const lines = []; let cur = '';
-  for (const wd of words) { if ((cur + ' ' + wd).trim().length > 16) { lines.push(cur.trim()); cur = wd; } else cur += ' ' + wd; }
+  for (const wd of name.split(' ')) { if ((cur + ' ' + wd).trim().length > 14) { lines.push(cur.trim()); cur = wd; } else cur += ' ' + wd; }
   lines.push(cur.trim());
-  const isBox = p.kind === 'box';
-  const pkg = isBox
-    ? `<rect x="150" y="260" width="500" height="330" rx="18" fill="#C9A47A"/><rect x="130" y="230" width="540" height="70" rx="14" fill="#B58D63"/><rect x="380" y="230" width="40" height="360" fill="#B8352B"/><path d="M400 232c-60-70-150-40-110 0zM400 232c60-70 150-40 110 0z" fill="#B8352B"/>`
-    : `<path d="M230 170h340l-20 470H250z" fill="#FBF8F1" stroke="#1F2D5C" stroke-width="6" stroke-linejoin="round"/><path d="M230 170q170-40 340 0" fill="none" stroke="#1F2D5C" stroke-width="6"/>`;
-  const label = lines.slice(0, 3).map((l, i) => `<text x="400" y="${(isBox ? 680 : 520) + i * 34}" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="30" fill="#1F2D5C">${l}</text>`).join('');
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800"><rect width="800" height="800" fill="${p.bg}"/><circle cx="660" cy="130" r="80" fill="#fff" opacity=".35"/>${pkg}<text x="400" y="${isBox ? 470 : 400}" text-anchor="middle" font-size="${isBox ? 150 : 170}">${p.emoji}</text>${label}<text x="400" y="770" text-anchor="middle" font-family="monospace" font-size="20" letter-spacing="4" fill="#1F2D5C" opacity=".6">${(p.vendor || '').toUpperCase().replace(/&/g, '&amp;')}</text></svg>`;
+  const ac = ACCENT[p.type] || '#1F2D5C';
+  const ink = '#1F2D5C';
+  const label = (y, size = 30) => lines.slice(0, 3).map((l, i) => `<text x="400" y="${y + i * (size + 6)}" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="${size}" fill="${ink}">${l}</text>`).join('');
+  const pin = `<path d="M400 0c-14 0-24 10-24 23 0 18 24 39 24 39s24-21 24-39C424 10 414 0 400 0z" fill="${ac}"/><circle cx="400" cy="23" r="8" fill="#fff"/>`;
+  let pkg;
+  switch (p.shape) {
+    case 'can':
+      pkg = `<rect x="290" y="150" width="220" height="440" rx="34" fill="#fff" stroke="${ink}" stroke-width="6"/><rect x="290" y="250" width="220" height="230" fill="${ac}"/><ellipse cx="400" cy="160" rx="96" ry="18" fill="#E6EEF5" stroke="${ink}" stroke-width="6"/><text x="400" y="355" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="34" fill="#fff">${lines[0]}</text>${lines[1] ? `<text x="400" y="395" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="34" fill="#fff">${lines[1]}</text>` : ''}`; break;
+    case 'jar':
+      pkg = `<rect x="270" y="150" width="260" height="70" rx="12" fill="${ac}"/><rect x="250" y="215" width="300" height="380" rx="44" fill="#fff" stroke="${ink}" stroke-width="6"/><rect x="280" y="320" width="240" height="160" rx="12" fill="#F4F9FC" stroke="${ink}" stroke-width="3"/>${label(380, 28)}`; break;
+    case 'bottle':
+      pkg = `<rect x="370" y="110" width="60" height="90" rx="8" fill="${ac}"/><path d="M370 200h60l40 70v300a24 24 0 0 1-24 24H354a24 24 0 0 1-24-24V270z" fill="#fff" stroke="${ink}" stroke-width="6"/><rect x="335" y="330" width="130" height="170" fill="#F4F9FC" stroke="${ink}" stroke-width="3"/><text x="400" y="400" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="22" fill="${ink}">${lines[0]}</text><text x="400" y="430" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="22" fill="${ink}">${lines[1] || ''}</text>`; break;
+    case 'bar':
+      pkg = `<g transform="rotate(-8 400 400)"><rect x="200" y="250" width="400" height="300" rx="14" fill="#6B3E26" stroke="${ink}" stroke-width="6"/><path d="M200 330h400M200 410h400M200 490h400M333 250v300M466 250v300" stroke="#4E2B19" stroke-width="5"/><rect x="230" y="300" width="340" height="160" rx="10" fill="#fff" stroke="${ink}" stroke-width="4"/>${label(360, 30)}</g>`; break;
+    case 'box':
+      pkg = `<rect x="230" y="170" width="340" height="420" rx="10" fill="#fff" stroke="${ink}" stroke-width="6"/><rect x="230" y="170" width="340" height="80" fill="${ac}"/><rect x="230" y="510" width="340" height="80" fill="${ac}" opacity=".15"/>${label(330, 32)}`; break;
+    case 'giftbox':
+      pkg = `<rect x="170" y="290" width="460" height="300" rx="14" fill="#fff" stroke="${ink}" stroke-width="6"/><rect x="150" y="240" width="500" height="80" rx="12" fill="${ink}"/><rect x="380" y="240" width="40" height="350" fill="#B8352B"/><path d="M400 242c-60-80-160-50-110 0zM400 242c60-80 160-50 110 0z" fill="#B8352B"/><rect x="210" y="400" width="380" height="110" rx="10" fill="#fff" stroke="${ink}" stroke-width="4"/><text x="400" y="448" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="34" fill="${ink}">${lines[0]}</text><text x="400" y="490" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="34" fill="${ink}">${lines.slice(1).join(' ')}</text>`; break;
+    case 'crate':
+      pkg = `<rect x="150" y="270" width="500" height="320" rx="6" fill="#C9A273" stroke="${ink}" stroke-width="6"/><path d="M150 375h500M150 480h500" stroke="${ink}" stroke-width="5"/><path d="M200 270c20-60 80-90 140-60M330 270c30-80 120-100 170-50M470 270c20-50 80-70 130-20" fill="#1E5B3F" stroke="${ink}" stroke-width="4"/><rect x="230" y="395" width="340" height="70" rx="8" fill="#fff" stroke="${ink}" stroke-width="3"/><text x="400" y="440" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="30" fill="${ink}">${name.replace(/^The /, '')}</text>`; break;
+    default: // bag
+      pkg = `<path d="M230 160h340l-16 30 16 30v320l-16 30 16 30H230l16-30-16-30V220l16-30z" fill="#fff" stroke="${ink}" stroke-width="6" stroke-linejoin="round"/><rect x="230" y="230" width="340" height="62" fill="${ac}"/><path d="M230 520h340" stroke="${ac}" stroke-width="10"/>${label(370, 32)}`;
+  }
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800"><rect width="800" height="800" fill="${p.bg}"/><path d="M0 700c66 0 66-16 133-16s67 16 133 16 67-16 134-16 66 16 133 16 67-16 134-16 66 16 133 16v100H0z" fill="#fff" opacity=".45"/><g transform="translate(0 20)">${pkg}</g><g transform="translate(330 712) scale(.35)">${pin}</g><text x="420" y="736" font-family="monospace" font-size="18" letter-spacing="3" fill="${ink}" opacity=".7">${esc((p.origin || 'MICHIGAN').toUpperCase())}</text></svg>`;
   return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
 }
 
@@ -233,7 +252,7 @@ engine.registerFilter('image_tag', (src, ...args) => {
   if (!('alt' in a)) attrs.push('alt=""');
   return `<img src="${src}" ${attrs.join(' ')} width="800" height="800">`;
 });
-engine.registerFilter('placeholder_svg_tag', (_n, cls) => `<svg class="${cls || ''}" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice"><rect width="100" height="100" fill="#E9E2D2"/><path d="M30 70l15-20 10 12 8-9 12 17z" fill="#D6CDB8"/><circle cx="64" cy="36" r="6" fill="#D6CDB8"/></svg>`);
+engine.registerFilter('placeholder_svg_tag', (_n, cls) => `<svg class="${cls || ''}" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice"><rect width="100" height="100" fill="#DCEDF7"/><path d="M18 74l14-18 9 10 12-16 14 24z" fill="#B9D7EA"/><path d="M0 80c8 0 8-3 16-3s8 3 17 3 8-3 16-3 9 3 17 3 8-3 17-3 8 3 17 3v20H0z" fill="#9CC5E0"/><circle cx="72" cy="30" r="8" fill="#FFF4CF"/></svg>`);
 engine.registerFilter('asset_url', (f) => `assets/${f}`);
 engine.registerFilter('shopify_asset_url', (f) => `#${f}`);
 engine.registerFilter('stylesheet_tag', (u) => `<link rel="stylesheet" href="${u}">`);

@@ -35,11 +35,51 @@
     "boxes": {
       "type": "gift-box-tiers",
       "blocks": {
-        "t1": { "type": "tier", "settings": { "eyebrow": "The starter", "title": "The Day Tripper", "fallback_price": "$45", "count": "5 classics · ships free", "blurb": "A quick hit of home for birthdays, teachers and 'thinking of you'.", "contents": "Better Made Special BBQ chips\nFaygo Rock & Rye (12 oz can)\nSanders milk chocolate hot fudge\nGermack pistachios\nHandwritten Michigan postcard", "flag": "", "featured": false } },
-        "t2": { "type": "tier", "settings": { "eyebrow": "Most gifted", "title": "The Up North", "fallback_price": "$79", "count": "9 classics · ships free", "blurb": "From Detroit to the Straits: chips, pop, fudge and cherries.", "contents": "Everything in The Day Tripper\nMackinac Island fudge (seasonal)\nCherry Republic dried cherries\nGreat Lakes Cherry BBQ kettle chips\nVernors (12 oz can)\nKoeze Cream-Nut peanut butter", "flag": "Most gifted", "featured": true } },
-        "t3": { "type": "tier", "settings": { "eyebrow": "The whole state", "title": "The Full Mitten", "fallback_price": "$119", "count": "14 classics · ships free", "blurb": "Every region, from Detroit to the U.P., in one keepsake crate.", "contents": "Everything in The Up North\nTrenary Toast from the U.P.\nAmerican Spoon sour cherry preserves\nPop Daddy dill pickle pretzels\nJiffy corn muffin mix from Chelsea\nKeepsake wooden crate", "flag": "", "featured": false } }
+        "t1": {
+          "type": "tier",
+          "settings": {
+            "eyebrow": "The starter",
+            "title": "The Day Tripper",
+            "fallback_price": "$45",
+            "count": "5 classics · ships free",
+            "blurb": "A quick hit of home for birthdays, teachers and 'thinking of you'.",
+            "contents": "Better Made Special BBQ chips\nFaygo Rock & Rye (12 oz can)\nSanders milk chocolate hot fudge\nGermack pistachios\nHandwritten Michigan postcard",
+            "flag": "",
+            "featured": false
+          }
+        },
+        "t2": {
+          "type": "tier",
+          "settings": {
+            "eyebrow": "Most gifted",
+            "title": "The Up North",
+            "fallback_price": "$79",
+            "count": "9 classics · ships free",
+            "blurb": "From Detroit to the Straits: chips, pop, fudge and cherries.",
+            "contents": "Everything in The Day Tripper\nMackinac Island fudge (seasonal)\nCherry Republic dried cherries\nGreat Lakes Cherry BBQ kettle chips\nVernors (12 oz can)\nKoeze Cream-Nut peanut butter",
+            "flag": "Most gifted",
+            "featured": true
+          }
+        },
+        "t3": {
+          "type": "tier",
+          "settings": {
+            "eyebrow": "The whole state",
+            "title": "The Full Mitten",
+            "fallback_price": "$119",
+            "count": "14 classics · ships free",
+            "blurb": "Every region, from Detroit to the U.P., in one keepsake crate.",
+            "contents": "Everything in The Up North\nTrenary Toast from the U.P.\nAmerican Spoon sour cherry preserves\nPop Daddy dill pickle pretzels\nJiffy corn muffin mix from Chelsea\nKeepsake wooden crate",
+            "flag": "",
+            "featured": false
+          }
+        }
       },
-      "block_order": ["t1", "t2", "t3"],
+      "block_order": [
+        "t1",
+        "t2",
+        "t3"
+      ],
       "settings": {
         "scheme": "navy",
         "kicker": "so, how homesick are they?",
@@ -51,120 +91,535 @@
     "by_price": {
       "type": "collection-tiles",
       "blocks": {
-        "p1": { "type": "tile", "settings": { "title": "Under $25", "emoji": "🥔", "bg": "#F9E6B3" } },
-        "p2": { "type": "tile", "settings": { "title": "Under $50", "emoji": "🥤", "bg": "#F6D2CE" } },
-        "p3": { "type": "tile", "settings": { "title": "$50 – $100", "emoji": "🎁", "bg": "#E9DCCB" } },
-        "p4": { "type": "tile", "settings": { "title": "$100 & up", "emoji": "🧺", "bg": "#DCE7EF" } },
-        "p5": { "type": "tile", "settings": { "title": "Up North", "emoji": "🍒", "bg": "#F3C9C5" } },
-        "p6": { "type": "tile", "settings": { "title": "The U.P.", "emoji": "🌲", "bg": "#D8E6D9" } }
+        "p1": {
+          "type": "tile",
+          "settings": {
+            "title": "Under $25",
+            "icon": "chips",
+            "bg": "#FBEFC4"
+          }
+        },
+        "p2": {
+          "type": "tile",
+          "settings": {
+            "title": "Under $50",
+            "icon": "pop",
+            "bg": "#DCEDF7"
+          }
+        },
+        "p3": {
+          "type": "tile",
+          "settings": {
+            "title": "$50 – $100",
+            "icon": "gift",
+            "bg": "#F7DAD6"
+          }
+        },
+        "p4": {
+          "type": "tile",
+          "settings": {
+            "title": "$100 & up",
+            "icon": "crate",
+            "bg": "#DCEDF7"
+          }
+        },
+        "p5": {
+          "type": "tile",
+          "settings": {
+            "title": "Up North",
+            "icon": "cherry",
+            "bg": "#F7DAD6"
+          }
+        },
+        "p6": {
+          "type": "tile",
+          "settings": {
+            "title": "The U.P.",
+            "icon": "pine",
+            "bg": "#D9EBDF"
+          }
+        }
       },
-      "block_order": ["p1", "p2", "p3", "p4", "p5", "p6"],
-      "settings": { "kicker": "so, what's the budget?", "heading": "Shop by price (or by place)", "link_label": "Shop everything", "center": false, "tight": true }
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "p5",
+        "p6"
+      ],
+      "settings": {
+        "kicker": "so, what's the budget?",
+        "heading": "Shop by price (or by place)",
+        "link_label": "Shop everything",
+        "center": false,
+        "tight": true,
+        "water": true
+      }
     },
     "quiz": {
       "type": "miss-quiz",
       "blocks": {
-        "o1": { "type": "option", "settings": { "emoji": "🥔", "label": "Better Made chips" } },
-        "o2": { "type": "option", "settings": { "emoji": "🥤", "label": "Faygo & Vernors" } },
-        "o3": { "type": "option", "settings": { "emoji": "🍫", "label": "Fudge & Sanders" } },
-        "o4": { "type": "option", "settings": { "emoji": "🍒", "label": "Up North cherries" } },
-        "o5": { "type": "option", "settings": { "emoji": "🥜", "label": "Germack nuts" } },
-        "o6": { "type": "option", "settings": { "emoji": "🌲", "label": "The U.P." } },
-        "o7": { "type": "option", "settings": { "emoji": "☕", "label": "Coffee & breakfast" } },
-        "o8": { "type": "option", "settings": { "emoji": "🌶️", "label": "Hot sauce & pantry" } }
+        "o1": {
+          "type": "option",
+          "settings": {
+            "icon": "chips",
+            "label": "Better Made chips"
+          }
+        },
+        "o2": {
+          "type": "option",
+          "settings": {
+            "icon": "pop",
+            "label": "Faygo & Vernors"
+          }
+        },
+        "o3": {
+          "type": "option",
+          "settings": {
+            "icon": "fudge",
+            "label": "Fudge & Sanders"
+          }
+        },
+        "o4": {
+          "type": "option",
+          "settings": {
+            "icon": "cherry",
+            "label": "Up North cherries"
+          }
+        },
+        "o5": {
+          "type": "option",
+          "settings": {
+            "icon": "nut",
+            "label": "Germack nuts"
+          }
+        },
+        "o6": {
+          "type": "option",
+          "settings": {
+            "icon": "pine",
+            "label": "The U.P."
+          }
+        },
+        "o7": {
+          "type": "option",
+          "settings": {
+            "icon": "mug",
+            "label": "Coffee & breakfast"
+          }
+        },
+        "o8": {
+          "type": "option",
+          "settings": {
+            "icon": "bottle",
+            "label": "Hot sauce & pantry"
+          }
+        }
       },
-      "block_order": ["o1", "o2", "o3", "o4", "o5", "o6", "o7", "o8"],
-      "settings": { "kicker": "so, who's it for?", "heading": "What do they miss most?", "subheading": "Pick up to three and we'll point you to the right box.", "button": "Show me gifts", "box_link": "shopify://pages/build-a-box", "note": "Takes 10 seconds. No email needed." }
+      "block_order": [
+        "o1",
+        "o2",
+        "o3",
+        "o4",
+        "o5",
+        "o6",
+        "o7",
+        "o8"
+      ],
+      "settings": {
+        "kicker": "so, who's it for?",
+        "heading": "What do they miss most?",
+        "subheading": "Pick up to three and we'll point you to the right box.",
+        "button": "Show me gifts",
+        "box_link": "shopify://pages/build-a-box",
+        "note": "Takes 10 seconds. No email needed."
+      }
     },
     "bestsellers": {
       "type": "featured-collection",
-      "settings": { "kicker": "what Michiganders miss most", "heading": "The usual suspects", "limit": 8, "layout": "scroller", "link_label": "Shop all", "paper": false }
+      "settings": {
+        "kicker": "what Michiganders miss most",
+        "heading": "The usual suspects",
+        "limit": 8,
+        "layout": "scroller",
+        "link_label": "Shop all",
+        "paper": false
+      }
     },
     "split": {
       "type": "split-cta",
       "blocks": {
-        "c1": { "type": "card", "settings": { "eyebrow": "Build a box", "title": "Pick every item yourself", "text": "Choose 4, 6 or 10 Michigan favorites. We pack them in a gift box with your handwritten note.", "button": "Start building", "link": "shopify://pages/build-a-box" } },
-        "c2": { "type": "card", "settings": { "eyebrow": "Corporate gifting", "title": "Gift like a Michigander", "text": "Client and employee gifts from 10 to 1,000 boxes. Logo cards, one spreadsheet for every address, and volume pricing.", "button": "Get a quote", "link": "shopify://pages/corporate-gifts" } }
+        "c1": {
+          "type": "card",
+          "settings": {
+            "eyebrow": "Build a box",
+            "title": "Pick every item yourself",
+            "text": "Choose 4, 6 or 10 Michigan favorites. We pack them in a gift box with your handwritten note.",
+            "button": "Start building",
+            "link": "shopify://pages/build-a-box"
+          }
+        },
+        "c2": {
+          "type": "card",
+          "settings": {
+            "eyebrow": "Corporate gifting",
+            "title": "Gift like a Michigander",
+            "text": "Client and employee gifts from 10 to 1,000 boxes. Logo cards, one spreadsheet for every address, and volume pricing.",
+            "button": "Get a quote",
+            "link": "shopify://pages/corporate-gifts"
+          }
+        }
       },
-      "block_order": ["c1", "c2"],
+      "block_order": [
+        "c1",
+        "c2"
+      ],
       "settings": {}
     },
     "regions": {
       "type": "region-map",
       "blocks": {
-        "r1": { "type": "region", "settings": { "name": "Metro Detroit", "x": 525, "y": 567, "label_left": true, "title": "Metro Detroit & Ann Arbor", "description": "Gratiot Avenue chips, Eastern Market nuts and a century of Detroit pop. Shopping for a die-hard Detroiter? Our sister shop, Detroit Gift Store, goes deep on the 313.", "items": "Better Made, Faygo, Vernors, Sanders, Germack, Kar's, Jiffy (Chelsea)" } },
-        "r2": { "type": "region", "settings": { "name": "West Michigan", "x": 342, "y": 510, "label_left": true, "title": "West Michigan", "description": "Grand Rapids peanut butter, lakeshore towns and Cereal City, Battle Creek.", "items": "Koeze Cream-Nut, Pop Daddy pretzels, Old Orchard" } },
-        "r3": { "type": "region", "settings": { "name": "Up North", "x": 345, "y": 339, "label_left": true, "title": "Up North", "description": "Cherry country. Dunes, orchards and the fudge shops at the Straits.", "items": "Cherry Republic, American Spoon, Great Lakes chips, Mackinac fudge" } },
-        "r4": { "type": "region", "settings": { "name": "The U.P.", "x": 229, "y": 168, "label_left": false, "title": "The Upper Peninsula", "description": "Yooper country: Finnish rusks, thimbleberry jam and a chocolate bar shaped like home.", "items": "Trenary Toast, Jampot thimbleberry jam, Sayklly's Yooper Bar" } },
-        "r5": { "type": "region", "settings": { "name": "The Thumb", "x": 532, "y": 432, "label_left": true, "title": "The Thumb & Bay", "description": "Sugar beets, navy beans, Pinconning cheese and Frankenmuth chicken-dinner noodles.", "items": "Pioneer Sugar, Zehnder's noodles, Michigan navy beans" } }
+        "r1": {
+          "type": "region",
+          "settings": {
+            "name": "Metro Detroit",
+            "x": 525,
+            "y": 567,
+            "label_left": true,
+            "title": "Metro Detroit & Ann Arbor",
+            "description": "Gratiot Avenue chips, Eastern Market nuts and a century of Detroit pop. Shopping for a die-hard Detroiter? Our sister shop, Detroit Gift Store, goes deep on the 313.",
+            "items": "Better Made, Faygo, Vernors, Sanders, Germack, Kar's, Jiffy (Chelsea)"
+          }
+        },
+        "r2": {
+          "type": "region",
+          "settings": {
+            "name": "West Michigan",
+            "x": 342,
+            "y": 510,
+            "label_left": true,
+            "title": "West Michigan",
+            "description": "Grand Rapids peanut butter, lakeshore towns and Cereal City, Battle Creek.",
+            "items": "Koeze Cream-Nut, Pop Daddy pretzels, Old Orchard"
+          }
+        },
+        "r3": {
+          "type": "region",
+          "settings": {
+            "name": "Up North",
+            "x": 345,
+            "y": 339,
+            "label_left": true,
+            "title": "Up North",
+            "description": "Cherry country. Dunes, orchards and the fudge shops at the Straits.",
+            "items": "Cherry Republic, American Spoon, Great Lakes chips, Mackinac fudge"
+          }
+        },
+        "r4": {
+          "type": "region",
+          "settings": {
+            "name": "The U.P.",
+            "x": 229,
+            "y": 168,
+            "label_left": false,
+            "title": "The Upper Peninsula",
+            "description": "Yooper country: Finnish rusks, thimbleberry jam and a chocolate bar shaped like home.",
+            "items": "Trenary Toast, Jampot thimbleberry jam, Sayklly's Yooper Bar"
+          }
+        },
+        "r5": {
+          "type": "region",
+          "settings": {
+            "name": "The Thumb",
+            "x": 532,
+            "y": 432,
+            "label_left": true,
+            "title": "The Thumb & Bay",
+            "description": "Sugar beets, navy beans, Pinconning cheese and Frankenmuth chicken-dinner noodles.",
+            "items": "Pioneer Sugar, Zehnder's noodles, Michigan navy beans"
+          }
+        }
       },
-      "block_order": ["r1", "r2", "r3", "r4", "r5"],
-      "settings": { "scheme": "navy", "kicker": "so, where are they from?", "heading": "Shop by where they grew up", "subheading": "A Yooper and a Detroiter miss very different things. Tap a pin to see each region's classics." }
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5"
+      ],
+      "settings": {
+        "scheme": "navy",
+        "kicker": "so, where are they from?",
+        "heading": "Shop by where they grew up",
+        "subheading": "A Yooper and a Detroiter miss very different things. Tap a pin to see each region's classics."
+      }
     },
     "how": {
       "type": "how-it-works",
       "blocks": {
-        "s1": { "type": "step", "settings": { "title": "Pick a box (or build one)", "text": "Ready-to-send boxes from $45, or choose every item yourself." } },
-        "s2": { "type": "step", "settings": { "title": "Write the card", "text": "Type your note in the cart. We write it by hand on a Michigan postcard. No prices inside." } },
-        "s3": { "type": "step", "settings": { "title": "We pack it in Michigan", "text": "Packed by hand and shipped the next business day, or on the date you pick." } }
+        "s1": {
+          "type": "step",
+          "settings": {
+            "title": "Pick a box (or build one)",
+            "text": "Ready-to-send boxes from $45, or choose every item yourself."
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "title": "Write the card",
+            "text": "Type your note in the cart. We write it by hand on a Michigan postcard. No prices inside."
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "title": "We pack it in Michigan",
+            "text": "Packed by hand and shipped the next business day, or on the date you pick."
+          }
+        }
       },
-      "block_order": ["s1", "s2", "s3"],
-      "settings": { "kicker": "so, how does it work?", "heading": "Three steps to a very happy Michigander", "paper": true }
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ],
+      "settings": {
+        "kicker": "so, how does it work?",
+        "heading": "Three steps to a very happy Michigander",
+        "paper": true
+      }
     },
     "reviews": {
       "type": "testimonials",
       "disabled": true,
       "blocks": {
-        "q1": { "type": "review", "settings": { "rating": 5, "quote": "Replace with a real customer quote.", "name": "Customer", "from": "Grand Rapids → Phoenix" } },
-        "q2": { "type": "review", "settings": { "rating": 5, "quote": "Replace with a real customer quote.", "name": "Customer", "from": "Royal Oak → Austin" } },
-        "q3": { "type": "review", "settings": { "rating": 5, "quote": "Replace with a real customer quote.", "name": "Customer", "from": "Marquette → Denver" } }
+        "q1": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "Replace with a real customer quote.",
+            "name": "Customer",
+            "from": "Grand Rapids → Phoenix"
+          }
+        },
+        "q2": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "Replace with a real customer quote.",
+            "name": "Customer",
+            "from": "Royal Oak → Austin"
+          }
+        },
+        "q3": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "Replace with a real customer quote.",
+            "name": "Customer",
+            "from": "Marquette → Denver"
+          }
+        }
       },
-      "block_order": ["q1", "q2", "q3"],
-      "settings": { "scheme": "pine", "kicker": "so, did it taste like home?", "heading": "Letters from homesick Michiganders", "score": "", "score_label": "average rating" }
+      "block_order": [
+        "q1",
+        "q2",
+        "q3"
+      ],
+      "settings": {
+        "scheme": "pine",
+        "kicker": "so, did it taste like home?",
+        "heading": "Letters from homesick Michiganders",
+        "score": "",
+        "score_label": "average rating"
+      }
     },
     "story": {
       "type": "story",
-      "settings": { "tag": "Packed in Michigan", "reverse": false, "paper": false, "kicker": "so, who packs these?", "heading": "Michiganders, packing for Michiganders.", "cta_label": "Read our story", "cta_link": "shopify://pages/about" }
+      "settings": {
+        "tag": "Packed in Michigan",
+        "reverse": false,
+        "paper": false,
+        "kicker": "so, who packs these?",
+        "heading": "Michiganders, packing for Michiganders.",
+        "cta_label": "Read our story",
+        "cta_link": "shopify://pages/about"
+      }
     },
     "values": {
       "type": "value-props",
       "blocks": {
-        "v1": { "type": "value", "settings": { "icon": "pin", "title": "Michigan-only, really", "text": "If you can buy it at your local grocery store, it's not in our boxes." } },
-        "v2": { "type": "value", "settings": { "icon": "gift", "title": "Handwritten card", "text": "Your note, written by hand. Prices never go inside." } },
-        "v3": { "type": "value", "settings": { "icon": "snow", "title": "Melt-safe summers", "text": "Chocolate and fudge ship with cold packs from May through September." } },
-        "v4": { "type": "value", "settings": { "icon": "shield", "title": "Arrives right, or we resend", "text": "Crushed, melted or leaking? Send a photo and we'll replace it. Nothing to send back." } }
+        "v1": {
+          "type": "value",
+          "settings": {
+            "icon": "pin",
+            "title": "Michigan-only, really",
+            "text": "If you can buy it at your local grocery store, it's not in our boxes."
+          }
+        },
+        "v2": {
+          "type": "value",
+          "settings": {
+            "icon": "gift",
+            "title": "Handwritten card",
+            "text": "Your note, written by hand. Prices never go inside."
+          }
+        },
+        "v3": {
+          "type": "value",
+          "settings": {
+            "icon": "snow",
+            "title": "Melt-safe summers",
+            "text": "Chocolate and fudge ship with cold packs from May through September."
+          }
+        },
+        "v4": {
+          "type": "value",
+          "settings": {
+            "icon": "shield",
+            "title": "Arrives right, or we resend",
+            "text": "Crushed, melted or leaking? Send a photo and we'll replace it. Nothing to send back."
+          }
+        }
       },
-      "block_order": ["v1", "v2", "v3", "v4"],
-      "settings": { "paper": true }
+      "block_order": [
+        "v1",
+        "v2",
+        "v3",
+        "v4"
+      ],
+      "settings": {
+        "paper": false,
+        "water": true
+      }
     },
     "deadlines": {
       "type": "shipping-deadlines",
       "blocks": {
-        "d1": { "type": "row", "settings": { "service": "Ground", "note": "Free on gift boxes & orders $75+", "date": "2026-12-11" } },
-        "d2": { "type": "row", "settings": { "service": "Priority", "note": "2–3 business days", "date": "2026-12-15" } },
-        "d3": { "type": "row", "settings": { "service": "Express", "note": "1–2 business days", "date": "2026-12-17" } },
-        "d4": { "type": "row", "settings": { "service": "Canada", "note": "Some items restricted", "date": "2026-12-09" } }
+        "d1": {
+          "type": "row",
+          "settings": {
+            "service": "Ground",
+            "note": "Free on gift boxes & orders $75+",
+            "date": "2026-12-11"
+          }
+        },
+        "d2": {
+          "type": "row",
+          "settings": {
+            "service": "Priority",
+            "note": "2–3 business days",
+            "date": "2026-12-15"
+          }
+        },
+        "d3": {
+          "type": "row",
+          "settings": {
+            "service": "Express",
+            "note": "1–2 business days",
+            "date": "2026-12-17"
+          }
+        },
+        "d4": {
+          "type": "row",
+          "settings": {
+            "service": "Canada",
+            "note": "Some items restricted",
+            "date": "2026-12-09"
+          }
+        }
       },
-      "block_order": ["d1", "d2", "d3", "d4"],
+      "block_order": [
+        "d1",
+        "d2",
+        "d3",
+        "d4"
+      ],
       "settings": {}
     },
     "faq": {
       "type": "faq",
       "blocks": {
-        "f1": { "type": "qa", "settings": { "question": "How fast do you ship?", "answer": "<p>Orders placed by 1 p.m. ET Monday–Friday ship the same or next business day from Michigan. Ground takes 1–6 business days, and Priority and Express are offered at checkout.</p>" } },
-        "f2": { "type": "qa", "settings": { "question": "Will chocolate and fudge melt?", "answer": "<p>From May through September, we pack chocolate and fudge with cold packs and ship early in the week so they don't sit in a warehouse over the weekend. If anything arrives melted, send us a photo and we'll replace it.</p>" } },
-        "f3": { "type": "qa", "settings": { "question": "How do you ship Faygo and Vernors without a mess?", "answer": "<p>Every can is wrapped and packed upright in a divider. In deep-freeze weeks we may hold pop for a few days so cans don't burst in transit.</p>" } },
-        "f4": { "type": "qa", "settings": { "question": "Can I include a gift message? Are prices in the box?", "answer": "<p>Yes. Add a note in the cart and we write it on a Michigan postcard by hand. We never put prices or receipts in a gift box.</p>" } },
-        "f5": { "type": "qa", "settings": { "question": "Why can't I get Hudsonville, Koegel's or Bumpy Cake?", "answer": "<p>They need to stay frozen or refrigerated, and we only ship things that arrive tasting right. Our boxes are 100% shelf-stable.</p>" } },
-        "f6": { "type": "qa", "settings": { "question": "Do you do corporate or bulk gifts?", "answer": "<p>Yes, for 10 boxes or more. Send one spreadsheet of addresses, add your logo card, and get volume pricing. <a href=\"/pages/corporate-gifts\">Get a quote</a>.</p>" } }
+        "f1": {
+          "type": "qa",
+          "settings": {
+            "question": "How fast do you ship?",
+            "answer": "<p>Orders placed by 1 p.m. ET Monday–Friday ship the same or next business day from Michigan. Ground takes 1–6 business days, and Priority and Express are offered at checkout.</p>"
+          }
+        },
+        "f2": {
+          "type": "qa",
+          "settings": {
+            "question": "Will chocolate and fudge melt?",
+            "answer": "<p>From May through September, we pack chocolate and fudge with cold packs and ship early in the week so they don't sit in a warehouse over the weekend. If anything arrives melted, send us a photo and we'll replace it.</p>"
+          }
+        },
+        "f3": {
+          "type": "qa",
+          "settings": {
+            "question": "How do you ship Faygo and Vernors without a mess?",
+            "answer": "<p>Every can is wrapped and packed upright in a divider. In deep-freeze weeks we may hold pop for a few days so cans don't burst in transit.</p>"
+          }
+        },
+        "f4": {
+          "type": "qa",
+          "settings": {
+            "question": "Can I include a gift message? Are prices in the box?",
+            "answer": "<p>Yes. Add a note in the cart and we write it on a Michigan postcard by hand. We never put prices or receipts in a gift box.</p>"
+          }
+        },
+        "f5": {
+          "type": "qa",
+          "settings": {
+            "question": "Why can't I get Hudsonville, Koegel's or Bumpy Cake?",
+            "answer": "<p>They need to stay frozen or refrigerated, and we only ship things that arrive tasting right. Our boxes are 100% shelf-stable.</p>"
+          }
+        },
+        "f6": {
+          "type": "qa",
+          "settings": {
+            "question": "Do you do corporate or bulk gifts?",
+            "answer": "<p>Yes, for 10 boxes or more. Send one spreadsheet of addresses, add your logo card, and get volume pricing. <a href=\"/pages/corporate-gifts\">Get a quote</a>.</p>"
+          }
+        }
       },
-      "block_order": ["f1", "f2", "f3", "f4", "f5", "f6"],
-      "settings": { "kicker": "questions before you send it", "heading": "Good questions", "open_first": true, "paper": false }
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5",
+        "f6"
+      ],
+      "settings": {
+        "kicker": "questions before you send it",
+        "heading": "Good questions",
+        "open_first": true,
+        "paper": true
+      }
     },
     "newsletter": {
       "type": "newsletter",
       "settings": {}
     }
   },
-  "order": ["hero", "heritage", "boxes", "by_price", "quiz", "bestsellers", "split", "regions", "how", "reviews", "story", "values", "deadlines", "faq", "newsletter"]
+  "order": [
+    "hero",
+    "heritage",
+    "boxes",
+    "by_price",
+    "quiz",
+    "bestsellers",
+    "split",
+    "regions",
+    "how",
+    "reviews",
+    "story",
+    "values",
+    "deadlines",
+    "faq",
+    "newsletter"
+  ]
 }

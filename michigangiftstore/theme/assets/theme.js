@@ -417,7 +417,7 @@
           img.src = filled[i].dataset.img; img.alt = filled[i].dataset.title;
           s.appendChild(img);
         } else {
-          s.textContent = filled[i] ? '✓' : i + 1;
+          if (!filled[i]) s.textContent = i + 1;
         }
         slotsEl.appendChild(s);
       }

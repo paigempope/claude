@@ -12,7 +12,7 @@
       <div class="quiz__options">
         {%- for block in section.blocks -%}
           <button type="button" class="quiz__option" aria-pressed="false" data-quiz-option data-url="{{ block.settings.collection.url | default: routes.all_products_collection_url }}" {{ block.shopify_attributes }}>
-            <span aria-hidden="true">{{ block.settings.emoji }}</span>{{ block.settings.label }}
+            {% render 'icon', name: block.settings.icon %}{{ block.settings.label }}
           </button>
         {%- endfor -%}
       </div>
@@ -41,7 +41,7 @@
       "type": "option",
       "name": "Option",
       "settings": [
-        { "type": "text", "id": "emoji", "label": "Emoji", "default": "🥔" },
+        { "type": "select", "id": "icon", "label": "Icon", "options": [{"value":"chips","label":"Chip bag"},{"value":"pop","label":"Pop can"},{"value":"fudge","label":"Fudge"},{"value":"cherry","label":"Cherries"},{"value":"nut","label":"Peanut"},{"value":"pine","label":"Pine tree"},{"value":"mug","label":"Coffee mug"},{"value":"jar","label":"Jar"},{"value":"bottle","label":"Sauce bottle"},{"value":"lighthouse","label":"Lighthouse"},{"value":"crate","label":"Crate"},{"value":"gift","label":"Gift"},{"value":"box","label":"Box"},{"value":"wave","label":"Lake waves"},{"value":"mitten","label":"Mitten"}], "default": "chips" },
         { "type": "text", "id": "label", "label": "Label", "default": "Chips" },
         { "type": "collection", "id": "collection", "label": "Collection" }
       ]
@@ -51,14 +51,14 @@
     {
       "name": "Gift finder quiz",
       "blocks": [
-        { "type": "option", "settings": { "emoji": "🥔", "label": "Better Made chips" } },
-        { "type": "option", "settings": { "emoji": "🥤", "label": "Faygo & Vernors" } },
-        { "type": "option", "settings": { "emoji": "🍫", "label": "Fudge & Sanders" } },
-        { "type": "option", "settings": { "emoji": "🍒", "label": "Up North cherries" } },
-        { "type": "option", "settings": { "emoji": "🥜", "label": "Germack nuts" } },
-        { "type": "option", "settings": { "emoji": "🌲", "label": "The U.P." } },
-        { "type": "option", "settings": { "emoji": "☕", "label": "Coffee & breakfast" } },
-        { "type": "option", "settings": { "emoji": "🌶️", "label": "Hot sauce & pantry" } }
+        { "type": "option", "settings": { "icon": "chips", "label": "Better Made chips" } },
+        { "type": "option", "settings": { "icon": "pop", "label": "Faygo & Vernors" } },
+        { "type": "option", "settings": { "icon": "fudge", "label": "Fudge & Sanders" } },
+        { "type": "option", "settings": { "icon": "cherry", "label": "Up North cherries" } },
+        { "type": "option", "settings": { "icon": "nut", "label": "Germack nuts" } },
+        { "type": "option", "settings": { "icon": "pine", "label": "The U.P." } },
+        { "type": "option", "settings": { "icon": "mug", "label": "Coffee & breakfast" } },
+        { "type": "option", "settings": { "icon": "bottle", "label": "Hot sauce & pantry" } }
       ]
     }
   ]

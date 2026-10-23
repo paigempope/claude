@@ -1,4 +1,4 @@
-<section class="section{% if section.settings.tight %} section--tight{% endif %}">
+<section class="section{% if section.settings.tight %} section--tight{% endif %}{% if section.settings.water %} section--water{% endif %}">
   <div class="page-width">
     <div class="section-head{% if section.settings.center %} section-head--center{% endif %}">
       <div>
@@ -17,7 +17,7 @@
             {%- elsif c.featured_image -%}
               {{ c.featured_image | image_url: width: 400 | image_tag: loading: 'lazy', alt: '' }}
             {%- else -%}
-              <span class="tile__emoji" aria-hidden="true">{{ block.settings.emoji }}</span>
+              <span class="tile__icon">{% render 'icon', name: block.settings.icon %}</span>
             {%- endif -%}
           </span>
           <span class="tile__title">{{ block.settings.title | default: c.title }}</span>
@@ -37,7 +37,8 @@
     { "type": "text", "id": "link_label", "label": "Link label", "default": "Shop everything" },
     { "type": "url", "id": "link", "label": "Link" },
     { "type": "checkbox", "id": "center", "label": "Center heading", "default": false },
-    { "type": "checkbox", "id": "tight", "label": "Less padding", "default": true }
+    { "type": "checkbox", "id": "tight", "label": "Less padding", "default": true },
+    { "type": "checkbox", "id": "water", "label": "Lake-blue background", "default": false }
   ],
   "blocks": [
     {
@@ -47,8 +48,8 @@
         { "type": "collection", "id": "collection", "label": "Collection" },
         { "type": "text", "id": "title", "label": "Title override" },
         { "type": "image_picker", "id": "image", "label": "Image (cutout on transparent works best)" },
-        { "type": "text", "id": "emoji", "label": "Fallback emoji", "default": "🥔" },
-        { "type": "color", "id": "bg", "label": "Circle color", "default": "#F3EEE2" }
+        { "type": "select", "id": "icon", "label": "Icon (shown when no image)", "options": [{"value":"chips","label":"Chip bag"},{"value":"pop","label":"Pop can"},{"value":"fudge","label":"Fudge"},{"value":"cherry","label":"Cherries"},{"value":"nut","label":"Peanut"},{"value":"pine","label":"Pine tree"},{"value":"mug","label":"Coffee mug"},{"value":"jar","label":"Jar"},{"value":"bottle","label":"Sauce bottle"},{"value":"lighthouse","label":"Lighthouse"},{"value":"crate","label":"Crate"},{"value":"gift","label":"Gift"},{"value":"box","label":"Box"},{"value":"wave","label":"Lake waves"},{"value":"mitten","label":"Mitten"}], "default": "chips" },
+        { "type": "color", "id": "bg", "label": "Circle color", "default": "#DCEDF7" }
       ]
     }
   ],
@@ -56,12 +57,12 @@
     {
       "name": "Collection tiles",
       "blocks": [
-        { "type": "tile", "settings": { "title": "Chips & Snacks", "emoji": "🥔", "bg": "#F9E6B3" } },
-        { "type": "tile", "settings": { "title": "Michigan Pop", "emoji": "🥤", "bg": "#F6D2CE" } },
-        { "type": "tile", "settings": { "title": "Fudge & Sweets", "emoji": "🍫", "bg": "#E9DCCB" } },
-        { "type": "tile", "settings": { "title": "Up North Cherries", "emoji": "🍒", "bg": "#F3C9C5" } },
-        { "type": "tile", "settings": { "title": "Pantry & Sauces", "emoji": "🫙", "bg": "#D8E6D9" } },
-        { "type": "tile", "settings": { "title": "Coffee & Breakfast", "emoji": "☕", "bg": "#DCE7EF" } }
+        { "type": "tile", "settings": { "title": "Chips & Snacks", "icon": "chips", "bg": "#FBEFC4" } },
+        { "type": "tile", "settings": { "title": "Michigan Pop", "icon": "pop", "bg": "#DCEDF7" } },
+        { "type": "tile", "settings": { "title": "Fudge & Sweets", "icon": "fudge", "bg": "#F7DAD6" } },
+        { "type": "tile", "settings": { "title": "Up North Cherries", "icon": "cherry", "bg": "#F7DAD6" } },
+        { "type": "tile", "settings": { "title": "Pantry & Sauces", "icon": "jar", "bg": "#D9EBDF" } },
+        { "type": "tile", "settings": { "title": "Coffee & Breakfast", "icon": "mug", "bg": "#DCEDF7" } }
       ]
     }
   ]
