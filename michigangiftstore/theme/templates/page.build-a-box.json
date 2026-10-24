@@ -1,16 +1,52 @@
 {
   "sections": {
-    "main": { "type": "build-a-box", "settings": { "counts": "4,6,10", "default_size": 1 } },
+    "main": {
+      "type": "box-builder",
+      "settings": {
+        "as_h1": true,
+        "kicker": "pack it yourself",
+        "heading": "Build your own Michigan box"
+      }
+    },
     "how": {
       "type": "how-it-works",
       "blocks": {
-        "s1": { "type": "step", "settings": { "title": "Pick a size", "text": "4, 6 or 10 items. Every size includes a gift box and a handwritten card." } },
-        "s2": { "type": "step", "settings": { "title": "Fill it up", "text": "Mix chips, pop, sweets and Up North pantry. Doubles are fine." } },
-        "s3": { "type": "step", "settings": { "title": "We pack it by hand", "text": "Packed in Michigan and shipped next business day. Free shipping at $75." } }
+        "s1": {
+          "type": "step",
+          "settings": {
+            "title": "Pick a size",
+            "text": "Half box: 4 picks for $49. Full box: 8 picks for $89. Flat price, whatever you pick."
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "title": "Fill it from the shelves",
+            "text": "Pop, salty, sweet, Up North pantry and a keepsake. Full boxes take one from every shelf."
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "title": "Pick the postcard and send",
+            "text": "Your note, handwritten. Ship to them, to you, or we text them for their address."
+          }
+        }
       },
-      "block_order": ["s1", "s2", "s3"],
-      "settings": { "kicker": "so, how does it work?", "heading": "Your box, your way", "paper": true }
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ],
+      "settings": {
+        "kicker": "so, how does it work?",
+        "heading": "Your box, your way",
+        "paper": true
+      }
     }
   },
-  "order": ["main", "how"]
+  "order": [
+    "main",
+    "how"
+  ]
 }

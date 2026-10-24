@@ -35,6 +35,7 @@
 
     <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
     <script src="{{ 'theme.js' | asset_url }}" defer></script>
+    <script src="{{ 'mgs.js' | asset_url }}" defer></script>
     <script>
       window.MGS = {
         routes: {
@@ -68,6 +69,7 @@
     {% sections 'footer-group' %}
 
     {% section 'cart-drawer' %}
+    {% render 'mgs-data' %}
 
     <div class="overlay" data-overlay hidden></div>
     <div class="toast" role="status" aria-live="polite" data-toast></div>

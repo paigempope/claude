@@ -1,0 +1,43 @@
+{%- comment -%}
+  "Every item has a Michigan address": items pinned to their real hometowns on an
+  accurate Michigan outline. Pins and panels are drawn from mgs-data by mgs.js.
+{%- endcomment -%}
+<section class="section section--navy mimap-sec" id="map">
+  <div class="page-width">
+    <div class="mimap" data-mimap data-start="{{ section.settings.start }}">
+      <div class="mimap__map">
+        <div class="mimap__tabs region-tabs" data-mimap-tabs role="group" aria-label="{{ 'boxes.regions' | t }}"></div>
+        <svg class="region-map__svg" viewBox="0 0 600 640" role="group" aria-label="{{ section.settings.heading | escape }}">
+          <defs>
+            <pattern id="mimap-water-{{ section.id }}" width="40" height="14" patternUnits="userSpaceOnUse"><path d="M0 7c5 0 5-3 10-3s5 3 10 3 5-3 10-3 5 3 10 3" fill="none" stroke="#2F6E9B" stroke-width="1.2" opacity=".5"/></pattern>
+          </defs>
+          <rect x="-40" y="-40" width="680" height="720" fill="url(#mimap-water-{{ section.id }})"/>
+          {% render 'michigan-shape', path_only: true, fill_class: 'region-map__land' %}
+          <g data-mimap-pins></g>
+        </svg>
+      </div>
+      <div class="mimap__side">
+        {%- if section.settings.kicker != blank -%}<span class="kicker">{{ section.settings.kicker }}</span>{%- endif -%}
+        <h2>{{ section.settings.heading }}</h2>
+        <p class="lede">{{ section.settings.text }}</p>
+        <div class="mimap__panel" data-mimap-panel aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Michigan hometown map",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Handwritten kicker", "default": "where it all comes from" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Every item has a Michigan address" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Tap a town to see what it puts in the box, from Gratiot Avenue to the Keweenaw." },
+    { "type": "select", "id": "start", "label": "Town shown first", "options": [
+      { "value": "mackinac", "label": "Mackinac Island" }, { "value": "detroit", "label": "Metro Detroit" }, { "value": "glenarbor", "label": "Glen Arbor" },
+      { "value": "trenary", "label": "Trenary" }, { "value": "grandrapids", "label": "Grand Rapids" }, { "value": "petoskey", "label": "Petoskey" }
+    ], "default": "mackinac" }
+  ],
+  "presets": [{ "name": "Michigan hometown map" }]
+}
+{% endschema %}

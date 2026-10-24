@@ -1,1 +1,22 @@
-{ "sections": { "main": { "type": "main-cart", "settings": {} }, "bestsellers": { "type": "featured-collection", "settings": { "kicker": "while you're here", "heading": "Toss one more in the box", "limit": 4, "layout": "scroller", "link_label": "Shop all", "paper": false } } }, "order": ["main", "bestsellers"] }
+{
+  "sections": {
+    "main": {
+      "type": "main-cart",
+      "settings": {}
+    },
+    "bestsellers": {
+      "type": "box-shelf",
+      "settings": {
+        "collection": "gift-boxes",
+        "scheme": "water",
+        "kicker": "sending to someone else too?",
+        "heading": "Add another box",
+        "lede": "Each box ships to its own address."
+      }
+    }
+  },
+  "order": [
+    "main",
+    "bestsellers"
+  ]
+}

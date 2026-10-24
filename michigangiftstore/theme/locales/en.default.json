@@ -57,7 +57,9 @@
     "gift_message_placeholder": "Happy birthday from home! Love, Mom",
     "gift_receipt": "This is a gift: leave prices out of the box",
     "ship_date": "Choose a ship date",
-    "ship_date_note": "Leave blank to ship next business day."
+    "ship_date_note": "Leave blank to ship next business day.",
+    "other_address": "Address for {{ who }}",
+    "other_address_note": "Checkout takes one address. Add this box's address here and we'll ship it there."
   },
   "collections": {
     "items": "items",
@@ -101,7 +103,9 @@
     "title": "You took a wrong turn at Gaylord",
     "text": "This page doesn't exist, but the chips, pop and fudge sure do."
   },
-  "blog": { "kicker": "stories from the Mitten" },
+  "blog": {
+    "kicker": "stories from the Mitten"
+  },
   "gift_card": {
     "title": "gift card",
     "kicker": "a little Michigan, on us",
@@ -110,5 +114,17 @@
     "shop": "Start shopping",
     "apple_wallet": "Add to Apple Wallet"
   },
-  "onboarding": { "product_title": "Your Michigan classic" }
+  "onboarding": {
+    "product_title": "Your Michigan classic"
+  },
+  "boxes": {
+    "open": "Open",
+    "open_it": "Open it",
+    "things": "things",
+    "build": "Build a box",
+    "build_steps": "Build steps",
+    "needs_js": "The box builder needs JavaScript. You can still order any ready-made box.",
+    "regions": "Regions",
+    "setup": "Pick your Gift Boxes collection in the theme editor. Box products need the custom.box_key metafield (see data/products.csv)."
+  }
 }

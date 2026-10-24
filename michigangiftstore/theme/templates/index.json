@@ -5,11 +5,11 @@
       "settings": {
         "kicker": "homesick? we get it.",
         "heading": "Michigan, <em>shipped home.</em>",
-        "subheading": "Better Made, Faygo, Vernors, Sanders, Mackinac fudge, Up North cherries. The grocery-aisle classics you can't get where you live now, hand-packed in Michigan and shipped wherever you ended up.",
-        "cta_label": "Shop gift boxes",
-        "cta_link": "shopify://collections/gift-boxes",
-        "cta2_label": "Build your own box",
-        "cta2_link": "shopify://pages/build-a-box",
+        "subheading": "Gift boxes of the grocery-aisle classics you can't get anywhere else: Better Made, Faygo, Vernors, Sanders, Mackinac fudge, Up North cherries and Trenary Toast. Hand-packed in Michigan and shipped wherever your people ended up.",
+        "cta_label": "Pick a box",
+        "cta_link": "/#boxes",
+        "cta2_label": "Build your own",
+        "cta2_link": "/#build",
         "cta3_label": "Corporate gifts",
         "cta3_link": "shopify://pages/corporate-gifts",
         "bullets": "Free handwritten gift note | Gift boxes ship free | Arrives right or we resend",
@@ -33,326 +33,27 @@
       }
     },
     "boxes": {
-      "type": "gift-box-tiers",
-      "blocks": {
-        "t1": {
-          "type": "tier",
-          "settings": {
-            "eyebrow": "The starter",
-            "title": "The Day Tripper",
-            "fallback_price": "$45",
-            "count": "5 classics · ships free",
-            "blurb": "A quick hit of home for birthdays, teachers and 'thinking of you'.",
-            "contents": "Better Made Special BBQ chips\nFaygo Rock & Rye (12 oz can)\nSanders milk chocolate hot fudge\nGermack pistachios\nHandwritten Michigan postcard",
-            "flag": "",
-            "featured": false
-          }
-        },
-        "t2": {
-          "type": "tier",
-          "settings": {
-            "eyebrow": "Most gifted",
-            "title": "The Up North",
-            "fallback_price": "$79",
-            "count": "9 classics · ships free",
-            "blurb": "From Detroit to the Straits: chips, pop, fudge and cherries.",
-            "contents": "Everything in The Day Tripper\nMackinac Island fudge (seasonal)\nCherry Republic dried cherries\nGreat Lakes Cherry BBQ kettle chips\nVernors (12 oz can)\nKoeze Cream-Nut peanut butter",
-            "flag": "Most gifted",
-            "featured": true
-          }
-        },
-        "t3": {
-          "type": "tier",
-          "settings": {
-            "eyebrow": "The whole state",
-            "title": "The Full Mitten",
-            "fallback_price": "$119",
-            "count": "14 classics · ships free",
-            "blurb": "Every region, from Detroit to the U.P., in one keepsake crate.",
-            "contents": "Everything in The Up North\nTrenary Toast from the U.P.\nAmerican Spoon sour cherry preserves\nPop Daddy dill pickle pretzels\nJiffy corn muffin mix from Chelsea\nKeepsake wooden crate",
-            "flag": "",
-            "featured": false
-          }
-        }
-      },
-      "block_order": [
-        "t1",
-        "t2",
-        "t3"
-      ],
+      "type": "box-shelf",
       "settings": {
-        "scheme": "navy",
-        "kicker": "so, how homesick are they?",
-        "heading": "Pick a box. We'll pack it tonight.",
-        "subheading": "Every box is hand-packed in Michigan with a handwritten card, ships free, and never has prices inside.",
-        "footnote": "Want to pick every item yourself? <a href=\"/pages/build-a-box\">Build your own box →</a>"
+        "collection": "gift-boxes",
+        "scheme": "none"
       }
     },
-    "by_price": {
-      "type": "collection-tiles",
-      "blocks": {
-        "p1": {
-          "type": "tile",
-          "settings": {
-            "title": "Under $25",
-            "icon": "chips",
-            "bg": "#FBEFC4"
-          }
-        },
-        "p2": {
-          "type": "tile",
-          "settings": {
-            "title": "Under $50",
-            "icon": "pop",
-            "bg": "#DCEDF7"
-          }
-        },
-        "p3": {
-          "type": "tile",
-          "settings": {
-            "title": "$50 – $100",
-            "icon": "gift",
-            "bg": "#F7DAD6"
-          }
-        },
-        "p4": {
-          "type": "tile",
-          "settings": {
-            "title": "$100 & up",
-            "icon": "crate",
-            "bg": "#DCEDF7"
-          }
-        },
-        "p5": {
-          "type": "tile",
-          "settings": {
-            "title": "Up North",
-            "icon": "cherry",
-            "bg": "#F7DAD6"
-          }
-        },
-        "p6": {
-          "type": "tile",
-          "settings": {
-            "title": "The U.P.",
-            "icon": "pine",
-            "bg": "#D9EBDF"
-          }
-        }
-      },
-      "block_order": [
-        "p1",
-        "p2",
-        "p3",
-        "p4",
-        "p5",
-        "p6"
-      ],
+    "finder": {
+      "type": "gift-finder",
       "settings": {
-        "kicker": "so, what's the budget?",
-        "heading": "Shop by price (or by place)",
-        "link_label": "Shop everything",
-        "center": false,
-        "tight": true,
-        "water": true
+        "water": true,
+        "build_link": "/#build"
       }
     },
-    "quiz": {
-      "type": "miss-quiz",
-      "blocks": {
-        "o1": {
-          "type": "option",
-          "settings": {
-            "icon": "chips",
-            "label": "Better Made chips"
-          }
-        },
-        "o2": {
-          "type": "option",
-          "settings": {
-            "icon": "pop",
-            "label": "Faygo & Vernors"
-          }
-        },
-        "o3": {
-          "type": "option",
-          "settings": {
-            "icon": "fudge",
-            "label": "Fudge & Sanders"
-          }
-        },
-        "o4": {
-          "type": "option",
-          "settings": {
-            "icon": "cherry",
-            "label": "Up North cherries"
-          }
-        },
-        "o5": {
-          "type": "option",
-          "settings": {
-            "icon": "nut",
-            "label": "Germack nuts"
-          }
-        },
-        "o6": {
-          "type": "option",
-          "settings": {
-            "icon": "pine",
-            "label": "The U.P."
-          }
-        },
-        "o7": {
-          "type": "option",
-          "settings": {
-            "icon": "mug",
-            "label": "Coffee & breakfast"
-          }
-        },
-        "o8": {
-          "type": "option",
-          "settings": {
-            "icon": "bottle",
-            "label": "Hot sauce & pantry"
-          }
-        }
-      },
-      "block_order": [
-        "o1",
-        "o2",
-        "o3",
-        "o4",
-        "o5",
-        "o6",
-        "o7",
-        "o8"
-      ],
-      "settings": {
-        "kicker": "so, who's it for?",
-        "heading": "What do they miss most?",
-        "subheading": "Pick up to three and we'll point you to the right box.",
-        "button": "Show me gifts",
-        "box_link": "shopify://pages/build-a-box",
-        "note": "Takes 10 seconds. No email needed."
-      }
-    },
-    "bestsellers": {
-      "type": "featured-collection",
-      "settings": {
-        "kicker": "what Michiganders miss most",
-        "heading": "The usual suspects",
-        "limit": 8,
-        "layout": "scroller",
-        "link_label": "Shop all",
-        "paper": false
-      }
-    },
-    "split": {
-      "type": "split-cta",
-      "blocks": {
-        "c1": {
-          "type": "card",
-          "settings": {
-            "eyebrow": "Build a box",
-            "title": "Pick every item yourself",
-            "text": "Choose 4, 6 or 10 Michigan favorites. We pack them in a gift box with your handwritten note.",
-            "button": "Start building",
-            "link": "shopify://pages/build-a-box"
-          }
-        },
-        "c2": {
-          "type": "card",
-          "settings": {
-            "eyebrow": "Corporate gifting",
-            "title": "Gift like a Michigander",
-            "text": "Client and employee gifts from 10 to 1,000 boxes. Logo cards, one spreadsheet for every address, and volume pricing.",
-            "button": "Get a quote",
-            "link": "shopify://pages/corporate-gifts"
-          }
-        }
-      },
-      "block_order": [
-        "c1",
-        "c2"
-      ],
+    "build": {
+      "type": "box-builder",
       "settings": {}
     },
-    "regions": {
-      "type": "region-map",
-      "blocks": {
-        "r1": {
-          "type": "region",
-          "settings": {
-            "name": "Metro Detroit",
-            "x": 525,
-            "y": 567,
-            "label_left": true,
-            "title": "Metro Detroit & Ann Arbor",
-            "description": "Gratiot Avenue chips, Eastern Market nuts and a century of Detroit pop. Shopping for a die-hard Detroiter? Our sister shop, Detroit Gift Store, goes deep on the 313.",
-            "items": "Better Made, Faygo, Vernors, Sanders, Germack, Kar's, Jiffy (Chelsea)"
-          }
-        },
-        "r2": {
-          "type": "region",
-          "settings": {
-            "name": "West Michigan",
-            "x": 342,
-            "y": 510,
-            "label_left": true,
-            "title": "West Michigan",
-            "description": "Grand Rapids peanut butter, lakeshore towns and Cereal City, Battle Creek.",
-            "items": "Koeze Cream-Nut, Pop Daddy pretzels, Old Orchard"
-          }
-        },
-        "r3": {
-          "type": "region",
-          "settings": {
-            "name": "Up North",
-            "x": 345,
-            "y": 339,
-            "label_left": true,
-            "title": "Up North",
-            "description": "Cherry country. Dunes, orchards and the fudge shops at the Straits.",
-            "items": "Cherry Republic, American Spoon, Great Lakes chips, Mackinac fudge"
-          }
-        },
-        "r4": {
-          "type": "region",
-          "settings": {
-            "name": "The U.P.",
-            "x": 229,
-            "y": 168,
-            "label_left": false,
-            "title": "The Upper Peninsula",
-            "description": "Yooper country: Finnish rusks, thimbleberry jam and a chocolate bar shaped like home.",
-            "items": "Trenary Toast, Jampot thimbleberry jam, Sayklly's Yooper Bar"
-          }
-        },
-        "r5": {
-          "type": "region",
-          "settings": {
-            "name": "The Thumb",
-            "x": 532,
-            "y": 432,
-            "label_left": true,
-            "title": "The Thumb & Bay",
-            "description": "Sugar beets, navy beans, Pinconning cheese and Frankenmuth chicken-dinner noodles.",
-            "items": "Pioneer Sugar, Zehnder's noodles, Michigan navy beans"
-          }
-        }
-      },
-      "block_order": [
-        "r1",
-        "r2",
-        "r3",
-        "r4",
-        "r5"
-      ],
+    "map": {
+      "type": "michigan-map",
       "settings": {
-        "scheme": "navy",
-        "kicker": "so, where are they from?",
-        "heading": "Shop by where they grew up",
-        "subheading": "A Yooper and a Detroiter miss very different things. Tap a pin to see each region's classics."
+        "start": "mackinac"
       }
     },
     "how": {
@@ -361,22 +62,22 @@
         "s1": {
           "type": "step",
           "settings": {
-            "title": "Pick a box (or build one)",
-            "text": "Ready-to-send boxes from $45, or choose every item yourself."
+            "title": "Open a box (or build one)",
+            "text": "See every item and the Michigan town it comes from. Boxes from $59, or build your own from $49."
           }
         },
         "s2": {
           "type": "step",
           "settings": {
-            "title": "Write the card",
-            "text": "Type your note in the cart. We write it by hand on a Michigan postcard. No prices inside."
+            "title": "Pick the postcard",
+            "text": "Choose a design and write your note. We write it by hand. No prices inside."
           }
         },
         "s3": {
           "type": "step",
           "settings": {
-            "title": "We pack it in Michigan",
-            "text": "Packed by hand and shipped the next business day, or on the date you pick."
+            "title": "We ship it, or ask them where",
+            "text": "Ship to them, to you, or we text them for their address. Next business day, or held for the holidays."
           }
         }
       },
@@ -390,6 +91,36 @@
         "heading": "Three steps to a very happy Michigander",
         "paper": true
       }
+    },
+    "split": {
+      "type": "split-cta",
+      "blocks": {
+        "c1": {
+          "type": "card",
+          "settings": {
+            "eyebrow": "Sending to many",
+            "title": "One cart, every address",
+            "text": "Add a box for each person. The cart asks for every extra address, or we text them for it. They never see the price.",
+            "button": "Pick the boxes",
+            "link": "/#boxes"
+          }
+        },
+        "c2": {
+          "type": "card",
+          "settings": {
+            "eyebrow": "Corporate gifting",
+            "title": "Gift like a Michigander",
+            "text": "Clients, closings and new hires. 10-box minimum, your logo on the postcard, one spreadsheet for every address.",
+            "button": "Get a quote",
+            "link": "shopify://pages/corporate-gifts"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2"
+      ],
+      "settings": {}
     },
     "reviews": {
       "type": "testimonials",
@@ -566,8 +297,8 @@
         "f4": {
           "type": "qa",
           "settings": {
-            "question": "Can I include a gift message? Are prices in the box?",
-            "answer": "<p>Yes. Add a note in the cart and we write it on a Michigan postcard by hand. We never put prices or receipts in a gift box.</p>"
+            "question": "I don't have their address. Can you still send it?",
+            "answer": "<p>Yes. Pick <strong>Text or email them</strong> when you open a box and put your own address at checkout. Within 1 business day we text or email them to ask where to ship. They never see the price or your receipt. If they haven't answered in 5 days, we email you.</p>"
           }
         },
         "f5": {
@@ -580,8 +311,8 @@
         "f6": {
           "type": "qa",
           "settings": {
-            "question": "Do you do corporate or bulk gifts?",
-            "answer": "<p>Yes, for 10 boxes or more. Send one spreadsheet of addresses, add your logo card, and get volume pricing. <a href=\"/pages/corporate-gifts\">Get a quote</a>.</p>"
+            "question": "Can I send boxes to a few different people?",
+            "answer": "<p>Yes. Add one box per person and fill in who it's for. Checkout only takes one address, so the cart asks for every other address before you check out. Sending 10 or more? <a href=\"/pages/corporate-gifts\">Corporate gifting</a> takes one spreadsheet.</p>"
           }
         }
       },
@@ -609,12 +340,11 @@
     "hero",
     "heritage",
     "boxes",
-    "by_price",
-    "quiz",
-    "bestsellers",
-    "split",
-    "regions",
+    "finder",
+    "build",
+    "map",
     "how",
+    "split",
     "reviews",
     "story",
     "values",

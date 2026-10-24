@@ -1,5 +1,12 @@
 {%- comment -%} Line items shared by the cart drawer and cart page. {%- endcomment -%}
+{%- assign dest_count = 0 -%}
 {%- for item in cart.items -%}
+  {%- assign send_to = item.properties['Send to'] | default: '' -%}
+  {%- assign needs_addr = false -%}
+  {%- if send_to contains 'Ship to' -%}
+    {%- assign dest_count = dest_count | plus: 1 -%}
+    {%- if dest_count > 1 -%}{%- assign needs_addr = true -%}{%- endif -%}
+  {%- endif -%}
   <div class="cart-item" data-line="{{ forloop.index }}" data-key="{{ item.key }}">
     <a class="cart-item__media" href="{{ item.url }}" tabindex="-1" aria-hidden="true">
       {%- if item.image -%}
@@ -26,6 +33,15 @@
         <button type="button" data-qty-change="{{ item.quantity | plus: 1 }}" aria-label="{{ 'cart.increase' | t: title: item.product.title | escape }}">+</button>
       </div>
       <button type="button" class="cart-item__remove" data-qty-change="0">{{ 'cart.remove' | t }}</button>
+      {%- if needs_addr -%}
+        {%- if send_to contains 'me' -%}{%- assign who = 'you' -%}{%- else -%}{%- assign who = item.properties['Recipient'] | default: item.product.title -%}{%- endif -%}
+        {%- capture attr_name -%}Address for {{ who }} ({{ item.product.title }}, line {{ forloop.index }}){%- endcapture -%}
+        <div class="addr-need">
+          <label class="label" for="Addr-{{ item.key | handle }}">{{ 'cart.other_address' | t: who: who }}</label>
+          <textarea class="input" id="Addr-{{ item.key | handle }}" data-cart-attribute="{{ attr_name | escape }}" placeholder="Street, city, state, ZIP">{{ cart.attributes[attr_name] }}</textarea>
+          <p class="form-note">{{ 'cart.other_address_note' | t }}</p>
+        </div>
+      {%- endif -%}
     </div>
     <div class="cart-item__price">
       {{ item.final_line_price | money }}

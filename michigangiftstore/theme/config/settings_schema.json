@@ -44,7 +44,9 @@
       { "type": "header", "content": "Holiday deadline" },
       { "type": "checkbox", "id": "deadline_enable", "label": "Show holiday ship-by countdown", "default": true },
       { "type": "text", "id": "deadline_date", "label": "Deadline (YYYY-MM-DD)", "default": "2026-12-11" },
-      { "type": "text", "id": "deadline_label", "label": "Deadline label", "default": "Order by Dec 11 for Christmas (ground)" }
+      { "type": "text", "id": "deadline_label", "label": "Deadline label", "default": "Order by Dec 11 for Christmas (ground)" },
+      { "type": "checkbox", "id": "hold_enable", "label": "Offer 'Hold for the holidays' in the gift steps", "default": true },
+      { "type": "text", "id": "hold_window", "label": "Holiday hold ship window", "default": "Dec 8 to 11" }
     ]
   },
   {

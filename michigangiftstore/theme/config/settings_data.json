@@ -24,7 +24,9 @@
       "deadline_label": "Order by Dec 11 for Christmas (ground)",
       "card_show_region": true,
       "card_quick_add": true,
-      "card_show_rating": true
+      "card_show_rating": true,
+      "hold_enable": true,
+      "hold_window": "Dec 8 to 11"
     }
   }
 }

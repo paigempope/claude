@@ -1,936 +1,695 @@
-[
- {
-  "handle": "better-made-special-bbq-potato-chips-9-5-oz",
-  "title": "Better Made Special BBQ Potato Chips, 9.5 oz",
-  "vendor": "Better Made",
-  "type": "Chips & Snacks",
-  "region": "Metro Detroit",
-  "origin": "Gratiot Ave, Detroit, MI",
-  "founded": "1930",
-  "price": 799,
-  "compare_at": null,
-  "shape": "bag",
-  "bg": "#FBEFC4",
-  "tags": [
-   "region:Metro Detroit",
-   "Chips & Snacks",
-   "bestseller",
-   "box-eligible",
-   "under-25"
-  ],
-  "why": "The sweet BBQ chip every Michigander swears you can't find anywhere else.",
-  "contents": [],
-  "kind": "item"
+{
+ "items": {
+  "rockrye": {
+   "n": "Faygo Rock & Rye",
+   "sz": "12 oz can",
+   "m": "Faygo",
+   "place": "detroit",
+   "from": "Gratiot Ave, since 1907",
+   "why": "Cream soda with a cherry wink. Michiganders order it by name.",
+   "v": 300,
+   "shelf": "pop",
+   "s": "can",
+   "c": "#B8352B"
+  },
+  "redpop": {
+   "n": "Faygo Redpop",
+   "sz": "12 oz can",
+   "m": "Faygo",
+   "place": "detroit",
+   "from": "Gratiot Ave, since 1907",
+   "why": "Strawberry pop. 'Redpop' is a word only Michiganders say.",
+   "v": 300,
+   "shelf": "pop",
+   "s": "can",
+   "c": "#D9443A"
+  },
+  "moonmist": {
+   "n": "Faygo Moon Mist",
+   "sz": "12 oz can",
+   "m": "Faygo",
+   "place": "detroit",
+   "from": "Gratiot Ave, since 1907",
+   "why": "The citrus pop at every Michigan grad party.",
+   "v": 300,
+   "shelf": "pop",
+   "s": "can",
+   "c": "#3E8F5A"
+  },
+  "rootbeer": {
+   "n": "Faygo Root Beer",
+   "sz": "12 oz can",
+   "m": "Faygo",
+   "place": "detroit",
+   "from": "Gratiot Ave, since 1907",
+   "why": "The flavor people who left buy by the case.",
+   "v": 300,
+   "shelf": "pop",
+   "s": "can",
+   "c": "#6B3E26"
+  },
+  "vernors": {
+   "n": "Vernors Ginger Soda",
+   "sz": "12 oz can",
+   "m": "Vernors",
+   "place": "detroit",
+   "from": "Detroit, since 1866",
+   "why": "What Mom poured when you were sick. Add vanilla ice cream for a Boston Cooler.",
+   "v": 300,
+   "shelf": "pop",
+   "s": "can",
+   "c": "#2E7D4F"
+  },
+  "bbq": {
+   "n": "Better Made Special BBQ Chips",
+   "sz": "5 oz bag",
+   "m": "Better Made",
+   "place": "detroit",
+   "from": "Gratiot Ave, since 1930",
+   "why": "The sweet BBQ chip nobody outside Michigan gets right.",
+   "v": 500,
+   "shelf": "salty",
+   "s": "bag",
+   "c": "#B8352B"
+  },
+  "cherrybbq": {
+   "n": "Great Lakes Cherry BBQ Kettle Chips",
+   "sz": "5 oz bag",
+   "m": "Great Lakes Potato Chip Co.",
+   "place": "traverse",
+   "from": "Traverse City, since 2009",
+   "why": "Michigan potatoes, dusted with Traverse City cherry.",
+   "v": 500,
+   "shelf": "salty",
+   "s": "bag",
+   "c": "#7A1F2B"
+  },
+  "popdaddy": {
+   "n": "Pop Daddy Dill Pickle Pretzels",
+   "sz": "7.5 oz bag",
+   "m": "Pop Daddy",
+   "place": "howell",
+   "from": "Howell, since 2013",
+   "why": "Seasoned the Michigan way: heavy.",
+   "v": 500,
+   "shelf": "salty",
+   "s": "bag",
+   "c": "#3E8F5A"
+  },
+  "kars": {
+   "n": "Kar's Sweet 'N Salty",
+   "sz": "2 oz bag",
+   "m": "Kar's Nuts",
+   "place": "detroit",
+   "from": "Madison Heights, since 1933",
+   "why": "The trail mix in every Michigan glove box.",
+   "v": 300,
+   "shelf": "salty",
+   "s": "bag",
+   "c": "#E9A23B",
+   "heat": true
+  },
+  "pistachios": {
+   "n": "Germack Pistachios",
+   "sz": "8 oz bag",
+   "m": "Germack",
+   "place": "detroit",
+   "from": "Eastern Market, since 1924",
+   "why": "Roasted in Eastern Market by America's oldest pistachio roaster.",
+   "v": 1000,
+   "shelf": "salty",
+   "s": "bag",
+   "c": "#5E8C3A"
+  },
+  "hotfudge": {
+   "n": "Sanders Hot Fudge",
+   "sz": "10 oz jar",
+   "m": "Sanders",
+   "place": "detroit",
+   "from": "Detroit, since 1875",
+   "why": "The jar people ask for after they move away. Warm it and pour.",
+   "v": 900,
+   "shelf": "sweet",
+   "s": "jar",
+   "c": "#5A3221"
+  },
+  "caramels": {
+   "n": "Sanders Sea Salt Caramels",
+   "sz": "6 oz box",
+   "m": "Sanders",
+   "place": "detroit",
+   "from": "Detroit, since 1875",
+   "why": "Grandma's candy dish, grown up.",
+   "v": 900,
+   "shelf": "sweet",
+   "s": "box",
+   "c": "#1F4E8C",
+   "heat": true
+  },
+  "mfudge": {
+   "n": "Mackinac Island Fudge",
+   "sz": "8 oz slab",
+   "m": "Murdick's Fudge",
+   "place": "mackinac",
+   "from": "Mackinac Island, since 1887",
+   "why": "The souvenir every trip to the Straits ended with.",
+   "v": 1000,
+   "shelf": "sweet",
+   "s": "slab",
+   "c": "#6B3E26",
+   "heat": true
+  },
+  "cocherry": {
+   "n": "Chocolate Covered Cherries",
+   "sz": "5 oz bag",
+   "m": "Cherry Republic",
+   "place": "glenarbor",
+   "from": "Glen Arbor, since 1989",
+   "why": "A Sleeping Bear Dunes day trip you can eat.",
+   "v": 900,
+   "shelf": "sweet",
+   "s": "bag",
+   "c": "#7A1F2B",
+   "heat": true
+  },
+  "yooperbar": {
+   "n": "Sayklly's Yooper Bar",
+   "sz": "milk chocolate",
+   "m": "Sayklly's",
+   "place": "escanaba",
+   "from": "Escanaba, since 1906",
+   "why": "A chocolate bar shaped like the U.P. Instant Yooper pride.",
+   "v": 700,
+   "shelf": "sweet",
+   "s": "bar",
+   "c": "#4A2A1A",
+   "heat": true
+  },
+  "drycherry": {
+   "n": "Dried Montmorency Cherries",
+   "sz": "8 oz bag",
+   "m": "Cherry Republic",
+   "place": "glenarbor",
+   "from": "Glen Arbor, since 1989",
+   "why": "Michigan grows most of the country's tart cherries. These are the good ones.",
+   "v": 1300,
+   "shelf": "pantry",
+   "s": "bag",
+   "c": "#B8352B"
+  },
+  "spoon": {
+   "n": "American Spoon Sour Cherry Preserves",
+   "sz": "9.5 oz jar",
+   "m": "American Spoon",
+   "place": "petoskey",
+   "from": "Petoskey, since 1982",
+   "why": "Small-batch preserves from Petoskey, made with Michigan cherries.",
+   "v": 1400,
+   "shelf": "pantry",
+   "s": "jar",
+   "c": "#B8352B"
+  },
+  "koeze": {
+   "n": "Koeze Cream-Nut Peanut Butter",
+   "sz": "17 oz jar",
+   "m": "Koeze",
+   "place": "grandrapids",
+   "from": "Grand Rapids, since 1925",
+   "why": "Just peanuts and salt, in the jar Michiganders hoard.",
+   "v": 1100,
+   "shelf": "pantry",
+   "s": "jar",
+   "c": "#8A5A2B"
+  },
+  "trenary": {
+   "n": "Trenary Toast",
+   "sz": "16 slices",
+   "m": "Trenary Home Bakery",
+   "place": "trenary",
+   "from": "Trenary, since 1928",
+   "why": "The cinnamon rusk Yoopers dunk in their coffee. Keeps for months.",
+   "v": 800,
+   "shelf": "pantry",
+   "s": "toast",
+   "c": "#C98B3A"
+  },
+  "jampot": {
+   "n": "Wild Thimbleberry Jam",
+   "sz": "9 oz jar",
+   "m": "The Jampot",
+   "place": "keweenaw",
+   "from": "Keweenaw Peninsula",
+   "why": "Thimbleberries barely grow anywhere but the U.P.'s north woods.",
+   "v": 2800,
+   "shelf": "pantry",
+   "s": "jar",
+   "c": "#9B2242",
+   "up": 12,
+   "upv": "Thimbleberry jam"
+  },
+  "maple": {
+   "n": "Michigan Maple Syrup",
+   "sz": "8 oz jug",
+   "m": "Michigan maple farm (supplier TBD)",
+   "place": "traverse",
+   "from": "Northern Michigan",
+   "why": "Michigan is a top-five maple state. Up North sugarbush syrup.",
+   "v": 1500,
+   "shelf": "pantry",
+   "s": "bottle",
+   "c": "#B5651D"
+  },
+  "jiffy": {
+   "n": "Jiffy Corn Muffin Mix",
+   "sz": "8.5 oz box",
+   "m": "Chelsea Milling",
+   "place": "chelsea",
+   "from": "Chelsea, since 1930",
+   "why": "The little blue box in every Michigan pantry.",
+   "v": 200,
+   "shelf": "pantry",
+   "s": "box",
+   "c": "#2F6FB5",
+   "usOnly": true
+  },
+  "noodles": {
+   "n": "Zehnder's Egg Noodles",
+   "sz": "12 oz bag",
+   "m": "Zehnder's",
+   "place": "frankenmuth",
+   "from": "Frankenmuth",
+   "why": "The noodles from the Frankenmuth chicken dinner.",
+   "v": 800,
+   "shelf": "pantry",
+   "s": "bag",
+   "c": "#E9C450"
+  },
+  "beans": {
+   "n": "Michigan Navy Beans",
+   "sz": "1 lb bag",
+   "m": "Huron County grower (supplier TBD)",
+   "place": "huron",
+   "from": "Huron County",
+   "why": "The Thumb grows more dry beans than anywhere in the country.",
+   "v": 500,
+   "shelf": "pantry",
+   "s": "bag",
+   "c": "#E8E2D0"
+  },
+  "stone": {
+   "n": "Polished Petoskey Stone",
+   "sz": "palm-size",
+   "m": "Petoskey shop (supplier TBD)",
+   "place": "petoskey",
+   "from": "Little Traverse Bay",
+   "why": "Michigan's state stone. Everyone searched the beach for one.",
+   "v": 1200,
+   "shelf": "keep",
+   "s": "stone",
+   "c": "#9A9284"
+  },
+  "bridge": {
+   "n": "Mackinac Bridge Ornament",
+   "sz": "3 in",
+   "m": "Michigan maker (supplier TBD)",
+   "place": "mackinac",
+   "from": "The Straits",
+   "why": "Five miles of bridge, for the tree.",
+   "v": 1400,
+   "shelf": "keep",
+   "s": "ornament",
+   "c": "#1F6FA3"
+  },
+  "magnet": {
+   "n": "Mitten Magnet",
+   "sz": "3 in",
+   "m": "Michigan maker (supplier TBD)",
+   "place": "detroit",
+   "from": "Made in Michigan",
+   "why": "For the fridge of anyone who uses their hand as a map.",
+   "v": 500,
+   "shelf": "keep",
+   "s": "magnet",
+   "c": "#1F2D5C"
+  },
+  "mug": {
+   "n": "Great Lakes Map Mug",
+   "sz": "14 oz",
+   "m": "Michigan maker (supplier TBD)",
+   "place": "detroit",
+   "from": "Made in Michigan",
+   "why": "All five lakes, around your morning coffee.",
+   "v": 1800,
+   "shelf": "keep",
+   "s": "mug",
+   "c": "#1F6FA3"
+  },
+  "coffee": {
+   "n": "Great Lakes Coffee Detroit Blend",
+   "sz": "12 oz bag",
+   "m": "Great Lakes Coffee Roasting Co.",
+   "place": "detroit",
+   "from": "Midtown Detroit, since 1994",
+   "why": "Roasted in Midtown. For dunking the Trenary Toast.",
+   "v": 1500,
+   "shelf": null,
+   "s": "bag",
+   "c": "#3B2A20"
+  },
+  "card": {
+   "n": "Greetings from Michigan Postcard",
+   "sz": "4 x 6 in",
+   "m": "Us",
+   "place": "detroit",
+   "from": "Handwritten in Michigan",
+   "why": "Your message, written by hand. Prices never go inside.",
+   "v": 0,
+   "shelf": null,
+   "s": "card",
+   "c": "#F4F9FC"
+  }
  },
- {
-  "handle": "better-made-original-potato-chips-9-5-oz",
-  "title": "Better Made Original Potato Chips, 9.5 oz",
-  "vendor": "Better Made",
-  "type": "Chips & Snacks",
-  "region": "Metro Detroit",
-  "origin": "Gratiot Ave, Detroit, MI",
-  "founded": "1930",
-  "price": 749,
-  "compare_at": null,
-  "shape": "bag",
-  "bg": "#FFF4CF",
-  "tags": [
-   "region:Metro Detroit",
-   "Chips & Snacks",
-   "box-eligible",
-   "under-25"
-  ],
-  "why": "On every Detroit picnic table since 1930. Fight over the dark 'rainbow' chips.",
-  "contents": [],
-  "kind": "item"
+ "shelves": [
+  {
+   "id": "pop",
+   "n": "Pop",
+   "note": "It's pop, not soda"
+  },
+  {
+   "id": "salty",
+   "n": "Salty",
+   "note": "Chips, pretzels, nuts"
+  },
+  {
+   "id": "sweet",
+   "n": "Sweet",
+   "note": "Fudge, Sanders and chocolate"
+  },
+  {
+   "id": "pantry",
+   "n": "Up North pantry",
+   "note": "Cherries, jam, toast, peanut butter"
+  },
+  {
+   "id": "keep",
+   "n": "Keepsake",
+   "note": "Something that stays"
+  }
+ ],
+ "places": {
+  "detroit": {
+   "n": "Metro Detroit",
+   "region": "Metro Detroit",
+   "x": 525,
+   "y": 567
+  },
+  "chelsea": {
+   "n": "Chelsea",
+   "region": "Metro Detroit",
+   "x": 457,
+   "y": 570
+  },
+  "howell": {
+   "n": "Howell",
+   "region": "Metro Detroit",
+   "x": 463,
+   "y": 542
+  },
+  "grandrapids": {
+   "n": "Grand Rapids",
+   "region": "West Michigan",
+   "x": 342,
+   "y": 510
+  },
+  "traverse": {
+   "n": "Traverse City",
+   "region": "Up North",
+   "x": 345,
+   "y": 339
+  },
+  "glenarbor": {
+   "n": "Glen Arbor",
+   "region": "Up North",
+   "x": 320,
+   "y": 326
+  },
+  "petoskey": {
+   "n": "Petoskey",
+   "region": "Up North",
+   "x": 390,
+   "y": 281
+  },
+  "mackinac": {
+   "n": "Mackinac Island",
+   "region": "Up North",
+   "x": 412,
+   "y": 236
+  },
+  "escanaba": {
+   "n": "Escanaba",
+   "region": "The U.P.",
+   "x": 250,
+   "y": 244
+  },
+  "trenary": {
+   "n": "Trenary",
+   "region": "The U.P.",
+   "x": 257,
+   "y": 203
+  },
+  "keweenaw": {
+   "n": "Keweenaw",
+   "region": "The U.P.",
+   "x": 186,
+   "y": 84
+  },
+  "frankenmuth": {
+   "n": "Frankenmuth",
+   "region": "The Thumb",
+   "x": 475,
+   "y": 474
+  },
+  "huron": {
+   "n": "Huron County",
+   "region": "The Thumb",
+   "x": 521,
+   "y": 423
+  }
  },
- {
-  "handle": "better-made-red-hot-bbq-chips-9-5-oz",
-  "title": "Better Made Red Hot BBQ Chips, 9.5 oz",
-  "vendor": "Better Made",
-  "type": "Chips & Snacks",
-  "region": "Metro Detroit",
-  "origin": "Gratiot Ave, Detroit, MI",
-  "founded": "1930",
-  "price": 799,
-  "compare_at": null,
-  "shape": "bag",
-  "bg": "#F7DAD6",
-  "tags": [
-   "region:Metro Detroit",
-   "Chips & Snacks",
-   "box-eligible",
-   "under-25"
-  ],
-  "why": "Special BBQ's spicier cousin.",
-  "contents": [],
-  "kind": "item"
+ "boxes": {
+  "homesick": {
+   "handle": "the-homesick-box",
+   "n": "The Homesick Box",
+   "p": 5900,
+   "who": "for the ones who moved away",
+   "pitch": "Built from what Michiganders who left say they miss first. Better Made, Rock & Rye, Vernors for a Boston Cooler and Sanders hot fudge.",
+   "blob": "#F7DAD6",
+   "items": [
+    "bbq",
+    "rockrye",
+    "vernors",
+    "hotfudge",
+    "jiffy",
+    "kars",
+    "card"
+   ],
+   "contents": [
+    "Better Made Special BBQ Chips, 5 oz bag | Gratiot Ave, since 1930",
+    "Faygo Rock & Rye, 12 oz can | Gratiot Ave, since 1907",
+    "Vernors Ginger Soda, 12 oz can | Detroit, since 1866",
+    "Sanders Hot Fudge, 10 oz jar | Detroit, since 1875",
+    "Jiffy Corn Muffin Mix, 8.5 oz box | Chelsea, since 1930",
+    "Kar's Sweet 'N Salty, 2 oz bag | Madison Heights, since 1933",
+    "Greetings from Michigan Postcard, 4 x 6 in | Handwritten in Michigan"
+   ]
+  },
+  "yooper": {
+   "handle": "the-yooper",
+   "n": "The Yooper",
+   "p": 6900,
+   "who": "for anyone from above the Bridge",
+   "pitch": "Trenary Toast and coffee to dunk it in, thimbleberry jam from the Keweenaw, a Yooper Bar and the Bridge for the tree.",
+   "blob": "#D9EBDF",
+   "items": [
+    "trenary",
+    "coffee",
+    "jampot",
+    "yooperbar",
+    "bridge",
+    "card"
+   ],
+   "contents": [
+    "Trenary Toast, 16 slices | Trenary, since 1928",
+    "Great Lakes Coffee Detroit Blend, 12 oz bag | Midtown Detroit, since 1994",
+    "Wild Thimbleberry Jam, 9 oz jar | Keweenaw Peninsula",
+    "Sayklly's Yooper Bar, milk chocolate | Escanaba, since 1906",
+    "Mackinac Bridge Ornament, 3 in | The Straits",
+    "Greetings from Michigan Postcard, 4 x 6 in | Handwritten in Michigan"
+   ]
+  },
+  "upnorth": {
+   "handle": "the-up-north",
+   "n": "The Up North",
+   "p": 7900,
+   "who": "for the cottage crowd",
+   "pitch": "Cherry country in a box. Glen Arbor cherries, Mackinac fudge, Petoskey preserves and a Petoskey stone for the windowsill.",
+   "blob": "#DCEDF7",
+   "items": [
+    "drycherry",
+    "mfudge",
+    "cherrybbq",
+    "spoon",
+    "cocherry",
+    "stone",
+    "rockrye",
+    "card"
+   ],
+   "contents": [
+    "Dried Montmorency Cherries, 8 oz bag | Glen Arbor, since 1989",
+    "Mackinac Island Fudge, 8 oz slab | Mackinac Island, since 1887",
+    "Great Lakes Cherry BBQ Kettle Chips, 5 oz bag | Traverse City, since 2009",
+    "American Spoon Sour Cherry Preserves, 9.5 oz jar | Petoskey, since 1982",
+    "Chocolate Covered Cherries, 5 oz bag | Glen Arbor, since 1989",
+    "Polished Petoskey Stone, palm-size | Little Traverse Bay",
+    "Faygo Rock & Rye, 12 oz can | Gratiot Ave, since 1907",
+    "Greetings from Michigan Postcard, 4 x 6 in | Handwritten in Michigan"
+   ]
+  },
+  "fullmitten": {
+   "handle": "the-full-mitten",
+   "n": "The Full Mitten",
+   "p": 9900,
+   "who": "for family all over the state",
+   "pitch": "One classic from every corner: Detroit chips and pop, Grand Rapids peanut butter, Up North cherries and fudge, U.P. toast and Frankenmuth noodles.",
+   "blob": "#FBEFC4",
+   "items": [
+    "bbq",
+    "vernors",
+    "koeze",
+    "drycherry",
+    "mfudge",
+    "trenary",
+    "noodles",
+    "magnet",
+    "card"
+   ],
+   "contents": [
+    "Better Made Special BBQ Chips, 5 oz bag | Gratiot Ave, since 1930",
+    "Vernors Ginger Soda, 12 oz can | Detroit, since 1866",
+    "Koeze Cream-Nut Peanut Butter, 17 oz jar | Grand Rapids, since 1925",
+    "Dried Montmorency Cherries, 8 oz bag | Glen Arbor, since 1989",
+    "Mackinac Island Fudge, 8 oz slab | Mackinac Island, since 1887",
+    "Trenary Toast, 16 slices | Trenary, since 1928",
+    "Zehnder's Egg Noodles, 12 oz bag | Frankenmuth",
+    "Mitten Magnet, 3 in | Made in Michigan",
+    "Greetings from Michigan Postcard, 4 x 6 in | Handwritten in Michigan"
+   ]
+  },
+  "greatlakes": {
+   "handle": "the-great-lakes",
+   "n": "The Great Lakes",
+   "p": 18900,
+   "who": "for clients, closings and new hires",
+   "pitch": "The executive crate. Detroit-roasted coffee, thimbleberry jam, maple syrup, Petoskey preserves, Germack and Sanders, and a Great Lakes mug. Your logo on the card.",
+   "blob": "#E3ECF7",
+   "items": [
+    "coffee",
+    "jampot",
+    "maple",
+    "spoon",
+    "pistachios",
+    "hotfudge",
+    "caramels",
+    "mug",
+    "card"
+   ],
+   "contents": [
+    "Great Lakes Coffee Detroit Blend, 12 oz bag | Midtown Detroit, since 1994",
+    "Wild Thimbleberry Jam, 9 oz jar | Keweenaw Peninsula",
+    "Michigan Maple Syrup, 8 oz jug | Northern Michigan",
+    "American Spoon Sour Cherry Preserves, 9.5 oz jar | Petoskey, since 1982",
+    "Germack Pistachios, 8 oz bag | Eastern Market, since 1924",
+    "Sanders Hot Fudge, 10 oz jar | Detroit, since 1875",
+    "Sanders Sea Salt Caramels, 6 oz box | Detroit, since 1875",
+    "Great Lakes Map Mug, 14 oz | Made in Michigan",
+    "Greetings from Michigan Postcard, 4 x 6 in | Handwritten in Michigan"
+   ]
+  }
  },
- {
-  "handle": "great-lakes-cherry-bbq-kettle-chips-8-oz",
-  "title": "Great Lakes Cherry BBQ Kettle Chips, 8 oz",
-  "vendor": "Great Lakes Potato Chip Co.",
-  "type": "Chips & Snacks",
-  "region": "Up North",
-  "origin": "Traverse City, MI",
-  "founded": "2009",
-  "price": 699,
-  "compare_at": null,
-  "shape": "bag",
-  "bg": "#F7DAD6",
-  "tags": [
-   "region:Up North",
-   "Chips & Snacks",
-   "box-eligible",
-   "bestseller",
-   "under-25"
-  ],
-  "why": "Kettle chips from Michigan potatoes, dusted with Traverse City cherry.",
-  "contents": [],
-  "kind": "item"
+ "sizes": {
+  "half": {
+   "handle": "build-your-own-half-box",
+   "n": "Half box",
+   "cap": 4,
+   "per": 1,
+   "price": 49,
+   "d": "4 picks: one each from any 4 shelves",
+   "p": 4900
+  },
+  "full": {
+   "handle": "build-your-own-full-box",
+   "n": "Full box",
+   "cap": 8,
+   "per": 2,
+   "price": 89,
+   "d": "8 picks: one from every shelf, then 3 more (2 max per shelf)",
+   "p": 8900
+  }
  },
- {
-  "handle": "pop-daddy-dill-pickle-pretzels-10-oz",
-  "title": "Pop Daddy Dill Pickle Pretzels, 10 oz",
-  "vendor": "Pop Daddy",
-  "type": "Chips & Snacks",
-  "region": "Metro Detroit",
-  "origin": "Howell, MI",
-  "founded": "2013",
-  "price": 699,
-  "compare_at": null,
-  "shape": "bag",
-  "bg": "#D9EBDF",
-  "tags": [
-   "region:Metro Detroit",
-   "Chips & Snacks",
-   "box-eligible",
-   "under-25"
-  ],
-  "why": "The cult Michigan pretzel. One bag and you're hooked.",
-  "contents": [],
-  "kind": "item"
- },
- {
-  "handle": "kar-s-sweet-n-salty-mix-14-oz",
-  "title": "Kar's Sweet 'N Salty Mix, 14 oz",
-  "vendor": "Kar's Nuts",
-  "type": "Chips & Snacks",
-  "region": "Metro Detroit",
-  "origin": "Madison Heights, MI",
-  "founded": "1933",
-  "price": 849,
-  "compare_at": null,
-  "shape": "bag",
-  "bg": "#DCEDF7",
-  "tags": [
-   "region:Metro Detroit",
-   "Chips & Snacks",
-   "box-eligible",
-   "heat-sensitive",
-   "under-25"
-  ],
-  "why": "Born outside the old ballpark at Michigan & Trumbull, packed in every Michigan lunchbox.",
-  "contents": [],
-  "kind": "item"
- },
- {
-  "handle": "germack-red-pistachios-8-oz",
-  "title": "Germack Red Pistachios, 8 oz",
-  "vendor": "Germack",
-  "type": "Chips & Snacks",
-  "region": "Metro Detroit",
-  "origin": "Eastern Market, Detroit, MI",
-  "founded": "1924",
-  "price": 1299,
-  "compare_at": null,
-  "shape": "bag",
-  "bg": "#F7DAD6",
-  "tags": [
-   "region:Metro Detroit",
-   "Chips & Snacks",
-   "box-eligible",
-   "bestseller",
-   "under-25"
-  ],
-  "why": "America's oldest pistachio roaster, right in Eastern Market.",
-  "contents": [],
-  "kind": "item"
- },
- {
-  "handle": "germack-cherry-praline-nut-mix-8-oz",
-  "title": "Germack Cherry & Praline Nut Mix, 8 oz",
-  "vendor": "Germack",
-  "type": "Chips & Snacks",
-  "region": "Metro Detroit",
-  "origin": "Eastern Market, Detroit, MI",
-  "founded": "1924",
-  "price": 1199,
-  "compare_at": null,
-  "shape": "bag",
-  "bg": "#E3ECF7",
-  "tags": [
-   "region:Metro Detroit",
-   "Chips & Snacks",
-   "box-eligible",
-   "under-25"
-  ],
-  "why": "Up North cherries and Eastern Market nuts in one bag.",
-  "contents": [],
-  "kind": "item"
- },
- {
-  "handle": "detroit-popcorn-co-caramel-corn-8-oz",
-  "title": "Detroit Popcorn Co. Caramel Corn, 8 oz",
-  "vendor": "Detroit Popcorn Co.",
-  "type": "Chips & Snacks",
-  "region": "Metro Detroit",
-  "origin": "Redford, MI",
-  "founded": "1923",
-  "price": 899,
-  "compare_at": null,
-  "shape": "bag",
-  "bg": "#FBEFC4",
-  "tags": [
-   "region:Metro Detroit",
-   "Chips & Snacks",
-   "box-eligible",
-   "under-25"
-  ],
-  "why": "A century of Detroit popcorn.",
-  "contents": [],
-  "kind": "item"
- },
- {
-  "handle": "mcclure-s-spicy-pickle-chips-5-oz",
-  "title": "McClure's Spicy Pickle Chips, 5 oz",
-  "vendor": "McClure's",
-  "type": "Chips & Snacks",
-  "region": "Metro Detroit",
-  "origin": "Detroit, MI",
-  "founded": "2006",
-  "price": 599,
-  "compare_at": null,
-  "shape": "bag",
-  "bg": "#D9EBDF",
-  "tags": [
-   "region:Metro Detroit",
-   "Chips & Snacks",
-   "box-eligible",
-   "under-25"
-  ],
-  "why": "Pickle-brine chips from Detroit's pickle brothers.",
-  "contents": [],
-  "kind": "item"
- },
- {
-  "handle": "faygo-rock-rye-12-oz-can-4-pack",
-  "title": "Faygo Rock & Rye, 12 oz can (4-pack)",
-  "vendor": "Faygo",
-  "type": "Michigan Pop",
-  "region": "Metro Detroit",
-  "origin": "Gratiot Ave, Detroit, MI",
-  "founded": "1907",
-  "price": 999,
-  "compare_at": null,
-  "shape": "can",
-  "bg": "#F7DAD6",
-  "tags": [
-   "region:Metro Detroit",
-   "Michigan Pop",
-   "bestseller",
-   "box-eligible",
-   "pop",
-   "under-25"
-  ],
-  "why": "Cream soda with a cherry wink. THE Michigan pop.",
-  "contents": [],
-  "kind": "item"
- },
- {
-  "handle": "faygo-redpop-12-oz-can-4-pack",
-  "title": "Faygo Redpop, 12 oz can (4-pack)",
-  "vendor": "Faygo",
-  "type": "Michigan Pop",
-  "region": "Metro Detroit",
-  "origin": "Gratiot Ave, Detroit, MI",
-  "founded": "1907",
-  "price": 999,
-  "compare_at": null,
-  "shape": "can",
-  "bg": "#F7DAD6",
-  "tags": [
-   "region:Metro Detroit",
-   "Michigan Pop",
-   "box-eligible",
-   "pop",
-   "under-25"
-  ],
-  "why": "'Redpop' is a word only Michiganders say.",
-  "contents": [],
-  "kind": "item"
- },
- {
-  "handle": "faygo-moon-mist-12-oz-can-4-pack",
-  "title": "Faygo Moon Mist, 12 oz can (4-pack)",
-  "vendor": "Faygo",
-  "type": "Michigan Pop",
-  "region": "Metro Detroit",
-  "origin": "Gratiot Ave, Detroit, MI",
-  "founded": "1907",
-  "price": 999,
-  "compare_at": null,
-  "shape": "can",
-  "bg": "#D9EBDF",
-  "tags": [
-   "region:Metro Detroit",
-   "Michigan Pop",
-   "box-eligible",
-   "pop",
-   "under-25"
-  ],
-  "why": "The citrus Faygo you drank at every Michigan grad party.",
-  "contents": [],
-  "kind": "item"
- },
- {
-  "handle": "faygo-variety-pack-12-oz-cans-8-flavors",
-  "title": "Faygo Variety Pack, 12 oz cans (8 flavors)",
-  "vendor": "Faygo",
-  "type": "Michigan Pop",
-  "region": "Metro Detroit",
-  "origin": "Gratiot Ave, Detroit, MI",
-  "founded": "1907",
-  "price": 2199,
-  "compare_at": null,
-  "shape": "can",
-  "bg": "#FBEFC4",
-  "tags": [
-   "region:Metro Detroit",
-   "Michigan Pop",
-   "pop",
-   "ships-free",
-   "under-25"
-  ],
-  "why": "Rock & Rye, Redpop, Moon Mist, Cotton Candy and more. A nostalgia grab bag.",
-  "contents": [],
-  "kind": "item"
- },
- {
-  "handle": "vernors-ginger-soda-12-oz-can-4-pack",
-  "title": "Vernors Ginger Soda, 12 oz can (4-pack)",
-  "vendor": "Vernors",
-  "type": "Michigan Pop",
-  "region": "Metro Detroit",
-  "origin": "Detroit, MI",
-  "founded": "1866",
-  "price": 999,
-  "compare_at": null,
-  "shape": "can",
-  "bg": "#D9EBDF",
-  "tags": [
-   "region:Metro Detroit",
-   "Michigan Pop",
-   "bestseller",
-   "box-eligible",
-   "pop",
-   "under-25"
-  ],
-  "why": "What Mom gave you when you were sick. Add vanilla ice cream for a Boston Cooler.",
-  "contents": [],
-  "kind": "item"
- },
- {
-  "handle": "sanders-milk-chocolate-hot-fudge-10-oz-jar",
-  "title": "Sanders Milk Chocolate Hot Fudge, 10 oz jar",
-  "vendor": "Sanders",
-  "type": "Fudge & Sweets",
-  "region": "Metro Detroit",
-  "origin": "Detroit, MI",
-  "founded": "1875",
-  "price": 899,
-  "compare_at": null,
-  "shape": "jar",
-  "bg": "#E3ECF7",
-  "tags": [
-   "region:Metro Detroit",
-   "Fudge & Sweets",
-   "bestseller",
-   "box-eligible",
-   "under-25"
-  ],
-  "why": "The hot fudge from the Sanders sundae counter. Warm the jar, pour over Hudsonville.",
-  "contents": [],
-  "kind": "item"
- },
- {
-  "handle": "sanders-dark-chocolate-sea-salt-caramels-6-oz",
-  "title": "Sanders Dark Chocolate Sea Salt Caramels, 6 oz",
-  "vendor": "Sanders",
-  "type": "Fudge & Sweets",
-  "region": "Metro Detroit",
-  "origin": "Clinton Township, MI",
-  "founded": "1875",
-  "price": 999,
-  "compare_at": null,
-  "shape": "box",
-  "bg": "#DCE6F2",
-  "tags": [
-   "region:Metro Detroit",
-   "Fudge & Sweets",
-   "box-eligible",
-   "heat-sensitive",
-   "under-25"
-  ],
-  "why": "The caramels every Michigan family brings to the holidays.",
-  "contents": [],
-  "kind": "item"
- },
- {
-  "handle": "mackinac-island-fudge-chocolate-pecan-slice",
-  "title": "Mackinac Island Fudge, Chocolate Pecan Slice",
-  "vendor": "Murdick's Fudge",
-  "type": "Fudge & Sweets",
-  "region": "Up North",
-  "origin": "Mackinac Island, MI",
-  "founded": "1887",
-  "price": 1595,
-  "compare_at": null,
-  "shape": "bar",
-  "bg": "#E3ECF7",
-  "tags": [
-   "region:Up North",
-   "Fudge & Sweets",
-   "box-eligible",
-   "heat-sensitive",
-   "seasonal",
-   "under-25"
-  ],
-  "why": "A Straits summer, in a half-pound slab. Fudgies welcome.",
-  "contents": [],
-  "kind": "item"
- },
- {
-  "handle": "mackinac-island-fudge-classic-chocolate-slice",
-  "title": "Mackinac Island Fudge, Classic Chocolate Slice",
-  "vendor": "Murdick's Fudge",
-  "type": "Fudge & Sweets",
-  "region": "Up North",
-  "origin": "Mackinac Island, MI",
-  "founded": "1887",
-  "price": 1595,
-  "compare_at": null,
-  "shape": "bar",
-  "bg": "#DCE6F2",
-  "tags": [
-   "region:Up North",
-   "Fudge & Sweets",
-   "box-eligible",
-   "heat-sensitive",
-   "seasonal",
-   "under-25"
-  ],
-  "why": "The island's original fudge maker.",
-  "contents": [],
-  "kind": "item"
- },
- {
-  "handle": "cherry-republic-chocolate-covered-cherries-5-oz",
-  "title": "Cherry Republic Chocolate Covered Cherries, 5 oz",
-  "vendor": "Cherry Republic",
-  "type": "Fudge & Sweets",
-  "region": "Up North",
-  "origin": "Glen Arbor, MI",
-  "founded": "1989",
-  "price": 895,
-  "compare_at": null,
-  "shape": "box",
-  "bg": "#F7DAD6",
-  "tags": [
-   "region:Up North",
-   "Fudge & Sweets",
-   "box-eligible",
-   "heat-sensitive",
-   "under-25"
-  ],
-  "why": "A Sleeping Bear Dunes day trip you can eat.",
-  "contents": [],
-  "kind": "item"
- },
- {
-  "handle": "sayklly-s-yooper-bar-milk-chocolate",
-  "title": "Sayklly's Yooper Bar, milk chocolate",
-  "vendor": "Sayklly's",
-  "type": "Fudge & Sweets",
-  "region": "The U.P.",
-  "origin": "Escanaba, MI",
-  "founded": "1906",
-  "price": 799,
-  "compare_at": null,
-  "shape": "bar",
-  "bg": "#DCEDF7",
-  "tags": [
-   "region:The U.P.",
-   "Fudge & Sweets",
-   "box-eligible",
-   "heat-sensitive",
-   "under-25"
-  ],
-  "why": "A chocolate bar shaped like the U.P. Instant Yooper pride.",
-  "contents": [],
-  "kind": "item"
- },
- {
-  "handle": "cherry-republic-dried-montmorency-cherries-8-oz",
-  "title": "Cherry Republic Dried Montmorency Cherries, 8 oz",
-  "vendor": "Cherry Republic",
-  "type": "Up North Cherries",
-  "region": "Up North",
-  "origin": "Glen Arbor, MI",
-  "founded": "1989",
-  "price": 1295,
-  "compare_at": null,
-  "shape": "bag",
-  "bg": "#F7DAD6",
-  "tags": [
-   "region:Up North",
-   "Up North Cherries",
-   "bestseller",
-   "box-eligible",
-   "under-25"
-  ],
-  "why": "Life, Liberty, Beaches & Pie. The Up North cherry, dried.",
-  "contents": [],
-  "kind": "item"
- },
- {
-  "handle": "american-spoon-sour-cherry-preserves-9-5-oz",
-  "title": "American Spoon Sour Cherry Preserves, 9.5 oz",
-  "vendor": "American Spoon",
-  "type": "Up North Cherries",
-  "region": "Up North",
-  "origin": "Petoskey, MI",
-  "founded": "1982",
-  "price": 1395,
-  "compare_at": null,
-  "shape": "jar",
-  "bg": "#F7DAD6",
-  "tags": [
-   "region:Up North",
-   "Up North Cherries",
-   "box-eligible",
-   "under-25"
-  ],
-  "why": "Small-batch preserves from Petoskey, made with Michigan Montmorency cherries.",
-  "contents": [],
-  "kind": "item"
- },
- {
-  "handle": "traverse-city-cherry-salsa-16-oz",
-  "title": "Traverse City Cherry Salsa, 16 oz",
-  "vendor": "Traverse Bay Farms",
-  "type": "Up North Cherries",
-  "region": "Up North",
-  "origin": "Bellaire, MI",
-  "founded": null,
-  "price": 999,
-  "compare_at": null,
-  "shape": "jar",
-  "bg": "#F7DAD6",
-  "tags": [
-   "region:Up North",
-   "Up North Cherries",
-   "box-eligible",
-   "under-25"
-  ],
-  "why": "Sweet-heat salsa from the cherry capital.",
-  "contents": [],
-  "kind": "item"
- },
- {
-  "handle": "jampot-wild-thimbleberry-jam-9-oz",
-  "title": "Jampot Wild Thimbleberry Jam, 9 oz",
-  "vendor": "The Jampot",
-  "type": "Up North Cherries",
-  "region": "The U.P.",
-  "origin": "Keweenaw Peninsula, MI",
-  "founded": null,
-  "price": 2799,
-  "compare_at": null,
-  "shape": "jar",
-  "bg": "#E7D6E8",
-  "tags": [
-   "region:The U.P.",
-   "Up North Cherries",
-   "box-eligible",
-   "limited"
-  ],
-  "why": "Thimbleberries barely grow anywhere but the U.P.'s north woods. Rare and worth it.",
-  "contents": [],
-  "kind": "item"
- },
- {
-  "handle": "michigan-pure-maple-syrup-8-oz",
-  "title": "Michigan Pure Maple Syrup, 8 oz",
-  "vendor": "Michigan maple farm (supplier TBD)",
-  "type": "Up North Cherries",
-  "region": "Up North",
-  "origin": "Northern Michigan, MI",
-  "founded": null,
-  "price": 1499,
-  "compare_at": null,
-  "shape": "bottle",
-  "bg": "#DCEDF7",
-  "tags": [
-   "region:Up North",
-   "Up North Cherries",
-   "box-eligible",
-   "under-25"
-  ],
-  "why": "Michigan is a top-five maple state. This is Up North sugarbush syrup.",
-  "contents": [],
-  "kind": "item"
- },
- {
-  "handle": "jiffy-corn-muffin-mix-8-5-oz-3-pack",
-  "title": "Jiffy Corn Muffin Mix, 8.5 oz (3-pack)",
-  "vendor": "Chelsea Milling",
-  "type": "Pantry & Sauces",
-  "region": "Metro Detroit",
-  "origin": "Chelsea, MI",
-  "founded": "1930",
-  "price": 599,
-  "compare_at": null,
-  "shape": "box",
-  "bg": "#DCEDF7",
-  "tags": [
-   "region:Metro Detroit",
-   "Pantry & Sauces",
-   "box-eligible",
-   "us-only",
-   "under-25"
-  ],
-  "why": "The little blue box, made down the road in Chelsea since 1930.",
-  "contents": [],
-  "kind": "item"
- },
- {
-  "handle": "koeze-cream-nut-natural-peanut-butter-17-oz",
-  "title": "Koeze Cream-Nut Natural Peanut Butter, 17 oz",
-  "vendor": "Koeze",
-  "type": "Pantry & Sauces",
-  "region": "West Michigan",
-  "origin": "Grand Rapids, MI",
-  "founded": "1925",
-  "price": 1099,
-  "compare_at": null,
-  "shape": "jar",
-  "bg": "#DCEDF7",
-  "tags": [
-   "region:West Michigan",
-   "Pantry & Sauces",
-   "box-eligible",
-   "under-25"
-  ],
-  "why": "Dark-roasted Virginia peanuts on Grand Rapids equipment that dates to 1925.",
-  "contents": [],
-  "kind": "item"
- },
- {
-  "handle": "national-coney-island-chili-sauce-7-5-oz-can-2-pack",
-  "title": "National Coney Island Chili Sauce, 7.5 oz can (2-pack)",
-  "vendor": "National Coney Island",
-  "type": "Pantry & Sauces",
-  "region": "Metro Detroit",
-  "origin": "Metro Detroit, MI",
-  "founded": null,
-  "price": 999,
-  "compare_at": null,
-  "shape": "can",
-  "bg": "#F7DAD6",
-  "tags": [
-   "region:Metro Detroit",
-   "Pantry & Sauces",
-   "box-eligible",
-   "us-only",
-   "under-25"
-  ],
-  "why": "Make a real Detroit coney at home: dog, chili, mustard, onions.",
-  "contents": [],
-  "kind": "item"
- },
- {
-  "handle": "hell-fire-detroit-hot-sauce-5-oz",
-  "title": "Hell Fire Detroit Hot Sauce, 5 oz",
-  "vendor": "Hell Fire Detroit",
-  "type": "Pantry & Sauces",
-  "region": "Metro Detroit",
-  "origin": "Warren, MI",
-  "founded": null,
-  "price": 1299,
-  "compare_at": null,
-  "shape": "bottle",
-  "bg": "#F7DAD6",
-  "tags": [
-   "region:Metro Detroit",
-   "Pantry & Sauces",
-   "box-eligible",
-   "under-25"
-  ],
-  "why": "The Detroit hot sauce that made it onto Hot Ones.",
-  "contents": [],
-  "kind": "item"
- },
- {
-  "handle": "zehnder-s-frankenmuth-egg-noodles-12-oz",
-  "title": "Zehnder's Frankenmuth Egg Noodles, 12 oz",
-  "vendor": "Zehnder's",
-  "type": "Pantry & Sauces",
-  "region": "The Thumb",
-  "origin": "Frankenmuth, MI",
-  "founded": null,
-  "price": 799,
-  "compare_at": null,
-  "shape": "bag",
-  "bg": "#FBEFC4",
-  "tags": [
-   "region:The Thumb",
-   "Pantry & Sauces",
-   "box-eligible",
-   "under-25"
-  ],
-  "why": "The noodles from the Frankenmuth chicken dinner.",
-  "contents": [],
-  "kind": "item"
- },
- {
-  "handle": "michigan-navy-beans-2-lb",
-  "title": "Michigan Navy Beans, 2 lb",
-  "vendor": "Huron County grower (supplier TBD)",
-  "type": "Pantry & Sauces",
-  "region": "The Thumb",
-  "origin": "Huron County, MI",
-  "founded": null,
-  "price": 699,
-  "compare_at": null,
-  "shape": "bag",
-  "bg": "#E3ECF7",
-  "tags": [
-   "region:The Thumb",
-   "Pantry & Sauces",
-   "box-eligible",
-   "under-25"
-  ],
-  "why": "Huron County grows more dry beans than any county in the country.",
-  "contents": [],
-  "kind": "item"
- },
- {
-  "handle": "pioneer-sugar-4-lb",
-  "title": "Pioneer Sugar, 4 lb",
-  "vendor": "Michigan Sugar Co.",
-  "type": "Pantry & Sauces",
-  "region": "The Thumb",
-  "origin": "Bay City, MI",
-  "founded": "1906",
-  "price": 649,
-  "compare_at": null,
-  "shape": "bag",
-  "bg": "#EEF5FA",
-  "tags": [
-   "region:The Thumb",
-   "Pantry & Sauces",
-   "under-25"
-  ],
-  "why": "Thumb sugar beets, grower-owned. Bake Grandma's recipe with the real thing.",
-  "contents": [],
-  "kind": "item"
- },
- {
-  "handle": "trenary-toast-cinnamon-sugar-16-slices",
-  "title": "Trenary Toast, Cinnamon Sugar (16 slices)",
-  "vendor": "Trenary Home Bakery",
-  "type": "Coffee & Breakfast",
-  "region": "The U.P.",
-  "origin": "Trenary, MI",
-  "founded": "1928",
-  "price": 799,
-  "compare_at": null,
-  "shape": "bag",
-  "bg": "#DCEDF7",
-  "tags": [
-   "region:The U.P.",
-   "Coffee & Breakfast",
-   "bestseller",
-   "box-eligible",
-   "under-25"
-  ],
-  "why": "The Finnish rusk Yoopers dunk in their coffee. Keeps for months.",
-  "contents": [],
-  "kind": "item"
- },
- {
-  "handle": "great-lakes-coffee-detroit-blend-12-oz-whole-bean",
-  "title": "Great Lakes Coffee Detroit Blend, 12 oz whole bean",
-  "vendor": "Great Lakes Coffee Roasting Co.",
-  "type": "Coffee & Breakfast",
-  "region": "Metro Detroit",
-  "origin": "Midtown Detroit, MI",
-  "founded": "1994",
-  "price": 1599,
-  "compare_at": null,
-  "shape": "bag",
-  "bg": "#DCE6F2",
-  "tags": [
-   "region:Metro Detroit",
-   "Coffee & Breakfast",
-   "box-eligible",
-   "under-25"
-  ],
-  "why": "Roasted in Midtown, poured all over Metro Detroit.",
-  "contents": [],
-  "kind": "item"
- },
- {
-  "handle": "germack-detroit-roast-coffee-12-oz",
-  "title": "Germack Detroit Roast Coffee, 12 oz",
-  "vendor": "Germack",
-  "type": "Coffee & Breakfast",
-  "region": "Metro Detroit",
-  "origin": "Eastern Market, Detroit, MI",
-  "founded": "1924",
-  "price": 1499,
-  "compare_at": null,
-  "shape": "bag",
-  "bg": "#E3ECF7",
-  "tags": [
-   "region:Metro Detroit",
-   "Coffee & Breakfast",
-   "box-eligible",
-   "under-25"
-  ],
-  "why": "Eastern Market's pistachio roasters roast coffee too.",
-  "contents": [],
-  "kind": "item"
- },
- {
-  "handle": "the-day-tripper-gift-box",
-  "title": "The Day Tripper Gift Box",
-  "vendor": "Michigan Gift Store",
-  "type": "Gift Boxes",
-  "region": "Statewide",
-  "origin": "",
-  "founded": null,
-  "price": 4500,
-  "compare_at": null,
-  "shape": "giftbox",
-  "bg": "#FBEFC4",
-  "tags": [
-   "Gift Boxes",
-   "ships-free",
-   "gift-box"
-  ],
-  "why": "A quick hit of home for birthdays, teachers and 'thinking of you'.",
-  "contents": [
-   "Better Made Special BBQ Potato Chips, 9.5 oz | Gratiot Ave, Detroit · since 1930",
-   "Faygo Rock & Rye, 12 oz can | Gratiot Ave, Detroit · since 1907",
-   "Sanders Milk Chocolate Hot Fudge, 10 oz jar | Detroit · since 1875",
-   "Germack Red Pistachios, 8 oz | Eastern Market · since 1924",
-   "Handwritten Michigan postcard with your note | Packed in Michigan"
-  ],
-  "kind": "box",
-  "short": "Day Tripper",
-  "count": "5 classics"
- },
- {
-  "handle": "the-up-north-gift-box",
-  "title": "The Up North Gift Box",
-  "vendor": "Michigan Gift Store",
-  "type": "Gift Boxes",
-  "region": "Statewide",
-  "origin": "",
-  "founded": null,
-  "price": 7900,
-  "compare_at": null,
-  "shape": "giftbox",
-  "bg": "#F7DAD6",
-  "tags": [
-   "Gift Boxes",
-   "ships-free",
-   "gift-box",
-   "bestseller"
-  ],
-  "why": "From Detroit to the Straits: chips, pop, fudge and cherries. Our most-gifted box.",
-  "contents": [
-   "Everything in The Day Tripper | 5 Metro Detroit classics",
-   "Mackinac Island fudge slice | Mackinac Island · since 1887 (seasonal)",
-   "Cherry Republic dried Montmorency cherries, 8 oz | Glen Arbor · since 1989",
-   "Great Lakes Cherry BBQ kettle chips, 8 oz | Traverse City · since 2009",
-   "Vernors Ginger Soda, 12 oz can | Detroit · since 1866",
-   "Koeze Cream-Nut peanut butter, 17 oz | Grand Rapids · since 1925"
-  ],
-  "kind": "box",
-  "short": "Up North",
-  "count": "9 classics"
- },
- {
-  "handle": "the-full-mitten-gift-crate",
-  "title": "The Full Mitten Gift Crate",
-  "vendor": "Michigan Gift Store",
-  "type": "Gift Boxes",
-  "region": "Statewide",
-  "origin": "",
-  "founded": null,
-  "price": 11900,
-  "compare_at": null,
-  "shape": "crate",
-  "bg": "#DCEDF7",
-  "tags": [
-   "Gift Boxes",
-   "ships-free",
-   "gift-box"
-  ],
-  "why": "Every region, from Detroit to the U.P., in one keepsake crate.",
-  "contents": [
-   "Everything in The Up North | 9 classics",
-   "Trenary Toast, 16 slices | Trenary, U.P. · since 1928",
-   "American Spoon sour cherry preserves | Petoskey · since 1982",
-   "Pop Daddy dill pickle pretzels | Howell · since 2013",
-   "Jiffy corn muffin mix | Chelsea · since 1930",
-   "Keepsake wooden crate | Reuse it for the next care package"
-  ],
-  "kind": "box",
-  "short": "Full Mitten",
-  "count": "14 classics"
- },
- {
-  "handle": "the-great-lakes-executive-crate",
-  "title": "The Great Lakes Executive Crate",
-  "vendor": "Michigan Gift Store",
-  "type": "Gift Boxes",
-  "region": "Statewide",
-  "origin": "",
-  "founded": null,
-  "price": 17900,
-  "compare_at": null,
-  "shape": "crate",
-  "bg": "#E3ECF7",
-  "tags": [
-   "Gift Boxes",
-   "ships-free",
-   "gift-box"
-  ],
-  "why": "The whole state, top to bottom. Built for clients, closings and big thank-yous.",
-  "contents": [
-   "Everything in The Full Mitten | 14 classics",
-   "Great Lakes Coffee Detroit Blend | Midtown Detroit · since 1994",
-   "Jampot wild thimbleberry jam | Keweenaw Peninsula",
-   "Sanders sea salt caramels | Clinton Twp · since 1875",
-   "Michigan maple syrup | Northern Michigan",
-   "Logo card for corporate orders | Free on 25+ boxes"
-  ],
-  "kind": "box",
-  "short": "Executive",
-  "count": "20 classics"
- }
-]
+ "finder": [
+  {
+   "id": "moved",
+   "l": "Someone who moved away",
+   "box": "homesick",
+   "why": "Built from what Michiganders who left say they miss first: Better Made BBQ, Rock & Rye, Vernors and Sanders hot fudge."
+  },
+  {
+   "id": "cottage",
+   "l": "The cottage crowd",
+   "box": "upnorth",
+   "why": "Cherries from Glen Arbor, fudge from the Island and a Petoskey stone. Summer up north, shelf-stable."
+  },
+  {
+   "id": "yooper",
+   "l": "A Yooper",
+   "box": "yooper",
+   "why": "Trenary Toast with coffee to dunk it in, thimbleberry jam and a Yooper Bar. They'll know you get it."
+  },
+  {
+   "id": "family",
+   "l": "Family all over the state",
+   "box": "fullmitten",
+   "why": "One classic from every corner of the Mitten, so nobody's hometown gets left out."
+  },
+  {
+   "id": "client",
+   "l": "A client or new hire",
+   "box": "greatlakes",
+   "why": "The executive crate with your logo on the card. Sending 10 or 500? Use corporate gifting."
+  },
+  {
+   "id": "all",
+   "l": "Someone who has everything",
+   "box": null,
+   "why": "They don't have this. Build a box from five Michigan shelves and pick every item yourself."
+  }
+ ],
+ "cards": [
+  {
+   "id": "greet",
+   "n": "Greetings from Michigan"
+  },
+  {
+   "id": "bridge",
+   "n": "Mackinac Bridge"
+  },
+  {
+   "id": "pines",
+   "n": "Lake & pines"
+  },
+  {
+   "id": "photo",
+   "n": "Your photo, +$10"
+  }
+ ]
+}

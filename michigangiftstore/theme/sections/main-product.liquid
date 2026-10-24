@@ -25,6 +25,12 @@
       <div class="gallery__main">
         {%- if featured -%}
           {{ featured | image_url: width: 1400 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '600,900,1200,1400', sizes: '(min-width: 990px) 55vw, 100vw', alt: featured.alt | default: product.title, data-gallery-main: '' }}
+        {%- elsif mf.box_key.value != blank -%}
+          <div class="gallery__box" data-box-card="{{ mf.box_key.value }}">
+            <span class="bx__who" data-who></span>
+            <span class="tray" data-tray></span>
+            <span class="bx__box" aria-hidden="true"></span>
+          </div>
         {%- else -%}
           {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
         {%- endif -%}
@@ -77,8 +83,19 @@
           {%- when 'description' -%}
             <div class="rte product__block" {{ block.shopify_attributes }}>{{ product.description }}</div>
 
+          {%- when 'box_panel' -%}
+            {%- if mf.box_key.value != blank -%}
+              <div class="product__block" data-box-panel="{{ mf.box_key.value }}" {{ block.shopify_attributes }}>
+                {%- comment -%} Replaced by the interactive box panel (mgs.js). Plain form if JS is off. {%- endcomment -%}
+                {%- form 'product', product -%}
+                  <input type="hidden" name="id" value="{{ current_variant.id }}">
+                  <button type="submit" class="btn btn--block" {% unless current_variant.available %}disabled{% endunless %}>{{ 'products.add_to_cart' | t }}</button>
+                {%- endform -%}
+              </div>
+            {%- endif -%}
+
           {%- when 'contents' -%}
-            {%- if mf.contents.value != blank -%}
+            {%- if mf.contents.value != blank and mf.box_key.value == blank -%}
               <div class="product__block" {{ block.shopify_attributes }}>
                 <h2 style="font-size:1.3rem">{{ block.settings.heading }}</h2>
                 <ul class="contents">
@@ -96,6 +113,7 @@
             {%- endif -%}
 
           {%- when 'buy_buttons' -%}
+            {%- if mf.box_key.value != blank -%}{%- continue -%}{%- endif -%}
             <div class="product__block" {{ block.shopify_attributes }}>
               {%- assign product_form_id = 'ProductForm-' | append: section.id -%}
               {%- form 'product', product, id: product_form_id, data-product-form: '' -%}
@@ -181,11 +199,13 @@
   </div>
 </section>
 
+{%- unless mf.box_key.value != blank -%}
 <div class="sticky-atc" data-sticky-atc aria-hidden="true">
   {%- if featured -%}{{ featured | image_url: width: 100 | image_tag: alt: '' }}{%- endif -%}
   <span class="sticky-atc__title">{{ product.title }}<br><span class="price" style="font-size:.9rem">{{ current_variant.price | money }}</span></span>
   <button type="button" class="btn btn--sm" data-sticky-add tabindex="-1" {% unless current_variant.available %}disabled{% endunless %}>{{ 'products.add_to_cart' | t }}</button>
 </div>
+{%- endunless -%}
 
 {% schema %}
 {
@@ -197,6 +217,7 @@
     { "type": "title", "name": "Title", "limit": 1 },
     { "type": "price", "name": "Price", "limit": 1 },
     { "type": "why_miss", "name": "Why they miss it", "limit": 1 },
+    { "type": "box_panel", "name": "Box panel (gift boxes)", "limit": 1 },
     { "type": "description", "name": "Description", "limit": 1 },
     {
       "type": "contents", "name": "What's inside", "limit": 1,

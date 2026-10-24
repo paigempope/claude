@@ -1,0 +1,73 @@
+{%- comment -%}
+  Box shelf: every gift box as a card that opens. Products come from a collection;
+  each box product's custom.box_key metafield links it to its contents in mgs-data.
+  Server-rendered contents keep it readable for search engines and without JS.
+{%- endcomment -%}
+{%- assign c = section.settings.collection -%}
+<section class="section{% if section.settings.scheme != 'none' %} section--{{ section.settings.scheme }}{% endif %}" id="boxes">
+  <div class="page-width">
+    <div class="section-head">
+      <div>
+        {%- if section.settings.kicker != blank -%}<span class="kicker">{{ section.settings.kicker }}</span>{%- endif -%}
+        <h2>{{ section.settings.heading }}</h2>
+      </div>
+      {%- if section.settings.lede != blank -%}<p class="lede" style="margin:0">{{ section.settings.lede }}</p>{%- endif -%}
+    </div>
+
+    {%- if c != blank and c.products_count > 0 -%}
+      <div class="bx-grid">
+        {%- for product in c.products limit: 8 -%}
+          {%- assign key = product.metafields.custom.box_key.value -%}
+          {%- assign lines = product.metafields.custom.contents.value | newline_to_br | split: '<br />' -%}
+          <article class="bx reveal" data-box-card="{{ key }}">
+            <a class="bx__art" href="{{ product.url }}" {% if key != blank %}data-open-box="{{ key }}"{% endif %} aria-label="{{ 'boxes.open' | t }}: {{ product.title | escape }}">
+              <span class="bx__who" data-who></span>
+              <span class="bx__count" data-count>{{ lines.size }} {{ 'boxes.things' | t }}</span>
+              <span class="bx__tray tray" data-tray>
+                {%- if product.featured_media -%}{{ product.featured_media | image_url: width: 600 | image_tag: loading: 'lazy', alt: '' }}{%- endif -%}
+              </span>
+              <span class="bx__box" aria-hidden="true"></span>
+            </a>
+            <div class="bx__body">
+              <div class="bx__top">
+                <h3><a href="{{ product.url }}">{{ product.title }}</a></h3>
+                <span class="price">{{ product.price | money_without_trailing_zeros }}</span>
+              </div>
+              <p class="bx__pitch">{{ product.description | replace: '</p>', ' </p>' | strip_html | truncatewords: 26 }}</p>
+              <div class="bx__makers" data-makers>
+                {%- for l in lines limit: 4 -%}{%- assign n = l | split: ',' | first | strip -%}{%- if n != blank -%}<span>{{ n }}</span>{%- endif -%}{%- endfor -%}
+              </div>
+              <div class="bx__foot">
+                <span class="bx__worth" data-worth></span>
+                {%- if key != blank -%}
+                  <button type="button" class="btn btn--sm" data-open-box="{{ key }}"{% unless product.available %} disabled{% endunless %}>{% if product.available %}{{ 'boxes.open_it' | t }}{% else %}{{ 'products.sold_out' | t }}{% endif %}</button>
+                {%- else -%}
+                  <a class="btn btn--sm" href="{{ product.url }}">{{ 'boxes.open_it' | t }}</a>
+                {%- endif -%}
+              </div>
+            </div>
+          </article>
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      <p class="cant-ship">{{ 'boxes.setup' | t }}</p>
+    {%- endif -%}
+
+    {%- if section.settings.footnote != blank -%}<p class="center mt-l">{{ section.settings.footnote }}</p>{%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Box shelf",
+  "settings": [
+    { "type": "collection", "id": "collection", "label": "Gift boxes collection" },
+    { "type": "select", "id": "scheme", "label": "Background", "options": [{ "value": "none", "label": "Lake mist" }, { "value": "water", "label": "Lake blue" }, { "value": "paper", "label": "White" }], "default": "none" },
+    { "type": "text", "id": "kicker", "label": "Handwritten kicker", "default": "step one: pick a box" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Open a box. See every item." },
+    { "type": "textarea", "id": "lede", "label": "Intro", "default": "Tap any box to open it. You'll see every item, who makes it and which Michigan town it comes from, before you spend a dollar." },
+    { "type": "inline_richtext", "id": "footnote", "label": "Footnote", "default": "Rather pick every item yourself? <a href=\"/pages/build-a-box\">Build your own box →</a>" }
+  ],
+  "presets": [{ "name": "Box shelf" }]
+}
+{% endschema %}

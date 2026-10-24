@@ -1,7 +1,25 @@
 {
   "sections": {
-    "main": { "type": "contact-form", "settings": { "corporate": true } },
-    "boxes": { "type": "gift-box-tiers", "blocks": { "t1": { "type": "tier", "settings": { "eyebrow": "Client thank-you", "title": "The Day Tripper", "fallback_price": "$45", "count": "per box, 25+", "contents": "5 Michigan classics\nLogo card included" } }, "t2": { "type": "tier", "settings": { "eyebrow": "Most popular", "title": "The Up North", "fallback_price": "$79", "count": "per box, 25+", "contents": "9 Michigan classics\nLogo card included\nShips to every address", "flag": "Most gifted", "featured": true } }, "t3": { "type": "tier", "settings": { "eyebrow": "Executive", "title": "The Full Mitten", "fallback_price": "$119", "count": "per box, 25+", "contents": "14 Michigan classics\nKeepsake crate\nLogo card included" } } }, "block_order": ["t1", "t2", "t3"], "settings": { "scheme": "paper", "kicker": "so, what's the budget?", "heading": "Corporate box lineup", "subheading": "Volume pricing from 25 boxes. Custom boxes available at 100+." } }
+    "main": {
+      "type": "contact-form",
+      "settings": {
+        "corporate": true,
+        "bullets": "One spreadsheet for every address. We ship to each one | Your logo on the postcard, free on 25+ boxes | Volume pricing from 25 boxes | Invoice or card, with a reply within one business day"
+      }
+    },
+    "boxes": {
+      "type": "box-shelf",
+      "settings": {
+        "collection": "gift-boxes",
+        "scheme": "water",
+        "kicker": "so, what's the budget?",
+        "heading": "Boxes our corporate clients send",
+        "lede": "Most teams pick The Full Mitten or The Great Lakes. Any box can carry your logo on the postcard."
+      }
+    }
   },
-  "order": ["main", "boxes"]
+  "order": [
+    "main",
+    "boxes"
+  ]
 }

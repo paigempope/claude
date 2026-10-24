@@ -31,92 +31,49 @@ const schemaOf = (src) => { const m = src.match(/\{%-?\s*schema\s*-?%\}([\s\S]*?
 const PAGE_MAP = {
   'shopify://collections/gift-boxes': 'collection.html',
   'shopify://pages/build-a-box': 'build-a-box.html',
+  '/#boxes': 'index.html#boxes', '/#build': 'index.html#build', '/pages/build-a-box': 'build-a-box.html',
   'shopify://pages/corporate-gifts': 'corporate.html',
   'shopify://pages/about': '#',
 };
-const fixUrl = (v) => (typeof v === 'string' && v.startsWith('shopify://') ? PAGE_MAP[v] || '#' : v);
+const fixUrl = (v) => (typeof v !== 'string' ? v : PAGE_MAP[v] || (v.startsWith('shopify://') ? '#' : v));
 
-/* Product art: an illustrated package per product (bag, can, jar...). No emoji, no brand logos. */
-const ACCENT = { 'Chips & Snacks': '#B8352B', 'Michigan Pop': '#1F6FA3', 'Fudge & Sweets': '#6B3E26', 'Up North Cherries': '#B8352B', 'Pantry & Sauces': '#1E5B3F', 'Coffee & Breakfast': '#1F2D5C', 'Gift Boxes': '#1F2D5C' };
-function art(p) {
-  const esc = (t) => t.replace(/&/g, '&amp;').replace(/'/g, '&#39;').replace(/</g, '&lt;');
-  const name = esc(p.title.split(',')[0]);
-  const lines = []; let cur = '';
-  for (const wd of name.split(' ')) { if ((cur + ' ' + wd).trim().length > 14) { lines.push(cur.trim()); cur = wd; } else cur += ' ' + wd; }
-  lines.push(cur.trim());
-  const ac = ACCENT[p.type] || '#1F2D5C';
-  const ink = '#1F2D5C';
-  const label = (y, size = 30) => lines.slice(0, 3).map((l, i) => `<text x="400" y="${y + i * (size + 6)}" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="${size}" fill="${ink}">${l}</text>`).join('');
-  const pin = `<path d="M400 0c-14 0-24 10-24 23 0 18 24 39 24 39s24-21 24-39C424 10 414 0 400 0z" fill="${ac}"/><circle cx="400" cy="23" r="8" fill="#fff"/>`;
-  let pkg;
-  switch (p.shape) {
-    case 'can':
-      pkg = `<rect x="290" y="150" width="220" height="440" rx="34" fill="#fff" stroke="${ink}" stroke-width="6"/><rect x="290" y="250" width="220" height="230" fill="${ac}"/><ellipse cx="400" cy="160" rx="96" ry="18" fill="#E6EEF5" stroke="${ink}" stroke-width="6"/><text x="400" y="355" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="34" fill="#fff">${lines[0]}</text>${lines[1] ? `<text x="400" y="395" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="34" fill="#fff">${lines[1]}</text>` : ''}`; break;
-    case 'jar':
-      pkg = `<rect x="270" y="150" width="260" height="70" rx="12" fill="${ac}"/><rect x="250" y="215" width="300" height="380" rx="44" fill="#fff" stroke="${ink}" stroke-width="6"/><rect x="280" y="320" width="240" height="160" rx="12" fill="#F4F9FC" stroke="${ink}" stroke-width="3"/>${label(380, 28)}`; break;
-    case 'bottle':
-      pkg = `<rect x="370" y="110" width="60" height="90" rx="8" fill="${ac}"/><path d="M370 200h60l40 70v300a24 24 0 0 1-24 24H354a24 24 0 0 1-24-24V270z" fill="#fff" stroke="${ink}" stroke-width="6"/><rect x="335" y="330" width="130" height="170" fill="#F4F9FC" stroke="${ink}" stroke-width="3"/><text x="400" y="400" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="22" fill="${ink}">${lines[0]}</text><text x="400" y="430" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="22" fill="${ink}">${lines[1] || ''}</text>`; break;
-    case 'bar':
-      pkg = `<g transform="rotate(-8 400 400)"><rect x="200" y="250" width="400" height="300" rx="14" fill="#6B3E26" stroke="${ink}" stroke-width="6"/><path d="M200 330h400M200 410h400M200 490h400M333 250v300M466 250v300" stroke="#4E2B19" stroke-width="5"/><rect x="230" y="300" width="340" height="160" rx="10" fill="#fff" stroke="${ink}" stroke-width="4"/>${label(360, 30)}</g>`; break;
-    case 'box':
-      pkg = `<rect x="230" y="170" width="340" height="420" rx="10" fill="#fff" stroke="${ink}" stroke-width="6"/><rect x="230" y="170" width="340" height="80" fill="${ac}"/><rect x="230" y="510" width="340" height="80" fill="${ac}" opacity=".15"/>${label(330, 32)}`; break;
-    case 'giftbox':
-      pkg = `<rect x="170" y="290" width="460" height="300" rx="14" fill="#fff" stroke="${ink}" stroke-width="6"/><rect x="150" y="240" width="500" height="80" rx="12" fill="${ink}"/><rect x="380" y="240" width="40" height="350" fill="#B8352B"/><path d="M400 242c-60-80-160-50-110 0zM400 242c60-80 160-50 110 0z" fill="#B8352B"/><rect x="210" y="400" width="380" height="110" rx="10" fill="#fff" stroke="${ink}" stroke-width="4"/><text x="400" y="448" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="34" fill="${ink}">${lines[0]}</text><text x="400" y="490" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="34" fill="${ink}">${lines.slice(1).join(' ')}</text>`; break;
-    case 'crate':
-      pkg = `<rect x="150" y="270" width="500" height="320" rx="6" fill="#C9A273" stroke="${ink}" stroke-width="6"/><path d="M150 375h500M150 480h500" stroke="${ink}" stroke-width="5"/><path d="M200 270c20-60 80-90 140-60M330 270c30-80 120-100 170-50M470 270c20-50 80-70 130-20" fill="#1E5B3F" stroke="${ink}" stroke-width="4"/><rect x="230" y="395" width="340" height="70" rx="8" fill="#fff" stroke="${ink}" stroke-width="3"/><text x="400" y="440" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="30" fill="${ink}">${name.replace(/^The /, '')}</text>`; break;
-    default: // bag
-      pkg = `<path d="M230 160h340l-16 30 16 30v320l-16 30 16 30H230l16-30-16-30V220l16-30z" fill="#fff" stroke="${ink}" stroke-width="6" stroke-linejoin="round"/><rect x="230" y="230" width="340" height="62" fill="${ac}"/><path d="M230 520h340" stroke="${ac}" stroke-width="10"/>${label(370, 32)}`;
-  }
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800"><rect width="800" height="800" fill="${p.bg}"/><path d="M0 700c66 0 66-16 133-16s67 16 133 16 67-16 134-16 66 16 133 16 67-16 134-16 66 16 133 16v100H0z" fill="#fff" opacity=".45"/><g transform="translate(0 20)">${pkg}</g><g transform="translate(330 712) scale(.35)">${pin}</g><text x="420" y="736" font-family="monospace" font-size="18" letter-spacing="3" fill="${ink}" opacity=".7">${esc((p.origin || 'MICHIGAN').toUpperCase())}</text></svg>`;
-  return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
-}
-
-/* ---------------- mock objects ---------------- */
+/* ---------------- mock store (boxes-only catalog) ---------------- */
 let vid = 1000;
 const mf = (v) => (v ? { value: v } : { value: null });
-function toProduct(p, i) {
-  const media = { id: 5000 + i, src: art(p), alt: p.title, width: 800, height: 800 };
-  const variant = { id: ++vid, price: p.price, compare_at_price: p.compare_at, available: true, title: 'Default Title', featured_media: media, options: ['Default Title'] };
+const BOXES = catalog.boxes;
+const products = Object.entries(BOXES).map(([key, b], i) => {
+  const variant = { id: ++vid, price: b.p, compare_at_price: null, available: true, title: 'Default Title', featured_media: null, options: ['Default Title'] };
   return {
-    id: 100 + i, handle: p.handle, title: p.title, url: (p.kind === 'box' ? 'product.html' : 'product-item.html'),
-    price: p.price, price_min: p.price, price_varies: false, available: true, tags: p.tags, vendor: p.vendor,
-    description: `<p>${p.why}</p>`, featured_media: media, media: [media], has_only_default_variant: true,
-    selected_or_first_available_variant: variant, variants: [variant], options_with_values: [],
-    metafields: {
-      custom: { region: mf(p.region), origin_city: mf(p.origin), founded_year: mf(p.founded), why_miss: mf(p.kind === 'item' ? p.why : null), contents: mf(p.contents.join('\n')), shipping_note: mf(null), ingredients: mf(null) },
-      reviews: { rating: mf(null), rating_count: 0 },
-    },
+    id: 100 + i, handle: b.handle, title: b.n, url: 'product.html', price: b.p, price_min: b.p, price_varies: false, available: true,
+    tags: ['gift-box', 'ships-free', key], vendor: 'Michigan Gift Store', description: `<p>${b.pitch}</p><p>Packed by hand in Michigan with a handwritten postcard. No prices inside the box. Ships the next business day.</p>`,
+    featured_media: null, media: [], has_only_default_variant: true, selected_or_first_available_variant: variant, variants: [variant], options_with_values: [],
+    metafields: { custom: { region: mf('Statewide'), origin_city: mf(null), founded_year: mf(null), why_miss: mf(null), contents: mf(b.contents.join('\n')), box_key: mf(key), shipping_note: mf(null), ingredients: mf(null) }, reviews: { rating: mf(null), rating_count: 0 } },
   };
-}
-const products = catalog.map(toProduct);
-const boxes = products.filter((p) => p.tags.includes('gift-box'));
-const items = products.filter((p) => !p.tags.includes('gift-box'));
-const byTag = (t) => items.filter((p) => p.tags.includes(t));
-const col = (title, list, extra = {}) => ({ title, url: 'collection.html', handle: title.toLowerCase(), products: list, products_count: list.length, description: '', featured_image: null, filters: [], sort_options: [{ value: 'manual', name: 'Featured' }, { value: 'best-selling', name: 'Best selling' }, { value: 'price-ascending', name: 'Price, low to high' }], sort_by: 'manual', default_sort_by: 'manual', metafields: { custom: { kicker: mf(null), seo_copy: mf(null) } }, ...extra });
-
-const collections = {
-  all: col('Shop all', items, { description: '<p>Every Michigan-only classic we carry: chips, pop, sweets, Up North pantry and U.P. treats.</p>', metafields: { custom: { kicker: mf('the whole Mitten, one aisle'), seo_copy: mf(null) } } }),
-  bestsellers: col('Bestsellers', byTag('bestseller')),
-  boxEligible: col('Box items', byTag('box-eligible')),
-};
-
-const boxBuilder = { id: 9000, title: 'Build Your Own Michigan Box', variants: [
-  { id: 9101, title: 'Small', price: 600, available: true }, { id: 9102, title: 'Classic', price: 800, available: true }, { id: 9103, title: 'Big', price: 1200, available: true }] };
+});
+const simple = (id, handle, title, price, variants) => ({ id, handle, title, price, available: true, url: '#', selected_or_first_available_variant: { id: id * 10, price }, variants: (variants || [['Default Title', price]]).map(([t, p], j) => ({ id: id * 10 + j, title: t, price: p })) });
+const all_products = Object.fromEntries(products.map((p) => [p.handle, p]));
+Object.assign(all_products, {
+  'build-your-own-half-box': simple(201, 'build-your-own-half-box', 'Build Your Own Half Box', 4900),
+  'build-your-own-full-box': simple(202, 'build-your-own-full-box', 'Build Your Own Full Box', 8900),
+  'custom-photo-card': simple(203, 'custom-photo-card', 'Custom Photo Card', 1000),
+  'box-upgrade': simple(204, 'box-upgrade', 'Box Upgrade', 1200, [['Thimbleberry jam', 1200]]),
+});
+const col = (title, list, extra = {}) => ({ title, url: 'collection.html', handle: title.toLowerCase(), products: list, products_count: list.length, description: '', featured_image: null, filters: [], sort_options: [{ value: 'manual', name: 'Featured' }, { value: 'price-ascending', name: 'Price, low to high' }], sort_by: 'manual', default_sort_by: 'manual', metafields: { custom: { kicker: mf(null), seo_copy: mf(null) } }, ...extra });
+const collections = { boxes: col('Gift boxes', products, { description: '<p>Five Michigan boxes, from the Homesick Box to the Great Lakes executive crate. Every one ships free.</p>', metafields: { custom: { kicker: mf('pick a box, any box'), seo_copy: mf(null) } } }) };
 
 const cart = (() => {
-  const lines = [products.find((p) => p.handle.startsWith('the-up-north')), items[0], items.find((p) => p.handle.startsWith('vernors'))];
-  const its = lines.map((p, i) => ({ key: 'k' + i, product: p, product_id: p.id, url: p.url, image: p.featured_media, quantity: i === 1 ? 2 : 1, variant: p.selected_or_first_available_variant, properties: {}, line_level_discount_allocations: [], final_line_price: p.price * (i === 1 ? 2 : 1), original_line_price: p.price * (i === 1 ? 2 : 1) }));
-  const total = its.reduce((a, b) => a + b.final_line_price, 0);
-  return { items: its, item_count: its.reduce((a, b) => a + b.quantity, 0), total_price: total, attributes: {}, currency: { iso_code: 'USD' }, cart_level_discount_applications: [] };
+  const up = products.find((p) => p.handle === 'the-up-north'), ys = products.find((p) => p.handle === 'the-yooper');
+  const mk = (p, props, i) => ({ key: 'k' + i, product: p, product_id: p.id, url: p.url, image: null, quantity: 1, variant: p.selected_or_first_available_variant, properties: props, line_level_discount_allocations: [], final_line_price: p.price, original_line_price: p.price });
+  const its = [
+    mk(up, { Recipient: 'Aunt Carol', From: 'Love, Linda', 'Send to': 'Ship to them', Ship: 'Next business day', Postcard: 'Mackinac Bridge', Message: 'Miss you up north!', _gid: 'G1' }, 0),
+    mk(ys, { Recipient: 'Jake', 'Send to': 'Ship to them', Ship: 'Hold: ships Dec 8 to 11', Postcard: 'Lake & pines', _gid: 'G2' }, 1),
+  ];
+  return { items: its, item_count: 2, total_price: its.reduce((a, b) => a + b.final_line_price, 0), attributes: {}, currency: { iso_code: 'USD' }, cart_level_discount_applications: [] };
 })();
 
 const L = (title, url, links = []) => ({ title, url, links, active: false, current: false });
 const linklists = {
-  'main-menu': { title: 'Main menu', links: [
-    L('Gift boxes', 'collection.html', [L('All gift boxes', 'collection.html'), L('Under $50', 'collection.html'), L('$50–$100', 'collection.html'), L('$100 & up', 'collection.html'), L('Corporate gifts', 'corporate.html')]),
-    L('Shop the Mitten', 'collection.html', [L('Chips & Snacks', 'collection.html'), L('Michigan Pop', 'collection.html'), L('Fudge & Sweets', 'collection.html'), L('Up North Cherries', 'collection.html'), L('Pantry & Sauces', 'collection.html'), L('Coffee & Breakfast', 'collection.html')]),
-    L('By region', 'collection.html', [L('Metro Detroit', 'collection.html'), L('West Michigan', 'collection.html'), L('Up North', 'collection.html'), L('The U.P.', 'collection.html'), L('The Thumb', 'collection.html')]),
-    L('Build a Box', 'build-a-box.html'), L('Corporate', 'corporate.html')] },
+  'main-menu': { title: 'Main menu', links: [L('Gift boxes', 'index.html#boxes'), L('Build a Box', 'build-a-box.html'), L('Gift finder', 'index.html#finder'), L('The map', 'index.html#map'), L('Shipping', 'faq.html'), L('Corporate', 'corporate.html')] },
   'footer-shop': { title: 'Shop', links: [L('Michigan gift boxes', '#'), L('Michigan care packages', '#'), L('Gifts under $50', '#'), L('Build a box', '#'), L('Corporate gifts', '#')] },
   'footer-help': { title: 'Help', links: [L('Shipping & deadlines', '#'), L('FAQ', '#'), L('Contact', '#'), L('Refund policy', '#')] },
   footer: { title: 'The Mitten', links: [L('Our story', '#'), L('Foods you can only get in Michigan', '#'), L('Where to buy Vernors outside Michigan', '#'), L('Detroit Gift Store ↗', 'https://detroitgiftstore.com')] },
@@ -203,7 +160,7 @@ async function page(outName, templateFile, extra = {}) {
     request: { locale: { iso_code: 'en' }, page_type: extra.page_type || 'index', origin: 'https://michigangiftstore.com' },
     template: { name: extra.page_type || 'index', suffix: extra.suffix || null },
     canonical_url: 'https://michigangiftstore.com/', page_title: extra.title || 'Michigan Gifts & Gift Boxes, Shipped Home', page_description: 'Better Made, Faygo, Vernors, Sanders and more: Michigan-only classics shipped to all 50 states.',
-    cart, linklists, collections: [], content_for_header: '', current_page: 1,
+    cart, linklists, all_products, collections: [], content_for_header: '', current_page: 1,
     ...extra,
   };
   const layoutSrc = read('layout/theme.liquid');
@@ -211,7 +168,7 @@ async function page(outName, templateFile, extra = {}) {
   // layout: swap in sections groups + content manually, then render the rest.
   const header = await renderJsonGroup('sections/header-group.json', ctx);
   const footer = await renderJsonGroup('sections/footer-group.json', ctx);
-  const drawer = await renderSection('cart-drawer', { settings: {} }, { ...ctx, overrides: { 'cart-drawer': (s) => { s.upsell_collection = collections.boxEligible; } } });
+  const drawer = await renderSection('cart-drawer', { settings: {} }, ctx);
   // Render the layout shell; pre-rendered sections are swapped in after so they aren't re-parsed.
   const tokens = [];
   const marker = (s) => { tokens.push(s); return `@@SEC${tokens.length - 1}@@`; };
@@ -223,7 +180,7 @@ async function page(outName, templateFile, extra = {}) {
   let html = await engine.parseAndRender(shell, ctx, { globals: ctx });
   html = html.replace(/@@SEC(\d+)@@/g, (_, i) => tokens[Number(i)]);
   // Static preview: stub cart endpoints so quick-add opens the drawer instead of erroring.
-  html = html.replace('</head>', `<script>(function(){var f=window.fetch;window.fetch=function(u,o){u=String(u);if(/cart\\/(add|change|update)\\.js|cart\\.js|^#/.test(u)){return Promise.resolve(new Response(JSON.stringify({item_count:${cart.item_count},sections:null}),{status:200,headers:{'Content-Type':'application/json'}}));}return f.apply(this,arguments);};})();</script></head>`);
+  html = html.replace('</head>', `<script>(function(){var f=window.fetch;window.fetch=function(u,o){u=String(u);if(/cart\\/(add|change|update)\\.js|cart\\.js|sections=|^#/.test(u)){return Promise.resolve(new Response(JSON.stringify({item_count:${cart.item_count},sections:null}),{status:200,headers:{'Content-Type':'application/json'}}));}return f.apply(this,arguments);};})();</script></head>`);
   fs.writeFileSync(path.join(DIST, outName), html);
   console.log('wrote', outName, (html.length / 1024).toFixed(0) + 'KB');
 }
@@ -268,24 +225,13 @@ fs.rmSync(DIST, { recursive: true, force: true });
 fs.mkdirSync(path.join(DIST, 'assets'), { recursive: true });
 for (const f of fs.readdirSync(path.join(THEME, 'assets'))) fs.copyFileSync(path.join(THEME, 'assets', f), path.join(DIST, 'assets', f));
 
-const tierOverride = (s, blocks) => blocks.forEach((b, i) => { b.settings.product = boxes[i]; });
-const homeOverrides = {
-  'gift-box-tiers': tierOverride,
-  'featured-collection': (s) => { s.collection = collections.bestsellers; },
-  'collection-tiles': (s, blocks) => blocks.forEach((b) => { b.settings.collection = { url: 'collection.html', products_count: 0 }; }),
-  'miss-quiz': (s, blocks) => blocks.forEach((b) => { b.settings.collection = { url: 'collection.html' }; }),
-  'region-map': (s, blocks) => blocks.forEach((b) => { b.settings.collection = { url: 'collection.html' }; }),
-};
-
-const upNorth = products.find((p) => p.handle.startsWith('the-up-north'));
-const bbq = products.find((p) => p.handle.startsWith('better-made-special-bbq'));
-
-await page('index.html', 'templates/index.json', { overrides: homeOverrides });
+const shelf = { 'box-shelf': (s) => { s.collection = collections.boxes; } };
+const upNorth = products.find((p) => p.handle === 'the-up-north');
+await page('index.html', 'templates/index.json', { overrides: shelf });
 await page('product.html', 'templates/product.json', { page_type: 'product', product: upNorth, title: upNorth.title, overrides: {} });
-await page('product-item.html', 'templates/product.json', { page_type: 'product', product: bbq, title: bbq.title, overrides: {} });
-await page('collection.html', 'templates/collection.json', { page_type: 'collection', collection: collections.all, title: 'Shop all', overrides: {} });
-await page('build-a-box.html', 'templates/page.build-a-box.json', { page_type: 'page', suffix: 'build-a-box', title: 'Build a box', overrides: { 'build-a-box': (s) => { s.box_product = boxBuilder; s.collection = collections.boxEligible; } } });
-await page('corporate.html', 'templates/page.corporate-gifts.json', { page_type: 'page', suffix: 'corporate-gifts', title: 'Corporate gifts', overrides: { 'gift-box-tiers': tierOverride } });
-await page('cart.html', 'templates/cart.json', { page_type: 'cart', title: 'Your box', overrides: { 'featured-collection': (s) => { s.collection = collections.bestsellers; } } });
+await page('collection.html', 'templates/collection.json', { page_type: 'collection', collection: collections.boxes, title: 'Gift boxes', overrides: {} });
+await page('build-a-box.html', 'templates/page.build-a-box.json', { page_type: 'page', suffix: 'build-a-box', title: 'Build a box', overrides: {} });
+await page('corporate.html', 'templates/page.corporate-gifts.json', { page_type: 'page', suffix: 'corporate-gifts', title: 'Corporate gifts', overrides: shelf });
+await page('cart.html', 'templates/cart.json', { page_type: 'cart', title: 'Your box', overrides: shelf });
 await page('faq.html', 'templates/page.faq.json', { page_type: 'page', suffix: 'faq', title: 'FAQ', overrides: {} });
 await page('404.html', 'templates/404.json', { page_type: '404', title: 'Not found', overrides: {} });

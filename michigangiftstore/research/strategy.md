@@ -74,69 +74,64 @@ Things the research flagged as hurting local competitors, and how we avoid each:
 - **No prices on the homepage.** Every card and tier shows its price.
 - **No holiday cutoffs.** We show cutoffs in three places: the announcement bar, the deadlines table and the FAQ.
 
-## 3. Price architecture
+## 3. Product model and prices (Detroit Gift Store model)
 
-Based on observed competitor price clusters: entry $35–50, core $65–85, premium $95–135, flagship $165–190.
+Shopify sells **boxes only**, like detroitgiftstore.com. The 30 Michigan items are content: name, size, hometown, why
+people miss them, and drawn package art. They live in `data/catalog.py`, which generates `theme/snippets/mgs-data.liquid`.
 
-| Tier | Price | Product |
+**Curated boxes (all ship free):**
+
+| Box | Price | For |
 |---|---|---|
-| Add-ons | $5–$16 | Single chips, pop 4-packs, fudge slice, jams |
-| Entry box | **$45** | The Day Tripper: 5 classics, ships free |
-| Core (hero SKU) | **$79** | The Up North: 9 classics, ships free, "Most gifted" |
-| Premium | **$119** | The Full Mitten: 14 classics, keepsake crate |
-| Flagship / corporate | **$179** | The Great Lakes Executive Crate |
-| Build your own | items + $6/$8/$12 box fee | Free shipping at $75 |
+| The Homesick Box | $59 | the ones who moved away |
+| The Yooper | $69 | anyone from above the Bridge |
+| The Up North | $79 | the cottage crowd |
+| The Full Mitten | $99 | family all over the state |
+| The Great Lakes | $189 | clients, closings and new hires |
 
-**Shipping:**
-- Every curated box ships free. Build that cost into the box price.
-- Everything else ships free at **$75**, which matches DGS and Michigan Awesome and is the median of observed thresholds.
-- Pop is heavy, so cap it at 4 cans per box SKU and sell multi-packs à la carte.
+**Build your own (flat price, whatever you pick):**
+- Half box, $49: 4 picks, one per shelf.
+- Full box, $89: 8 picks, at least one from every shelf, at most two per shelf.
+
+**Add-ons:**
+- Photo postcard, +$10
+- Thimbleberry jam builder upgrade, +$12
+
+Detroit's own "Michigan Box" overlaps The Up North. Keep this store regional and point Detroit's Michigan Box here,
+or rename it toward Detroit.
 
 ## 4. Launch checklist (Shopify admin)
 
-1. **Theme:** `shopify theme push --path theme --unpublished`. Preview it, then publish. Or zip the `theme` folder and upload it.
+1. **Theme:** `shopify theme push --path theme --unpublished`. Preview it, then publish.
 2. **Metafield definitions** (Settings → Custom data → Products), namespace `custom`:
+   - `box_key`: single line text. Required on every curated box. It links the product to its contents in `mgs-data`.
+   - `contents`, `shipping_note`, `why_miss`: multi-line text
    - `region`, `origin_city`, `founded_year`: single line text
-   - `why_miss`, `contents`, `shipping_note`: multi-line text
-   - `ingredients`: rich text
-
-   Collections, also namespace `custom`:
-   - `kicker`: single line
-   - `seo_copy`: rich text
-3. **Import products:** Products → Import `data/products.csv`. All rows import as **draft**. Add photos and confirm costs before publishing.
-4. **Collections** (automated, by tag):
-   - Gift Boxes (`gift-box`)
-   - Chips & Snacks, Michigan Pop, Fudge & Sweets, Up North Cherries, Pantry & Sauces, Coffee & Breakfast (by product type)
-   - Regions: `region:Metro Detroit`, `region:Up North`, etc.
-   - Under $25 (`under-25`), Under $50 and $50–$100 (price conditions)
-   - Bestsellers (`bestseller`)
-   - Box items (`box-eligible`)
-5. **Menus:**
-   - `main-menu`: Gift boxes ▾ / Shop the Mitten ▾ / By region ▾ / **Build a Box** / Corporate
-   - `footer-shop`, `footer-help`, `footer`
-   - `collection-chips`: Under $25 / Under $50 / Metro Detroit / Up North / The U.P. / Pop / Ships free
-6. **Pages:**
-   - `build-a-box` (template `page.build-a-box`). In the editor, pick the **Build Your Own Michigan Box** product and the Box items collection.
+3. **Import `data/products.csv`:** 5 boxes, 2 builder sizes and 2 add-ons, all as drafts. Keep these handles exactly, because the theme looks products up by handle:
+   - Boxes: `the-homesick-box`, `the-yooper`, `the-up-north`, `the-full-mitten`, `the-great-lakes`
+   - Builder sizes: `build-your-own-half-box`, `build-your-own-full-box`
+   - Add-ons: `custom-photo-card`, `box-upgrade`
+4. **Collection:** create `gift-boxes` (automated, tag = `gift-box`). The box shelf, corporate page and cart use it.
+   **Main menu:** Gift boxes (`/#boxes`) / **Build a Box** / Gift finder (`/#finder`) / The map (`/#map`) / Shipping (`/pages/faq`) / Corporate.
+5. **Pages:**
+   - `build-a-box` (template `page.build-a-box`)
    - `corporate-gifts` (template `page.corporate-gifts`)
    - `faq` (template `page.faq`)
    - `about`
-7. **Theme editor wiring:**
-   - Point each box tier at its product.
-   - Featured collection → Bestsellers.
-   - Region pins → region collections.
-   - Quiz options → collections.
-   - Cart drawer upsell → Box items.
-8. **Shipping profiles:**
-   - Give gift boxes a $0 rate (a separate shipping profile).
-   - Give everything else free shipping over $75.
-   - Offer Priority and Express rates.
-9. **Apps** (the theme already has hooks for each):
-   - Reviews (Judge.me or Okendo) writes the `reviews.rating` metafields that cards and PDPs already read. The PDP accepts app blocks.
-   - Klaviyo for the 10%-off welcome flow, plus abandoned-cart and holiday-deadline emails.
-   - Shopify Search & Discovery for complementary products (the PDP add-on block) and filters.
-   - Optional: a multi-address or "send to many" gifting app for corporate orders.
-10. **Turn on proof only when it's real:**
-    - Fill in the hero rating line, and switch the Testimonials section back on, only once you have genuine reviews. The FTC's 2024 rule bans fake reviews.
+6. **Theme settings → Shipping & gifting:**
+   - free-shipping threshold
+   - holiday deadline
+   - "Hold for the holidays" window (default Dec 8 to 11)
+7. **Shipping profiles:** gift boxes $0. Builder boxes free over $75. Exclude `us-only` boxes (the Homesick Box contains Jiffy, which has lard) from Canada.
+8. **Fulfilment:** gift details arrive as line-item properties on each order:
+   - Recipient, From, Send to, Recipient contact, Ship, Postcard, Message, Picks
+   - The cart also saves "Address for …" attributes for every extra recipient.
+   - A photo-card line shares its box's hidden `_gid`.
+   - For "Text or email them" orders, contact the recipient within 1 business day.
+9. **Apps:**
+   - Klaviyo for welcome, abandoned-cart and holiday-deadline flows
+   - A reviews app once reviews are real. Turn the Testimonials section on only then.
+10. **To edit items or boxes:** change `data/catalog.py` and run `python3 data/catalog.py`. Map pins are projected from real lat/lon; new towns need an x/y (see the comment in `PLACES`).
 
 ## 5. SEO plan
 
