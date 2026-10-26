@@ -14,3 +14,15 @@ Paige's in-store findings. These override online data in the sourcing workbook.
 | Gift box | In progress | The Container Store, Troy | – | – |
 
 General: Holiday Market had the most. Meijer didn't have much. Paige's note: "Don't even go to Holiday Market" next time.
+
+## Update: store preference
+- Skip Holiday Market next time. Market Fresh (31201 Southfield Rd, Beverly Hills) is closer. It's on both the Germack and Pop Daddy store lists, so check it first.
+
+## Fudge leads near Birmingham/Troy (deep search, 10/26)
+- No store in Birmingham or Troy is confirmed to sell a Mackinac Island fudge slab.
+- Kilwins Birmingham (162 N Old Woodward) is CLOSED. The nearest Kilwins are in Plymouth, Northville and Ann Arbor ("Mackinac Island style," not branded).
+- Sanders Chocolate shop, 436 S Main, Rochester, 248-656-2590. Sanders runs a Mackinac Island fudge shop (7330 Main St, 906-847-0250); ask if the Rochester shop carries island fudge.
+- Rocky Mountain Chocolate Factory, Somerset Collection, Space W-326, Troy, (313) 820-5118. Makes fudge slabs in store, but it is NOT Mackinac-branded.
+- The Detroit Shoppe, Somerset Collection (Somerset main line 248-643-6360). Michigan gift shop; ask.
+- Ace Hardware (Devon's Mackinac Island Fudge 7 oz online). Stock varies by store.
+- Guaranteed route: order slices from Murdick's (906-643-9616) or Joann's (906-847-6357) and freeze them.
